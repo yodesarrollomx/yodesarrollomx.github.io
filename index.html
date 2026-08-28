@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Yo Desarrollo · Tableros</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Acceso a los tableros de operación de Yo Desarrollo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ypaper:#f6f3ed; --ypaper-2:#eee9df; --ycard:#fff;
+    --ytext:#231d14; --yink:#17140f; --ymuted:#5f594e;
+    --yline:#e1dacb; --yg:#9a7b3f; --yg-hi:#b07c2e; --yg-soft:#e9dfcb;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --ypaper:#0a0a0c; --ypaper-2:#121216; --ycard:#16161a;
+      --ytext:#ece7db; --yink:#f4f1ea; --ymuted:#8a8780;
+      --yline:rgba(255,255,255,.10); --yg:#c9a227; --yg-hi:#e0b950; --yg-soft:rgba(201,162,39,.16);
+    }
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; min-height:100vh; background:var(--ypaper); color:var(--ytext);
+    font-family:'Instrument Sans',system-ui,-apple-system,sans-serif;
+    display:flex; align-items:center; justify-content:center; padding:32px 20px;
+    -webkit-font-smoothing:antialiased;
+  }
+  main{width:100%; max-width:560px}
+  .marca{
+    font-size:12px; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--yg); font-weight:600; margin:0 0 20px;
+  }
+  h1{
+    font-family:'Instrument Serif',Georgia,serif; font-weight:400;
+    font-size:clamp(34px,7vw,52px); line-height:1.08; letter-spacing:-.01em;
+    margin:0 0 14px; color:var(--yink);
+  }
+  h1 em{font-style:italic; color:var(--yg-hi)}
+  p{margin:0 0 28px; color:var(--ymuted); font-size:16px; line-height:1.6; max-width:44ch}
+  .acciones{display:flex; flex-wrap:wrap; gap:12px; margin-bottom:36px}
+  a.btn{
+    display:inline-flex; align-items:center; gap:9px; text-decoration:none;
+    padding:13px 22px; border-radius:10px; font-size:15px; font-weight:500;
+    border:1px solid var(--yline); color:var(--ytext); background:var(--ycard);
+    transition:border-color .15s ease, transform .15s ease;
+  }
+  a.btn:hover{border-color:var(--yg); transform:translateY(-1px)}
+  a.btn.principal{background:var(--yg); border-color:var(--yg); color:#fff}
+  @media (prefers-color-scheme: dark){ a.btn.principal{color:#0a0a0c} }
+  a.btn.principal:hover{background:var(--yg-hi); border-color:var(--yg-hi)}
+  .nota{
+    border-top:1px solid var(--yline); padding-top:18px;
+    font-size:13px; line-height:1.6; color:var(--ymuted);
+  }
+  .nota code{
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:12px;
+    background:var(--yg-soft); padding:2px 6px; border-radius:4px; color:var(--ytext);
+  }
+</style>
+</head>
+<body>
+<main>
+  <p class="marca">Yo Desarrollo</p>
+  <h1>Los tableros viven <em>aquí</em>.</h1>
+  <p>
+    Esta es la entrada a la operación. El centro de mando reúne todos los tableros
+    y te lleva al que te toca según tu acceso.
+  </p>
+
+  <div class="acciones">
+    <a class="btn principal" href="/yod-portal/os/">Entrar a YOD OS &rarr;</a>
+    <a class="btn" href="https://yodesarrollo.mx">Sitio público</a>
+  </div>
+
+  <p class="nota">
+    ¿Llegaste con una liga que empieza con <code>alexpueblag.github.io</code>?
+    Sigue funcionando: te redirige sola hasta acá. La liga nueva de cualquier
+    tablero es la misma, cambiando esa parte por <code>tableros.yodesarrollo.mx</code>.
+  </p>
+</main>
+</body>
+</html>
