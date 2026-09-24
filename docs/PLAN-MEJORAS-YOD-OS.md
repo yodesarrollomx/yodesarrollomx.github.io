@@ -257,8 +257,25 @@ Formato: **ID · Qué · Por qué · Listo cuando**.
   - [x] AC-1 Google con One Tap automático; clave de equipo retirada; correo solo plan B · potenciales-yod@3586880
   - [x] Portero: 3 rechazos seguidos antes de soltar la sesión (igual que la cabina) · potenciales-yod@3586880
   - [ ] 🔑 AC-2 sesión deslizante 30 días — código e instrucciones en yod-portal/docs/BACKENDS-PENDIENTES.md §5
-- [ ] F1 · AC-1 · AC-3 · AC-2🔑 · EM-2 · AC-4🔑 · IV-1🔑 · IV-3
-- [ ] F2 · SH-2 · Registro Maestro · EM-1 · MO-1 · MO-2 · CH-5 · FL-1🔑
-- [ ] F3 · PP-2 · DP-2 · MO-3 · IN-3 · IV-2 · IV-4 · OB-4 · TC-1 · TC-4 · DP-3 · prueba de duplicados
-- [ ] F4 · resto de §3
-- [ ] F5 · EM-5 · CH-1..4 · FX-1..5
+- [~] F1 · Acceso
+  - [x] AC-1 (ver F0)
+  - [x] Tercera tabla de códigos con prueba automática: `verify-accesos.cjs` + paso en `verificar.yml` · yod-portal@(rama)
+  - [x] Matriz de Accesos sin el código retirado `MZ` · potenciales-yod@(rama)
+  - [ ] 🔑 AC-2 sesión deslizante (Code.gs del Portero) — BACKENDS-PENDIENTES §5
+  - [ ] 🔑 AC-4 Portero versión 47 + alta de `FL`/`IV` — BACKENDS-PENDIENTES §1
+  - [ ] 🔑 EM-2 / IV-1 / IV-3 — cambios en los Apps Script de la Sala, Inversión y Co-desarrolladores
+  - [ ] AC-3 `yod-auth.js` único — conviene hacerlo DESPUÉS de fusionar F0 (toca 20+ archivos en 10 repos)
+- [~] F2 · Una sola fuente de verdad
+  - [x] MO-2 README de MOAC al día · board-aurum@(rama)
+  - [ ] 🔑 Registro Maestro de Proyectos: crear la pestaña `PROYECTOS` en el Control Maestro con las columnas de §2
+  - [ ] 🔑 FL-1 borrar los 4 "Pago Nex" duplicados en el Sheet de Flujo
+  - [ ] Decisión tuya: MO-1 renombrar repos y CH-5 archivar espejos `alexpueblag/*` (no se deshacen fácil)
+  - [ ] Decisión tuya: EM-1 código propio para la Sala (`SE`) o se queda colgada de `MK`
+- [ ] F3 · Folio en todos los tableros — espera al Registro Maestro (F2 🔑)
+  - [x] DP-3 aviso de tarjeta duplicada al soltar un pendiente · yod-despacho@(rama) — adelantado porque no depende del folio
+- [~] F4 · UX por tablero
+  - [x] OS-2 (parcial) el buscador del marco encuentra por código · yod-portal@5184f74
+  - [ ] Resto de §3.x — después de fusionar F0-F2
+- [~] F5 · Automatización
+  - [x] FX-4 guardián de Amalaya cada hora (antes cada 10 min) · amalaya-board@(rama)
+  - [ ] Decisión tuya: FX-1 / FX-5 (qué tableros de fuera entran al OS; archivar Pintarrón)
