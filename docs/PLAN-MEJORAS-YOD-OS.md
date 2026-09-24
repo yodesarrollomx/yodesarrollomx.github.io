@@ -275,6 +275,8 @@ Formato: **ID · Qué · Por qué · Listo cuando**.
   - [x] DP-3 aviso de tarjeta duplicada al soltar un pendiente · yod-despacho@(rama) — adelantado porque no depende del folio
 - [~] F4 · UX por tablero
   - [x] OS-2 (parcial) el buscador del marco encuentra por código · yod-portal@5184f74
+  - [x] Tablero, Obra y tracks sin «Escribe la clave»: botón «Entrar con Google» · yod-portal@fa7377b, potenciales-yod (YODPortero.entrar)
+  - [x] TC-3 revisado a 390 px: sin desborde horizontal (el mini-tablero con datos queda por verificar con sesión real)
   - [ ] Resto de §3.x — después de fusionar F0-F2
 - [~] F5 · Automatización
   - [x] FX-4 guardián de Amalaya cada hora (antes cada 10 min) · amalaya-board@(rama)
