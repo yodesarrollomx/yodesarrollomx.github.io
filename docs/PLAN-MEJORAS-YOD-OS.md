@@ -37,7 +37,7 @@ saca es el **cliente**, por cuatro motivos:
    en `localStorage['pyod_clave_v1']`, compartido por todos los tableros del mismo dominio. Pero:
    - la cabina tolera 3 rechazos seguidos antes de soltarlo (`app.js:548-555`);
    - `portero.js` (PPP y los boards con Portero) lo borra al **segundo** "liga" (`portero.js:268-280`);
-   - Real de Miramar lo borra en `_pyodCerrar()` (`real-miramar-board/assets/board.js:44`);
+   - Real de Miramar solo lo borra al tocar «Salir» (`_pyodCerrar`, `board.js:44`); ante un rechazo solo avisa (corregido al revisar: no es culpable);
    - el shell lo borra al cerrar sesión (`shell.js:206`).
    Un parpadeo del Apps Script (documentado el 9 y 14-sep) en **un** tablero te cierra **todo**.
 2. **Tres copias del Portero con reglas distintas.** La URL del Portero está escrita **22 veces**
@@ -246,7 +246,17 @@ Formato: **ID · Qué · Por qué · Listo cuando**.
 
 ## 5 · Tablero de avance
 
-- [ ] F0 · SH-1 · RM-1 · SH-5 · OB-1 · DP-1 · D10 · IN-1🔑
+- [x] F0 · 2026-09-24 · ramas `claude/funny-ritchie-aouldq` en cada repo
+  - [x] SH-1 Embudo desde cualquier tablero abre la máscara · yod-portal@98179cc
+  - [x] OB-1 access-policy con `?v=0.1.2` en obra y tablero · yod-portal@98179cc
+  - [x] D10 fuera embudo-c/dummy · yod-portal@98179cc
+  - [x] SH-5 el shell solo suelta la sesión con «Salir» (verificado, sin cambio)
+  - [x] RM-1 Miramar ya no borraba la sesión; se corrigió la liga del aviso · real-miramar-board@0345c8d
+  - [x] DP-1 fuera los 5 .bak · yod-despacho@8a363ce
+  - [x] IN-1 claves fuera del datos.json · interiores-aurum@e5ada26 — 🔑 falta rotarlas
+  - [x] AC-1 Google con One Tap automático; clave de equipo retirada; correo solo plan B · potenciales-yod@3586880
+  - [x] Portero: 3 rechazos seguidos antes de soltar la sesión (igual que la cabina) · potenciales-yod@3586880
+  - [ ] 🔑 AC-2 sesión deslizante 30 días — código e instrucciones en yod-portal/docs/BACKENDS-PENDIENTES.md §5
 - [ ] F1 · AC-1 · AC-3 · AC-2🔑 · EM-2 · AC-4🔑 · IV-1🔑 · IV-3
 - [ ] F2 · SH-2 · Registro Maestro · EM-1 · MO-1 · MO-2 · CH-5 · FL-1🔑
 - [ ] F3 · PP-2 · DP-2 · MO-3 · IN-3 · IV-2 · IV-4 · OB-4 · TC-1 · TC-4 · DP-3 · prueba de duplicados
