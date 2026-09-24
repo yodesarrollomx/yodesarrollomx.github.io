@@ -262,24 +262,26 @@ Formato: **ID · Qué · Por qué · Listo cuando**.
   - [x] SH-5 el shell solo suelta la sesión con «Salir» (verificado, sin cambio)
   - [x] RM-1 Miramar ya no borraba la sesión; se corrigió la liga del aviso · real-miramar-board@0345c8d
   - [x] DP-1 fuera los 5 .bak · yod-despacho@8a363ce
-  - [x] IN-1 claves fuera del datos.json · interiores-aurum@e5ada26 — 🔑 falta rotarlas
+  - [x] IN-1 claves fuera del datos.json · interiores-aurum@e5ada26 — 🔑 rotarlas y avisar a cada cliente: Alejandro, en días
+  - [ ] 🔑 CroKiss `SITE_BASE`: entrar con alexpueblag@gmail.com (dueño del script) y cambiar a yodesarrollomx → Versión nueva
   - [x] AC-1 Google con One Tap automático; clave de equipo retirada; correo solo plan B · potenciales-yod@3586880
   - [x] Portero: 3 rechazos seguidos antes de soltar la sesión (igual que la cabina) · potenciales-yod@3586880
-  - [ ] 🔑 AC-2 sesión deslizante 30 días — código e instrucciones en yod-portal/docs/BACKENDS-PENDIENTES.md §5
+  - [x] AC-2 sesión deslizante — publicada por Alejandro (Claude en Chrome) el 24-sep
 - [~] F1 · Acceso
   - [x] AC-1 (ver F0)
   - [x] Tercera tabla de códigos con prueba automática: `verify-accesos.cjs` + paso en `verificar.yml` · yod-portal@(rama)
   - [x] Matriz de Accesos sin el código retirado `MZ` · potenciales-yod@(rama)
-  - [ ] 🔑 AC-2 sesión deslizante (Code.gs del Portero) — BACKENDS-PENDIENTES §5
-  - [ ] 🔑 AC-4 Portero versión 47 + alta de `FL`/`IV` — BACKENDS-PENDIENTES §1
+  - [x] AC-2 sesión deslizante en el Portero — 24-sep (Claude en Chrome)
+  - [x] AC-4 Portero v47 (TA/AL/TM/TC separados) — 24-sep. Pendiente confirmar alta `FL`/`IV` con la prueba de humo de CODIGOS-BOARDS.md
+  - [x] Catálogo «Backend Seguro» a yodesarrollomx: el portal vuelve a obedecer al Sheet — 24-sep
   - [ ] 🔑 EM-2 / IV-1 / IV-3 — cambios en los Apps Script de la Sala, Inversión y Co-desarrolladores
   - [ ] AC-3 `yod-auth.js` único — conviene hacerlo DESPUÉS de fusionar F0 (toca 20+ archivos en 10 repos)
 - [~] F2 · Una sola fuente de verdad
   - [x] MO-2 README de MOAC al día · board-aurum@(rama)
-  - [ ] 🔑 Registro Maestro de Proyectos: crear la pestaña `PROYECTOS` en el Control Maestro con las columnas de §2
-  - [ ] 🔑 FL-1 borrar los 4 "Pago Nex" duplicados en el Sheet de Flujo
-  - [ ] Decisión tuya: MO-1 renombrar repos y CH-5 archivar espejos `alexpueblag/*` (no se deshacen fácil)
-  - [ ] Decisión tuya: EM-1 código propio para la Sala (`SE`) o se queda colgada de `MK`
+  - [~] Registro Maestro: la pestaña `PROYECTOS` YA EXISTE en el Control Maestro; falta agregarle la columna `Folio` (Alejandro, a mano: el Sheet tiene Accesos/Roles y Chrome no entra)
+  - [ ] 🔑 FL-1 borrar los «Pago Nex» duplicados — Alejandro, a mano (dejar la primera; no borrar si la fecha difiere)
+  - [x] Decisión 24-sep: CH-5 se archivan los espejos `alexpueblag/*`; MO-1 no se renombra
+  - [x] Decisión 24-sep: EM-1 la Sala se queda con `MK`
 - [ ] F3 · Folio en todos los tableros — espera al Registro Maestro (F2 🔑)
   - [x] DP-3 aviso de tarjeta duplicada al soltar un pendiente · yod-despacho@(rama) — adelantado porque no depende del folio
 - [~] F4 · UX por tablero
@@ -289,4 +291,4 @@ Formato: **ID · Qué · Por qué · Listo cuando**.
   - [ ] Resto de §3.x — después de fusionar F0-F2
 - [~] F5 · Automatización
   - [x] FX-4 guardián de Amalaya cada hora (antes cada 10 min) · amalaya-board@(rama)
-  - [ ] Decisión tuya: FX-1 / FX-5 (qué tableros de fuera entran al OS; archivar Pintarrón)
+  - [x] Decisión 24-sep: ningún tablero de fuera entra al OS. Amalaya queda aparte (sin menú ni marca YOD OS) pero entra a la ronda de chinches (`?chinche=1`) · amalaya-board@b3da72c
