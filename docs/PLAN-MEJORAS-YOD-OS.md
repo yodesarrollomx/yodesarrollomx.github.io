@@ -246,6 +246,15 @@ Formato: **ID · Qué · Por qué · Listo cuando**.
 
 ## 5 · Tablero de avance
 
+> **24-sep-2026, 14:31 UTC — publicado.** Con autorización de Alejandro, las ramas se fusionaron a
+> `main` en yod-portal, potenciales-yod, interiores-aurum, yod-despacho, real-miramar-board,
+> board-aurum y amalaya-board. Pages desplegó y «Verificar YOD OS» (con `verify-accesos`) pasó en verde.
+>
+> **Bloqueado para Claude, no por código:** los Apps Script (Portero v47, sesión deslizante, FL/IV,
+> Sala, CroKiss) solo los publica la cuenta dueña; no hay herramienta para editarlos. La escritura
+> en Sheets (pestaña `PROYECTOS`, borrar «Pago Nex» duplicados, rotar claves) se intentó por Zapier
+> y el permiso fue **denegado**; queda para Alejandro. DP-5 ya existía (vista «por persona» del Despacho).
+
 - [x] F0 · 2026-09-24 · ramas `claude/funny-ritchie-aouldq` en cada repo
   - [x] SH-1 Embudo desde cualquier tablero abre la máscara · yod-portal@98179cc
   - [x] OB-1 access-policy con `?v=0.1.2` en obra y tablero · yod-portal@98179cc
