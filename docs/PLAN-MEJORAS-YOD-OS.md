@@ -262,7 +262,7 @@ Formato: **ID · Qué · Por qué · Listo cuando**.
   - [x] SH-5 el shell solo suelta la sesión con «Salir» (verificado, sin cambio)
   - [x] RM-1 Miramar ya no borraba la sesión; se corrigió la liga del aviso · real-miramar-board@0345c8d
   - [x] DP-1 fuera los 5 .bak · yod-despacho@8a363ce
-  - [x] IN-1 claves fuera del datos.json · interiores-aurum@e5ada26 — 🔑 rotarlas y avisar a cada cliente: Alejandro, en días
+  - [x] IN-1 claves fuera del datos.json · interiores-aurum@e5ada26 — Decisión 24-sep: NO se rotan (el tablero es promocional, sin datos sensibles)
   - [ ] 🔑 CroKiss `SITE_BASE`: entrar con alexpueblag@gmail.com (dueño del script) y cambiar a yodesarrollomx → Versión nueva
   - [x] AC-1 Google con One Tap automático; clave de equipo retirada; correo solo plan B · potenciales-yod@3586880
   - [x] Portero: 3 rechazos seguidos antes de soltar la sesión (igual que la cabina) · potenciales-yod@3586880
