@@ -14,3 +14,9 @@ Poniendo `tableros.yodesarrollo.mx` aquí, los 15 tableros quedan servidos en
 Si se borra este repo o se le quita el dominio, **los 15 tableros se mudan de
 dirección de golpe** y las ligas que andan por WhatsApp y los QR impresos dejan
 de llevar a ningún lado.
+
+## Herramientas
+
+`herramientas/simulador/` corre cualquier board en local con un Apps Script
+falso y toma capturas de cada pantalla (ver su README). Las sesiones de Claude
+lo encuentran como la skill `simulador-boards` (`.claude/skills/`).
