@@ -278,11 +278,11 @@ Formato: **ID · Qué · Por qué · Listo cuando**.
   - [ ] AC-3 `yod-auth.js` único — conviene hacerlo DESPUÉS de fusionar F0 (toca 20+ archivos en 10 repos)
 - [~] F2 · Una sola fuente de verdad
   - [x] MO-2 README de MOAC al día · board-aurum@(rama)
-  - [~] Registro Maestro: la pestaña `PROYECTOS` YA EXISTE en el Control Maestro; falta agregarle la columna `Folio` (Alejandro, a mano: el Sheet tiene Accesos/Roles y Chrome no entra)
-  - [ ] 🔑 FL-1 borrar los «Pago Nex» duplicados — Alejandro, a mano (dejar la primera; no borrar si la fecha difiere)
+  - [x] Registro Maestro: la pestaña `PROYECTOS` del Control Maestro YA trae `project_id` (PRJ-RM, PRJ-ALYSA…) y `código`: ése es el folio (revisado 24-sep). No hace falta columna nueva.
+  - [x] FL-1 los «Pago Nex» duplicados ya no existen: la pestaña Pagos está vacía (revisado 24-sep; solo quedan en la bitácora, que es historial)
   - [x] Decisión 24-sep: CH-5 se archivan los espejos `alexpueblag/*`; MO-1 no se renombra
   - [x] Decisión 24-sep: EM-1 la Sala se queda con `MK`
-- [ ] F3 · Folio en todos los tableros — espera al Registro Maestro (F2 🔑)
+- [ ] F3 · Folio en todos los tableros con `project_id` — desbloqueada; la toma la revisión automática del 25-sep
   - [x] DP-3 aviso de tarjeta duplicada al soltar un pendiente · yod-despacho@(rama) — adelantado porque no depende del folio
 - [~] F4 · UX por tablero
   - [x] OS-2 (parcial) el buscador del marco encuentra por código · yod-portal@5184f74
