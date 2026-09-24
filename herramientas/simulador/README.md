@@ -32,10 +32,13 @@ del repo: `node simular.mjs yod-os /tmp/yod-portal`.
 | `base` | la ruta donde vive en Pages, por ejemplo `/amalaya-board/` |
 | `servidor(accion, cuerpo)` | el Apps Script falso: recibe la acción y devuelve el JSON |
 | `guion({ pagina, foto, clic, base })` | el recorrido: qué botones picar y qué capturar |
+| `locales` (opcional) | scripts de otro repo servidos desde disco, p. ej. `portero.js` |
+| `antes` (opcional) | lo que corre en el navegador antes de la página (una sesión guardada) |
 
 | Board | Estado |
 |---|---|
 | `amalaya` | Completo. Imita todas las acciones de `apps-script/Code.gs` y entra como admin con el código `SIMULADOR`. |
+| `moac` | Operación semanal y su MOAC (`yodesarrollomx/board-aurum`, `dist/` tras `npm run build`). Portero falso como admin; necesita `portero.js` de `potenciales-yod` (variable `PORTERO_JS`). |
 | `yod-os` | Solo registra lo que pide la página (hoy: `GET read`). Falta escribir sus datos falsos. |
 
 Para agregar un board, copia `boards/yod-os/`, córrelo una vez y lee la

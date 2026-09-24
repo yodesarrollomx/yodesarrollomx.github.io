@@ -1,110 +1,220 @@
-# Amalaya · plan de mejoras UX v2
+# Amalaya · plan de acción UX v2
 
-Acordado con Alejandro el 24-sep-2026 a partir de la revisión de 5 mejoras por
-sección. Repo del board: `yodesarrollo/amalaya-board` (en vivo en
-`yodesarrollo.github.io/amalaya-board`). Solo entra aquí lo que se aprobó.
+Acordado con Alejandro el 24-sep-2026. Board: `yodesarrollo/amalaya-board`,
+en vivo en `yodesarrollo.github.io/amalaya-board`. Este archivo es la fuente
+del `/goal`: cada fase termina con su criterio de «listo» comprobable.
 
-Reglas que no cambian: el Sheet es la única fuente de verdad, nada de datos
-reales ni cosas hardcodeadas en el repo público, y el servidor valida todo.
+## Meta
 
-## Decisión previa: mudar Amalaya a `yodesarrollomx`
+Amalaya queda con entrada con Google sin fricción, accesos por persona desde
+un engrane ⚙️, un mapa que nace en 2D y se levanta en 3D por capas, fichas,
+finanzas y reporte más claros, peticiones con detalle antes/después, un
+mini MOAC propio, ayuda por pantalla, y La Chinche con revisión diaria. Todo
+probado en el simulador antes de publicar, sin romper lo que ya funciona.
 
-Dos cosas de este plan dependen de que Amalaya viva en el mismo origen que
-YOD OS (`yodesarrollomx.github.io`):
+## Decisiones tomadas
 
-- **Entrar con Google como en YOD OS.** La sesión del Portero
-  (`pyod_clave_v1`) vive en el `localStorage` de ese origen. Desde
-  `yodesarrollo.github.io` no se comparte y habría que entrar dos veces.
-- **La Chinche.** Guarda en IndexedDB por origen. En otro origen, las
-  chinches de Amalaya quedarían en una pila aparte de la de YOD OS.
+- **Amalaya se queda separado.** No se muda a `yodesarrollomx`. Tiene su
+  propio acceso, su propia pila de chinches y su propio MOAC. Lo único
+  compartido es la **revisión diaria**, que corre las dos cosas en la misma
+  corrida (YOD OS y Amalaya) sin mezclarlas.
+- **Nada hardcodeado ni público:** datos, historial, versiones y renders viven
+  en el Sheet «AMALAYA - Control» y en Drive. El repo solo lleva la careta.
+- **El servidor valida todo** (Apps Script). El front solo esconde.
+- **Lo que se pidió «discreto»** se hace chico, al margen, sin robar pantalla.
 
-Además quedaría bajo `tableros.yodesarrollo.mx` como los demás. Pendiente
-de confirmar.
+## Reglas de trabajo
 
-## Fase 1 · Acceso
+1. Una rama por fase y un PR por fase; se publica a `main` solo con el visto
+   bueno de Alejandro.
+2. Antes de cada PR: `npm run pruebas`, `npm run build` y el simulador
+   (`herramientas/simulador`, board `amalaya`) con capturas de antes y después.
+3. Cambios al Apps Script: se entregan como archivo completo y se re-despliegan
+   con «Nueva versión» (la URL `/exec` no cambia). Nunca se prueba con POST
+   contra el `/exec` real.
+4. Toda columna nueva del Sheet se agrega al final de su pestaña en `TABS`
+   (el Code.gs la crea en caliente).
 
-- Quitar la demostración de la portada.
-- Entrada con Google y liga por correo usando el **Portero de YOD OS**
-  (`potenciales-yod/portero.js`), sin pasos de más.
-- Dar accesos igual que en YOD OS: Amalaya como un tablero más en la hoja
-  ACCESOS y en `accesos.html` (código de tablero nuevo, p. ej. `AM`). El
-  Apps Script de Amalaya valida el token con el canje del Portero.
-- Corregir el renglón «Distrito de música y ciudad · Hermosillo» que se parte.
-- No: sesiones por aparato. No: entrar siempre al último tablero.
+---
+
+## Fase 0 · Preparación (sin cambios visibles)
+
+- Abrir una sesión de trabajo con `yodesarrollo/amalaya-board` como repo
+  principal (la sesión actual no puede escribir ahí).
+- Pasar el simulador y su board `amalaya` al repo de Amalaya
+  (`herramientas/simulador/`) y agregar `npm run simular`.
+- Hacer que el simulador pinte el mapa aunque no haya internet (mosaicos de
+  prueba locales) para poder revisar la Fase 2.
+- Archivar el repo viejo `alexpueblag/amalaya-board` (confunde).
+
+**Listo cuando:** `npm run simular` deja 10+ capturas, incluido el mapa.
+
+## Fase 1 · Entrada y accesos
+
+**Portada**
+- Quitar «Ver el proyecto» (la demostración) de la portada. `data.json`
+  sigue existiendo solo para el simulador y las pruebas.
+- Corregir el renglón «Distrito de música y ciudad · Hermosillo».
+- Tres formas de entrar, en este orden: **Continuar con Google**, **mandarme
+  mi liga por correo**, y «tengo un código» chiquito abajo.
+- «Peticiones a la ciudad» se queda público.
+
+**Google (propio de Amalaya, sin el Portero)**
+- Botón de Google Identity Services en la portada.
+- Acción nueva `google` en Code.gs: valida el `id_token` con
+  `oauth2.googleapis.com/tokeninfo`, exige `aud` = client_id y
+  `email_verified`, busca el correo en `Usuarios` con `activo = si` y entrega
+  una sesión (misma forma que la liga). Nunca crea usuarios solo.
+- El `client_id` vive en `Config` (clave `google_client_id`) y lo entrega
+  `ping`. Es público por diseño; no va en el código.
+
+**Engrane ⚙️ (dar accesos como en YOD OS)**
+- Solo admin ve el ⚙️ en el encabezado. Abre el panel de accesos (lo que hoy
+  es «Equipo») como ventana lateral.
+- Alta por correo, rol, activo/inactivo, liga y código, con:
+  texto en cada botón, confirmación antes de apagar a alguien, último acceso
+  y cambio de rol desde la tarjeta.
+- Rol nuevo **máster** (editor + congelar versiones del reporte). Roles
+  quedan: admin, máster, editor, visor, inversionista.
+- Columna nueva `ultimo_acceso` en `Usuarios`; la escribe el servidor en
+  `login`/`google`.
+
+**Listo cuando:** en el simulador se entra con Google falso, con liga y con
+código; el ⚙️ solo aparece para admin; apagar a alguien pide confirmación.
+
+**Lo que tiene que hacer Alejandro:** crear (o reutilizar) el client_id de
+Google con el origen `https://yodesarrollo.github.io` autorizado, pegarlo en
+`Config`, y re-desplegar el Apps Script.
 
 ## Fase 2 · Mapa
 
-- **Nace en 2D** (satélite) y al cargar hace un **vuelo tipo dron** que
-  inclina la cámara hacia el 3D.
-- **Carga por capas, animada:** satélite → lámina de colores de los
-  espacios → rutas y sus puntos del recorrido.
-- **Solo los edificios del proyecto** en 3D; el resto de la ciudad plano.
-- **Indicador de avance** sobre cada volumen: puntos o rayitas sencillas
-  (idea → negociación → proyecto → obra → operando).
-- Lista o buscador de espacios.
-- Guía de la primera vez (girar, acercar, tocar un espacio).
-- No: deshacer al mover.
+- **Nace en 2D:** vista cenital del polígono sobre satélite.
+- **Entrada animada por capas** (una sola vez al cargar, ~4 s, se puede saltar
+  tocando): satélite → lámina de colores de los espacios (aparece con un
+  fundido) → rutas trazándose → puntos del recorrido.
+- **Vuelo de dron:** al terminar las capas, la cámara se inclina y gira hacia
+  el 3D.
+- **3D solo en los edificios del proyecto:** los espacios del Sheet como
+  volúmenes; la ciudad queda plana.
+- **Indicador de avance sobre cada volumen:** 5 rayitas (idea, negociación,
+  proyecto, obra, operando), llenas hasta su estado. Se ven desde la vista
+  general.
+- **Lista y buscador de espacios** en un costado (en teléfono, hoja de abajo).
+- **Guía de primera vez:** 3 globos (girar, acercar, tocar un espacio); no
+  vuelve a salir.
+- Respeta `prefers-reduced-motion` (sin vuelo, directo al final).
 
-## Fase 3 · Ficha del espacio
+**Listo cuando:** el video del simulador muestra la secuencia completa y el
+indicador de cada espacio coincide con su `estado_desarrollo` del Sheet.
 
-- Resumen arriba (m² construidos, utilidad, estado).
-- «Siguiente paso» del termómetro, discreto.
-- Historial de cambios guardado en el Sheet o Drive (pestaña nueva), nada
-  en el repo.
+## Fase 3 · Ficha del espacio y 360
+
+- Resumen arriba: m² construidos, utilidad anual, estado.
+- «Siguiente paso» del termómetro, una línea discreta con su botón.
+- **Historial:** pestaña nueva `Historial` en el Sheet
+  (`fecha, usuario, tab, llave, campo, antes, despues`), la escribe el
+  servidor en cada `guardar/crear/borrar`. En la ficha se ven los últimos 20.
 - Botones anterior / siguiente espacio.
-- En el 360 de cada punto: slider antes / después sobre **la misma foto**,
-  con el render encima, cuando exista el diseño.
+- **360 antes/después sobre la misma foto:** cada punto del recorrido acepta
+  un render guardado en Drive (`Archivos`, tipo `render360`, ligado al id del
+  punto). El slider revela el render encima de la foto real. Mientras no
+  exista, el slider se ve apagado con «Render en camino».
 
-## Fase 4 · Finanzas (todas «discretas»)
+**Listo cuando:** en el simulador un cambio deja su renglón en `Historial` y
+un punto con render de prueba muestra el slider funcionando.
 
-- Sugerir nombres de factores al escribir una fórmula (se prueba).
-- Tarjetas cerradas por defecto (se prueba).
+## Fase 4 · Finanzas (todo discreto)
+
+- Autocompletar nombres de factores al escribir una fórmula.
+- Tarjetas cerradas por defecto (nombre + utilidad); se abren al tocar.
 - Comparar dos escenarios lado a lado.
-- Supuesto visible en cada línea.
-- Prueba «¿y si…?» (±% en ocupación y precios).
+- Supuesto visible bajo cada línea; marca suave si falta.
+- «¿Y si…?»: un control chico ±% en ocupación y precios que no guarda nada.
+
+**Listo cuando:** las pruebas del motor siguen pasando y el simulador muestra
+autocompletar, comparación y el «¿y si…?».
 
 ## Fase 5 · Reporte
 
-- Sección «Supuestos y fuentes».
-- Versiones congeladas con fecha; solo editores máster (permiso por
-  definir).
 - Índice arriba.
-- Valor por acción desglosado **por espacio**: qué parte de la acción
-  representa cada uno.
+- Valor por acción **desglosado por espacio**: qué parte de cada acción
+  representa cada espacio (barra apilada + tabla).
+- Sección «Supuestos y fuentes» al final.
+- **Versiones congeladas:** solo máster/admin. Congelar guarda un JSON con
+  fecha en Drive (`AMALAYA/Reportes`) y una fila en la pestaña nueva
+  `Versiones`. El inversionista ve la última congelada si existe.
 - Vista previa antes del PDF, discreta.
 
-## Fase 6 · Peticiones a la ciudad
+**Listo cuando:** congelar desde el simulador crea la versión y un editor
+normal no ve el botón.
 
-- Lista agrupada por ruta, sin barra de avance por ahora.
-- Ventana de detalle por petición: foto, render antes / después.
-- **Mini MOAC**: control de acciones y responsables del equipo (acción,
-  responsable, fecha, estado), en una pestaña nueva del Sheet.
-- No: compartir la liga pública. No: exportar.
+## Fase 6 · Peticiones y mini MOAC
 
-## Fase 7 · Equipo
+**Peticiones a la ciudad**
+- Lista agrupada por ruta, sin barra de avance.
+- Ventana de detalle por petición: texto, estado, foto actual y render
+  antes/después con slider. El recorrido 360 se queda como está.
 
-- Texto en los botones de ícono, confirmación antes de apagar a alguien,
-  último acceso, cambio de rol desde la tarjeta.
-- Si la Fase 1 pasa los accesos al Portero, esta pantalla se replantea.
-  **Se planea completo antes de construir** (lo pidió Alejandro).
+**Mini MOAC de Amalaya** (el mismo modelo del MOAC de Operación semanal,
+propio de Amalaya y más simple)
+- Pestañas nuevas en el Sheet: `Metas`, `Objetivos`
+  (`meta, texto, responsable, fecha, estado`) y las **acciones** son las
+  `Tareas` de siempre con una columna nueva `objetivo_id`.
+- Sección nueva «Plan de acción» (editor+): metas → objetivos → acciones con
+  responsable, fecha y semáforo; contador «acciones sin objetivo» (la regla
+  D.2 del MOAC: toda acción cierra un objetivo).
+- Las acciones pueden ligarse a un espacio o a una petición.
 
-## Fase 8 · Ayuda y revisión
+**Listo cuando:** en el simulador se crea una meta, un objetivo y una acción
+ligada a una petición, y el contador llega a 0.
 
-- Ayuda según la pantalla.
-- El Bato solo como mascota simple y opcional.
-- GIFs cortos de cómo hacer las cosas.
-- **La Chinche** (`yod-portal/chinche.js`) cargada en Amalaya.
-- El **Vigía diario** de YOD OS (`yod-portal/.github/workflows/vigia-diario.yml`)
-  revisa también Amalaya en la misma corrida: salud de la página, del
-  `/exec` (solo `ping`) y las pruebas del repo.
+## Fase 7 · Ayuda, La Chinche y revisión diaria
 
-## Por confirmar
+**Ayuda**
+- Un «?» por sección que explica solo esa pantalla.
+- GIFs cortos (grabados con el simulador): mover un espacio, trazar una ruta,
+  escribir una fórmula.
+- El Bato como mascota simple y opcional; si estorba, se quita.
 
-1. ¿Se muda Amalaya a `yodesarrollomx`?
-2. ¿Qué es la «sala» donde se definen los editores máster?
-3. ¿MOAC = matriz de acciones, responsables y compromisos? ¿Qué columnas?
+**La Chinche en Amalaya (pila propia)**
+- Copia adaptada de `yod-portal/chinche.js` con su propia base
+  (`amalayaChinche`), quien clava sale de la sesión de Amalaya.
+- «Mandar a Claude» abre un issue en `yodesarrollo/amalaya-board` con
+  etiqueta `chinche`.
 
-## Cómo se prueba cada fase
+**Revisión diaria que corre las dos cosas**
+- La rutina «Revisor de chinches YOD» (07:30) revisa también los issues
+  `chinche` de `yodesarrollo/amalaya-board`, en un bloque aparte.
+- El «Vigía diario» de YOD OS agrega un bloque Amalaya: la página responde
+  200, el `/exec` contesta el `GET` de salud y `npm run pruebas` pasa.
 
-Con el simulador (`herramientas/simulador`, board `amalaya`): capturas de
-antes y después de cada pantalla, sin tocar el Sheet real.
+**Listo cuando:** una chinche de prueba en Amalaya se vuelve issue, la rutina
+la toma en su corrida de las 07:30 y el vigía reporta Amalaya en su tabla.
+
+**Lo que tiene que hacer Alejandro:** instalar la app de Claude en la cuenta
+`yodesarrollo` de GitHub y agregar ese repo a la sesión de la rutina.
+
+---
+
+## Orden y calendario sugerido
+
+| Día | Fase |
+|---|---|
+| 1 | Fase 0 · Fase 1 (portada y Google) |
+| 2 | Fase 1 (engrane ⚙️ y roles) |
+| 3–4 | Fase 2 · Mapa |
+| 5 | Fase 3 · Ficha, historial y 360 |
+| 6 | Fase 4 · Finanzas |
+| 7 | Fase 5 · Reporte |
+| 8–9 | Fase 6 · Peticiones y mini MOAC |
+| 10 | Fase 7 · Ayuda, Chinche y revisión |
+
+Cada día termina con un PR y capturas del simulador para aprobar.
+
+## Riesgos
+
+- **Mapa sin internet en el simulador:** si los mosaicos de prueba no bastan,
+  la Fase 2 se revisa en vivo con Alejandro en Chrome.
+- **Apps Script:** varias fases lo tocan; se entrega un solo Code.gs
+  acumulado por fase para no desplegar versiones a medias.
+- **Cuota de Google:** el historial escribe en cada cambio; si pesa, se agrupa.

@@ -16,6 +16,8 @@
 // Cada board trae en boards/<board>/board.mjs:
 //   base      ruta donde vive en Pages (ej. '/amalaya-board/')
 //   servidor  función (accion, cuerpo, req) → JSON; el Apps Script falso
+//   locales   (opcional) [[/URL/, archivo local]] para scripts de otros repos
+//   antes     (opcional) función que corre en el navegador antes de la página
 //   guion     función async ({ pagina, foto, clic, base }) que recorre
 //             las pantallas y toma capturas
 // ============================================================
@@ -90,6 +92,14 @@ await ctx.route(/fonts\.(googleapis|gstatic)\.com|openfreemap|arcgisonline|maps\
   bitacora.push('cortado (internet): ' + new URL(r.request().url()).host)
   return r.abort()
 })
+
+// Archivos que el board carga de OTRO repo (p. ej. portero.js de potenciales-yod):
+// el board declara `locales = [[/regex de la URL/, 'ruta/local']]`.
+for (const [patron, archivo] of board.locales || []) {
+  await ctx.route(patron, (r) => r.fulfill({ contentType: TIPOS[extname(archivo)] || 'text/javascript', body: readFileSync(archivo) }))
+}
+// Lo que el board necesita tener en el navegador antes de arrancar (una sesión, por ejemplo).
+if (board.antes) await ctx.addInitScript(board.antes)
 
 const pagina = await ctx.newPage()
 pagina.on('pageerror', (e) => bitacora.push('ERROR en la página: ' + e.message))
