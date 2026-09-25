@@ -301,3 +301,12 @@ Formato: **ID · Qué · Por qué · Listo cuando**.
 - [x] **F4 · Uso.** Migas «Dónde estoy» en cabina y marco; SHELL-10 para cualquier encabezado pegajoso (PPP Residencial); resumen semanal de MOAC con atrasadas y nuevas; cola de firma de Obra con días de espera; punto de «hay algo nuevo» (MOAC, Flujo, Embudo); inicio por persona (Dirección: dinero y decisiones; Sayri: Sala y pendientes).
 - [x] **F5 · Automatizaciones.** Sala: 7 horarios → 3 puertas (`sala-diario.yml`, `sala-cada-hora.yml`, `publicar.yml`), mismos horarios, probado. Un solo vigilante: `yod-portal/vigia-diario.yml` cada hora (absorbe guardian-uptime, guardian-salud y la salud de Amalaya). Panel «Las máquinas» en YOD OS (`os/maquinas.js`).
 - [x] **Técnicos.** La dirección del Portero vive solo en `yod-portal/os/yod-acceso.js` (0 copias en el código de los tableros de 8 repos; `verify-os` lo vigila; solo los `.gs` del lado de Google guardan la suya). La Sala recibe primero la sesión de Google (ya la validaba directo desde el 5-sep).
+
+### Recorrido en vivo con Claude en Chrome (25-sep) y arreglos
+- [x] Altas en PROYECTOS: PRJ-CERCADA y PRJ-RUISENOR (Chrome) → cargadas en `os/proyectos.js` (12 folios) + alias «Real de Miramar de Guaymas».
+- [x] PPP: el encabezado tapaba la barra del marco → la barra sube a capa 150 (una regla la dejaba en 100, igual que el encabezado) y el ajuste se reintenta al bajar.
+- [x] «Embudo comercial» desde otro tablero con el Portero lento: ahora dice «Validando tu acceso…» y abre Métricas al validar (antes podía quedarse sin abrir).
+- [x] MOAC: folio también en la vista «Personas» (la que abre por defecto).
+- [x] Si `os/yod-acceso.js` no carga, los tableros ya no se caen (solo no validan sesión).
+- [ ] Sin tareas: MOAC · Decisiones · Sistema (pseudo-proyectos del board, no llevan folio a propósito).
+- [ ] 🔑 Seguridad: aviso de Google del 22-sep sobre `yod-sala-nube` (llave de cuenta de servicio filtrada en un log el 22-sep; el código ya se corrigió el 23-sep). Falta crear una llave nueva, guardarla en el secreto `GDRIVE_SA_JSON` de sala-edicion y responder el aviso de Google.
