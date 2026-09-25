@@ -292,3 +292,12 @@ Formato: **ID · Qué · Por qué · Listo cuando**.
 - [~] F5 · Automatización
   - [x] FX-4 guardián de Amalaya cada hora (antes cada 10 min) · amalaya-board@(rama)
   - [x] Decisión 24-sep: ningún tablero de fuera entra al OS. Amalaya queda aparte (sin menú ni marca YOD OS) pero entra a la ronda de chinches (`?chinche=1`) · amalaya-board@b3da72c
+
+---
+
+## 6 · Cierre del 25-sep-2026 (Fases 3, 4, 5 y pendientes técnicos, publicados en `main`)
+
+- [x] **F3 · Folio.** Registro oficial `yod-portal/os/proyectos.js` (10 folios de PROYECTOS, con alias y detección de duplicados, con prueba en `verify-os`). Despacho: selector por folio. Tablero cenital: Potencial → Trámite → Obra → Venta con clic al tablero. MOAC: folio en cada tarea + aviso de tareas repetidas. Sin folio todavía: **La Cercada** y **Torre Ruiseñor** (darlos de alta en PROYECTOS).
+- [x] **F4 · Uso.** Migas «Dónde estoy» en cabina y marco; SHELL-10 para cualquier encabezado pegajoso (PPP Residencial); resumen semanal de MOAC con atrasadas y nuevas; cola de firma de Obra con días de espera; punto de «hay algo nuevo» (MOAC, Flujo, Embudo); inicio por persona (Dirección: dinero y decisiones; Sayri: Sala y pendientes).
+- [x] **F5 · Automatizaciones.** Sala: 7 horarios → 3 puertas (`sala-diario.yml`, `sala-cada-hora.yml`, `publicar.yml`), mismos horarios, probado. Un solo vigilante: `yod-portal/vigia-diario.yml` cada hora (absorbe guardian-uptime, guardian-salud y la salud de Amalaya). Panel «Las máquinas» en YOD OS (`os/maquinas.js`).
+- [x] **Técnicos.** La dirección del Portero vive solo en `yod-portal/os/yod-acceso.js` (0 copias en el código de los tableros de 8 repos; `verify-os` lo vigila; solo los `.gs` del lado de Google guardan la suya). La Sala recibe primero la sesión de Google (ya la validaba directo desde el 5-sep).
