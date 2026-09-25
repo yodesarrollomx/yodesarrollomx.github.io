@@ -310,3 +310,14 @@ Formato: **ID · Qué · Por qué · Listo cuando**.
 - [x] Si `os/yod-acceso.js` no carga, los tableros ya no se caen (solo no validan sesión).
 - [ ] Sin tareas: MOAC · Decisiones · Sistema (pseudo-proyectos del board, no llevan folio a propósito).
 - [ ] 🔑 Seguridad: aviso de Google del 22-sep sobre `yod-sala-nube` (llave de cuenta de servicio filtrada en un log el 22-sep; el código ya se corrigió el 23-sep). Falta crear una llave nueva, guardarla en el secreto `GDRIVE_SA_JSON` de sala-edicion y responder el aviso de Google.
+
+### 25-sep (tarde) · grupo A cerrado
+- [x] SH-2 catálogo único `yod-portal/os/catalogo.js` + `scripts/catalogo.cjs` (regenera shell/access-policy/app; `verify-os` falla si una copia se edita a mano)
+- [x] OS-2 el ⌘K de los tableros encuentra proyectos por folio/nombre
+- [x] OS-3 pastilla de estado igual en todos los tableros (Conectado / Validando… / Sin sesión)
+- [x] TC-2 ya existía (las 7 fuentes cargan en paralelo) · TC-5 cada fuente dice a qué hora terminó o si falló
+- [x] CH-2 la chinche guarda el folio del proyecto donde se clavó
+- [x] IN-2 guías de Interiores al modelo vigente · IN-3 folio en las residencias que son proyecto
+- [x] IV-4 folio y etapa en el track de Codesarrollos · FX-2 folio en Alquimia
+- [x] Ya existían: MO-4 (Kanban), DP-4 (confirmación en la caja), DP-5 (vista por persona), SH-3 (misma pestaña)
+- Pendiente grupo B (funciones grandes, por elegir) y grupo C (depende de Alejandro: token Meta, presupuestos por bolsa, CroKiss, repos viejos, Pintarrón)
