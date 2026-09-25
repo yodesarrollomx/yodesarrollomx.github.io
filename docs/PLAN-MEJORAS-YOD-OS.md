@@ -321,3 +321,6 @@ Formato: **ID · Qué · Por qué · Listo cuando**.
 - [x] IV-4 folio y etapa en el track de Codesarrollos · FX-2 folio en Alquimia
 - [x] Ya existían: MO-4 (Kanban), DP-4 (confirmación en la caja), DP-5 (vista por persona), SH-3 (misma pestaña)
 - Pendiente grupo B (funciones grandes, por elegir) y grupo C (depende de Alejandro: token Meta, presupuestos por bolsa, CroKiss, repos viejos, Pintarrón)
+
+- **25-sep 19:00 UTC · revisión Sala · Diario:** 3 corridas por horario hoy (17:31, 17:34, 17:45 UTC), las tres en verde con mesa, arranque y relevo. Los crons agrupados funcionan: no hace falta regresarlos a los workflows originales.
+- **25-sep · YOD Obra:** la super app de obra está publicada en `yod-portal/obra-app/`. El módulo cliente (`obra-app/motor/ObraCliente.gs`) espera instalación según INSTALAR.md.
