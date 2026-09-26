@@ -324,3 +324,16 @@ Formato: **ID · Qué · Por qué · Listo cuando**.
 
 - **25-sep 19:00 UTC · revisión Sala · Diario (CORREGIDA el 26-sep):** la nota original decía que todo había corrido «en verde». Era inexacta: mesa, arranque y relevo sí corrieron el 25, pero ~5 h tarde y cada uno en una corrida distinta, y la revisión se quedó en el «éxito» general sin abrir los pasos. El 26-sep la mesa de las 05:40 **no salió** y la Sala amaneció sin cartas. Además, relanzarla a mano la corre en «simular» por omisión. Arreglo (sala-edicion `fee860b`): el guardia `al-dia` en «Sala · Cada hora» lanza la mesa (`montar`) y el arranque (`todo`) si hoy no hubo una corrida que pasara por «Verificar antes de publicar». Probado: la mesa montó 2 cartas a las 14:57 UTC y el guardia la reconoció. También se corrigió que la barra de puertas tapara el panel de la Sala dentro de YOD OS (`b5624b6`).
 - **25-sep · YOD Obra:** la super app de obra está publicada en `yod-portal/obra-app/`. El módulo cliente (`obra-app/motor/ObraCliente.gs`) espera instalación según INSTALAR.md.
+
+### 26-sep · grupo B (lo que se puede sin tocar Apps Script), publicado en `main` y probado
+- [x] **FL-4** Flujo: pestaña «Próximas 8 semanas» (saldo + ingresos esperados − pagos pendientes; lo vencido cae en la semana 1; avisa la primera semana sin saldo) · board-flujo-yod `ef2e6e1`
+- [x] **PP-1** Plan de Potencial: barra «Mismo terreno, otro modelo» en los 5 modelos; el terreno viaja y, si no cabe en el rango del modelo, se dice qué se ajustó · potenciales-yod `79649a1`
+- [x] **PP-4** ya existía (escenarios A/B + comparador en cada modelo)
+- [x] **TC-4** Tablero cenital → cada proyecto abre su tablero con `?folio=` o sus tareas en MOAC; MOAC filtra por `?folio=` con pastilla «Solo PRJ-… ✕» · yod-portal `2549896`, board-aurum `9bb1f76`
+- [x] **AC-5** Accesos: cada fila dice «verá: …» y el alta muestra la vista previa al escribir códigos (misma regla `canOpen` del menú) · potenciales-yod `6de7253`
+- [x] **OB-5** Obra: avance sin señal se guarda en el celular y se manda solo al volver la red (solo «proponer») · yod-portal `504f4c6`
+- [x] **RM-2** Trámites: «vencido hace N días» cuando pasó la fecha compromiso · real-miramar-board `a46e513`
+- [x] **EM-3** ya existía (embudo Leads → Citas → Clientes, cuestionario paso a paso y por fuente)
+- Sala (26-sep): estrategia común para todos los agentes (`nube/motores/estrategia.py`), storyboard de director en «Ver el guion», guardia `al-dia`, barra de puertas. Ver sala-edicion `3778ae6`, `ebf1eba`, `fee860b`, `b5624b6`.
+
+**Siguen abiertas y necesitan un Apps Script o una decisión tuya (🔑):** EM-1/EM-2/EM-4 (Sala y CAPI de Meta), PP-2 (guardar cálculo con folio), IV-1/IV-2/IV-3/IV-5 (Portero `IV` y el tablero de Codesarrolladores, repo fuera de esta sesión), OB-2 (foto obligatoria en el motor de obra), OB-4 (pago de obra → egreso en Flujo), FL-2/FL-3/FL-5 (bolsas, credencial de YodBot y conciliación por movimiento), IN-4 (aprobación del cliente en Interiores), RM-3/RM-5, CH-1 (chinche → issue directo necesita un token), AC-3 (`yod-auth.js` único, refactor de 20+ archivos), IN-5 (partir `llave-maestra.html`), MO-1, CH-5, FX-1/FX-3/FX-5.
