@@ -1,0 +1,739 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Yo Desarrollo · Desarrollo inmobiliario entre socios</title>
+<meta name="description" content="Dueños de tierra, capital y expertos en una misma sociedad. Lo que antes se quedaba un solo desarrollador, se reparte entre quienes lo hacen posible. Hermosillo, Sonora.">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme:dark;
+    --ink:#0b0b0d; --ink-2:#121215; --card:#17171b; --line:rgba(255,255,255,.10); --line-2:rgba(255,255,255,.18);
+    --text:#ece7db; --muted:#a39e93; --gold:#c9a227; --gold-hi:#e8c35a; --blue:#7fb2ff;
+    --serif:'Instrument Serif',Georgia,serif; --sans:'Instrument Sans',system-ui,-apple-system,sans-serif;
+    --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+    --header:64px;
+  }
+  *{box-sizing:border-box}
+  [hidden]{display:none!important}
+  html{scroll-behavior:smooth}
+  body{margin:0; background:var(--ink); color:var(--text); font-family:var(--sans); -webkit-font-smoothing:antialiased; overflow-x:hidden}
+  a{color:var(--gold-hi)}
+  button{font:inherit; color:inherit}
+  :focus-visible{outline:2px solid var(--gold-hi); outline-offset:3px}
+  img{max-width:100%; display:block}
+
+  /* ---------- Encabezado ---------- */
+  header.top{
+    position:fixed; inset:0 0 auto 0; z-index:40; height:calc(var(--header) + env(safe-area-inset-top,0px));
+    padding:env(safe-area-inset-top,0px) 24px 0; display:flex; align-items:center; justify-content:space-between; gap:16px;
+    background:linear-gradient(180deg,rgba(11,11,13,.92),rgba(11,11,13,.6)); backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  header.top img{height:22px; width:auto}
+  header.top nav{display:flex; gap:26px; align-items:center; font-size:14px}
+  header.top nav a{color:var(--text); text-decoration:none; opacity:.8}
+  header.top nav a:hover{opacity:1}
+  header.top nav a.wa{opacity:1; border:1px solid var(--gold); color:var(--gold-hi); padding:9px 14px; border-radius:999px}
+
+  /* ---------- Héroe ---------- */
+  .hero{position:relative; height:100svh; min-height:640px; overflow:hidden}
+  #escena{position:absolute; inset:0; width:100%; height:100%; display:block; touch-action:pan-y}
+  .velo{position:absolute; inset:0; pointer-events:none;
+    background:
+      linear-gradient(90deg,rgba(11,11,13,.96) 0%,rgba(11,11,13,.8) 34%,rgba(11,11,13,0) 52%),
+      linear-gradient(0deg,rgba(11,11,13,.9) 0%,rgba(11,11,13,0) 26%)}
+  .izq{position:absolute; left:max(32px,calc((100vw - 1320px)/2)); top:calc(var(--header) + 4vh); bottom:28px; width:min(470px,38vw); display:flex; flex-direction:column; gap:22px; z-index:3}
+  .titular{display:grid; gap:14px}
+  .eyebrow{font:600 12px/1.4 var(--mono); letter-spacing:.14em; text-transform:uppercase; color:var(--gold)}
+  .titular h1{margin:0; font-family:var(--serif); font-weight:400; color:#f6f1e6; font-size:clamp(40px,4.3vw,66px); line-height:.96; letter-spacing:-.02em}
+  .titular h1 em{color:var(--gold-hi)}
+  .titular p{margin:0; font-size:clamp(15px,1.15vw,17px); line-height:1.55; color:#cfc9bd; max-width:46ch}
+  .pregunta{display:flex; align-items:center; gap:10px; font:600 13px var(--mono); letter-spacing:.06em; text-transform:uppercase; color:var(--text)}
+  .pregunta i{display:inline-block; width:34px; height:1px; background:var(--gold)}
+
+  /* Rótulos sobre cada personaje (escritorio) */
+  .rotulos{position:absolute; inset:0; pointer-events:none; z-index:2}
+  .rotulos button{
+    position:absolute; transform:translate(-50%,-100%); pointer-events:auto; cursor:pointer;
+    font:600 11px/1 var(--mono); letter-spacing:.08em; text-transform:uppercase; white-space:nowrap;
+    padding:7px 10px; border-radius:999px; border:1px solid var(--line-2); background:rgba(11,11,13,.72); color:var(--text);
+    transition:background .25s, color .25s, border-color .25s, opacity .25s;
+  }
+  .rotulos button:hover,.rotulos button.on{background:var(--gold); color:#0b0b0d; border-color:var(--gold)}
+
+  /* Chips (celular) */
+  .chips{display:none}
+
+  /* Tarjeta del rol activo */
+  .tarjeta{
+    position:relative; z-index:3; width:100%;
+    background:rgba(18,18,21,.86); backdrop-filter:blur(12px); border:1px solid var(--line-2); border-radius:18px;
+    padding:22px; display:grid; gap:12px; box-shadow:0 30px 80px -30px rgba(0,0,0,.8);
+  }
+  .tarjeta .quien{font:600 12px var(--mono); letter-spacing:.12em; text-transform:uppercase; color:var(--gold)}
+  .tarjeta h2{margin:0; font-family:var(--serif); font-weight:400; font-size:28px; line-height:1.04; color:#f6f1e6; text-wrap:balance}
+  .tarjeta p{margin:0; color:#cfc9bd; line-height:1.55; font-size:15px}
+  .tarjeta ul{margin:0; padding:0; list-style:none; display:grid; gap:8px}
+  .tarjeta li{display:flex; gap:10px; font-size:14px; line-height:1.45; color:var(--text)}
+  .tarjeta li::before{content:""; flex:none; width:6px; height:6px; margin-top:7px; border-radius:50%; background:var(--gold)}
+  .cta{display:flex; align-items:center; justify-content:center; gap:10px; padding:15px 20px; border-radius:12px; background:var(--gold); color:#0b0b0d; font-weight:700; text-decoration:none; font-size:15px}
+  .cta:hover{background:var(--gold-hi)}
+  .tarjeta .nota{font-size:12px; color:var(--muted)}
+  @media (min-width:901px) and (max-height:980px){ .tarjeta .nota, .pregunta{display:none} .tarjeta ul{gap:5px} .izq{gap:14px; top:calc(var(--header) + 2.5vh)} .tarjeta{padding:18px 20px; gap:9px} .tarjeta h2{font-size:25px} .tarjeta p{font-size:14px} .cta{padding:12px 18px} }
+  .anim-in{animation:entra .45s cubic-bezier(.2,.8,.2,1)}
+  @keyframes entra{from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:none}}
+
+  .recorrido{position:absolute; right:max(32px,calc((100vw - 1320px)/2)); bottom:28px; z-index:3; display:flex; align-items:center; gap:12px; font:12px var(--mono); color:var(--muted); letter-spacing:.06em}
+  .recorrido button{background:none; border:1px solid var(--line-2); border-radius:999px; padding:8px 12px; cursor:pointer; color:var(--text)}
+
+  /* ---------- Secciones ---------- */
+  section.bloque{width:min(1280px,100%); margin:0 auto; padding:110px 24px; display:grid; gap:40px}
+  .bloque h2{margin:0; font-family:var(--serif); font-weight:400; font-size:clamp(34px,4.6vw,64px); line-height:1; color:#f6f1e6; max-width:18ch; text-wrap:balance}
+  .bloque h2 em{color:var(--gold-hi)}
+  .bloque .lead{margin:0; max-width:62ch; color:#cfc9bd; font-size:18px; line-height:1.6}
+  .cuenta{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); border:1px solid var(--line); border-radius:16px; overflow:hidden}
+  .cuenta div{padding:26px; display:grid; gap:10px; border-right:1px solid var(--line)}
+  .cuenta div:last-child{border-right:none; background:rgba(201,162,39,.08)}
+  .cuenta small{font:12px var(--mono); letter-spacing:.1em; text-transform:uppercase; color:var(--muted)}
+  .cuenta strong{font:600 clamp(26px,3vw,40px)/1 var(--mono); font-variant-numeric:tabular-nums}
+  .cuenta span{font-size:14px; color:var(--muted); line-height:1.45}
+  .pie-cuenta{margin:0; font-size:13px; color:var(--muted)}
+
+  .pasos{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px; counter-reset:p}
+  .pasos li{padding:26px 22px; border-top:2px solid var(--gold); background:var(--ink-2); display:grid; gap:10px; align-content:start}
+  .pasos li::before{counter-increment:p; content:"0" counter(p); font:600 12px var(--mono); color:var(--gold)}
+  .pasos b{font-size:18px}
+  .pasos p{margin:0; color:var(--muted); line-height:1.55; font-size:15px}
+
+  .proyectos{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px}
+  .proyecto{border:1px solid var(--line); border-radius:18px; overflow:hidden; background:var(--card); display:grid}
+  .proyecto .foto{aspect-ratio:16/9; background:
+      repeating-linear-gradient(135deg,rgba(255,255,255,.03) 0 12px,transparent 12px 24px), #141417;
+    display:grid; place-items:center; color:var(--muted); font:12px var(--mono); letter-spacing:.08em}
+  .proyecto .info{padding:24px; display:grid; gap:10px}
+  .proyecto h3{margin:0; font-family:var(--serif); font-weight:400; font-size:32px}
+  .proyecto p{margin:0; color:var(--muted); line-height:1.55}
+  .proyecto .etq{display:flex; flex-wrap:wrap; gap:8px}
+  .proyecto .etq span{font:600 11px var(--mono); letter-spacing:.06em; text-transform:uppercase; padding:6px 9px; border-radius:6px; border:1px solid var(--line-2); color:var(--text)}
+
+  .faq{display:grid; gap:10px; max-width:860px}
+  .faq details{border:1px solid var(--line); border-radius:12px; background:var(--ink-2)}
+  .faq summary{cursor:pointer; padding:18px 20px; font-weight:600; list-style:none; display:flex; justify-content:space-between; gap:16px}
+  .faq summary::after{content:"+"; color:var(--gold-hi); font-weight:400; font-size:20px; line-height:1}
+  .faq details[open] summary::after{content:"–"}
+  .faq details p{margin:0; padding:0 20px 20px; color:#cfc9bd; line-height:1.6}
+
+  .cierre{text-align:left; border:1px solid var(--line-2); border-radius:22px; padding:48px; background:radial-gradient(ellipse at 90% 0%,rgba(201,162,39,.18),transparent 60%), var(--card); display:grid; gap:22px}
+  .cierre .botones{display:flex; flex-wrap:wrap; gap:12px}
+  .cierre .botones a{padding:14px 18px; border-radius:12px; border:1px solid var(--line-2); color:var(--text); text-decoration:none; font-weight:600}
+  .cierre .botones a:hover{border-color:var(--gold); color:var(--gold-hi)}
+
+  footer{border-top:1px solid var(--line)}
+  footer .dentro{width:min(1280px,100%); margin:0 auto; padding:48px 24px calc(48px + env(safe-area-inset-bottom,0px)); display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:28px; font-size:14px; color:var(--muted); line-height:1.7}
+  footer b{display:block; color:var(--text); margin-bottom:4px}
+  footer img{height:40px; width:auto; margin-bottom:10px}
+
+  /* ---------- Celular ---------- */
+  @media (max-width:900px){
+    header.top nav a:not(.wa){display:none}
+    .hero{height:auto; min-height:0; display:flex; flex-direction:column; padding-top:calc(var(--header) + env(safe-area-inset-top,0px))}
+    .izq{display:contents}
+    .titular{padding:28px 20px 8px; gap:14px}
+    .titular h1{font-size:clamp(42px,12vw,64px)}
+    .titular{order:1} .lienzo-movil{order:2; position:relative; height:46svh; min-height:320px} .chips{order:3}
+    #escena{position:absolute}
+    .velo{background:linear-gradient(0deg,rgba(11,11,13,.85) 0%,rgba(11,11,13,0) 30%), linear-gradient(180deg,rgba(11,11,13,.8) 0%,rgba(11,11,13,0) 18%)}
+    .rotulos{display:none}
+    .chips{display:flex; gap:8px; overflow-x:auto; padding:4px 20px 14px; scroll-snap-type:x mandatory; scrollbar-width:none}
+    .chips::-webkit-scrollbar{display:none}
+    .chips button{flex:none; scroll-snap-align:start; padding:11px 14px; border-radius:999px; border:1px solid var(--line-2); background:var(--card); font:600 13px var(--sans); cursor:pointer}
+    .chips button.on{background:var(--gold); color:#0b0b0d; border-color:var(--gold)}
+    .tarjeta{order:4; width:auto; margin:0 20px 24px; backdrop-filter:none; background:var(--card)}
+    .recorrido{display:none}
+    .cuenta{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .cuenta div:nth-child(2){border-right:none}
+    .cuenta div:nth-child(-n+2){border-bottom:1px solid var(--line)}
+    .pasos,.proyectos{grid-template-columns:1fr}
+    section.bloque{padding:72px 20px}
+    .cierre{padding:30px 22px}
+    footer .dentro{grid-template-columns:1fr}
+  }
+  @media (min-width:901px){ .lienzo-movil{position:absolute; inset:0} }
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} .anim-in{animation:none} }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <a href="#" aria-label="Yo Desarrollo, inicio"><img src="yod-oscuro.png" alt="Yo Desarrollo" width="820" height="120"></a>
+  <nav aria-label="Principal">
+    <a href="#como">Cómo funciona</a>
+    <a href="#proyectos">Proyectos</a>
+    <a href="#preguntas">Preguntas</a>
+    <a class="wa" href="https://wa.me/yodesarrollo">WhatsApp</a>
+  </nav>
+</header>
+
+<section class="hero" aria-label="Elige tu lugar en el proyecto">
+  <div class="izq">
+  <div class="titular">
+    <div class="eyebrow">Desarrollo inmobiliario entre socios · Sonora</div>
+    <h1>La ciudad la hacemos muchos. <em>Que la ganemos muchos.</em></h1>
+    <p>Dueño de la tierra, capital y expertos en una misma sociedad. Lo que antes se quedaba un solo desarrollador, aquí se reparte entre quienes lo hacen posible.</p>
+    <div class="pregunta"><i></i>¿Quién eres tú en el proyecto?</div>
+  </div>
+  <article class="tarjeta" id="tarjeta" aria-live="polite">
+    <div class="quien" id="t-quien"></div>
+    <h2 id="t-titulo"></h2>
+    <p id="t-promesa"></p>
+    <ul id="t-puntos"></ul>
+    <a class="cta" id="t-cta" href="#"></a>
+    <div class="nota" id="t-nota"></div>
+  </article>
+  </div>
+
+  <div class="lienzo-movil">
+    <canvas id="escena" aria-label="Maqueta 3D de un proyecto con sus nueve participantes alrededor. Toca a cada uno para ver qué hace y qué gana."></canvas>
+    <div class="velo"></div>
+    <div class="rotulos" id="rotulos"></div>
+  </div>
+
+  <div class="chips" id="chips" role="tablist" aria-label="Participantes"></div>
+
+
+  <div class="recorrido" id="recorrido">
+    <button type="button" id="pausa">Pausar recorrido</button>
+    <span>Pasa el cursor sobre cada persona</span>
+  </div>
+</section>
+
+<section class="bloque" id="por-que">
+  <div class="eyebrow">Por qué existimos</div>
+  <h2>La cuenta no cuadra, y todos en la obra <em>lo saben.</em></h2>
+  <p class="lead">Arquitectos, ingenieros, constructores y supervisores lo platicamos mil veces: hacemos todo el trabajo, cobramos poco y tarde, y muchas veces le financiamos la obra al desarrollador. Mientras, la calidad se recorta con ladrillo mal cocido y arena de mala criba, y la tierra se queda detenida en manos de unos cuantos.</p>
+  <div class="cuenta">
+    <div><small>Terreno</small><strong>$1M</strong><span>Lo que cuesta el lote de al lado.</span></div>
+    <div><small>Construcción</small><strong>$2M</strong><span>Lo que le pagan al constructor.</span></div>
+    <div><small>Costo real</small><strong>$3M</strong><span>Todo lo que de verdad lleva la casa.</span></div>
+    <div><small>Precio de venta</small><strong style="color:var(--gold-hi)">$6M</strong><span>La diferencia se la queda uno solo.</span></div>
+  </div>
+  <p class="pie-cuenta">Ejemplo de una casa en un fraccionamiento de Hermosillo, con cifras redondeadas.</p>
+</section>
+
+<section class="bloque" id="como">
+  <div class="eyebrow">Cómo funciona</div>
+  <h2>Sin intermediario. <em>Entre socios.</em></h2>
+  <ol class="pasos">
+    <li><b>Se sienta la mesa</b><p>Dueño de la tierra, capital y expertos: urbanista, arquitecto, ingeniero, abogado, tramitólogo, broker y hasta el cliente final. Todos opinan antes de decidir.</p></li>
+    <li><b>Asociación en participación</b><p>El terreno no se vende ni se traspasa. Cada quien aporta lo suyo (tierra, capital o trabajo) a cambio de rendimiento.</p></li>
+    <li><b>Obra que sí vale</b><p>No bajamos el precio del mercado; subimos la calidad, la estética y el diseño para que el producto valga lo que cuesta.</p></li>
+    <li><b>La utilidad se reparte</b><p>Se vende o se renta, y lo que antes se quedaba un solo desarrollador se reparte entre quienes lo hicieron posible.</p></li>
+  </ol>
+</section>
+
+<section class="bloque" id="proyectos">
+  <div class="eyebrow">Proyectos</div>
+  <h2>Lo que ya estamos desarrollando.</h2>
+  <div class="proyectos">
+    <article class="proyecto">
+      <div class="foto">[ FOTO · CASA ALYSA ]</div>
+      <div class="info">
+        <h3>Casa Alysa</h3>
+        <p>Casa premium frente al lago en Altozano, Valle del Conejo, al poniente de Hermosillo. Recámara principal en planta baja y terraza con vista al lago.</p>
+        <div class="etq"><span>Hermosillo</span><span>Co-desarrollo</span><span>Residencial</span></div>
+      </div>
+    </article>
+    <article class="proyecto">
+      <div class="foto">[ FOTO · REAL DE MIRAMAR ]</div>
+      <div class="info">
+        <h3>Real de Miramar</h3>
+        <p>Privada residencial en Miramar, Guaymas: 45 lotes residenciales y 2 comerciales. El dueño aporta el terreno en asociación en participación, sin venderlo.</p>
+        <div class="etq"><span>Guaymas</span><span>Urbanización</span><span>Permisos en marcha</span></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="bloque" id="preguntas">
+  <div class="eyebrow">Preguntas frecuentes</div>
+  <h2>Lo que nos preguntan primero.</h2>
+  <div class="faq">
+    <details><summary>¿Tengo que vender o traspasar mi terreno?</summary><p>No. El terreno sigue 100% a tu nombre. Es una asociación en participación, no una venta ni un traspaso.</p></details>
+    <details><summary>¿Tengo que endeudarme o poner dinero?</summary><p>No. El capital lo ponen los co-inversionistas. Tu aportación es el terreno.</p></details>
+    <details><summary>¿En qué son diferentes de una constructora normal?</summary><p>Una constructora te vende una obra. Nosotros nos asociamos contigo: solo ganamos si tú ganas.</p></details>
+    <details><summary>¿Quién construye y responde por la obra?</summary><p>Aurum Arquitectos administra el proyecto y la obra, con partners de construcción.</p></details>
+    <details><summary>¿Es seguro y legal?</summary><p>Sí. Se formaliza con un contrato de asociación en participación. Tu propiedad no cambia de dueño en ningún momento.</p></details>
+    <details><summary>No tengo terreno, pero conozco a alguien que sí. ¿Sirve?</summary><p>Claro. Puedes referirlo y hay un esquema para quien nos trae un terreno viable.</p></details>
+  </div>
+</section>
+
+<section class="bloque">
+  <div class="cierre">
+    <div class="eyebrow">Súmate</div>
+    <h2>¿Desde dónde desarrollas <em>tú?</em></h2>
+    <div class="botones" id="botones-cierre"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="dentro">
+    <div><img src="yod-mono-oscuro.png" alt="" width="202" height="160"><b>Yodesarrollo SAPI de C.V.</b>Desarrollo inmobiliario entre dueños, capital y expertos.</div>
+    <div><b>Oficina</b>Olivares 28<br>Hermosillo, Son. 83200</div>
+    <div><b>WhatsApp</b><a href="https://wa.me/yodesarrollo">wa.me/yodesarrollo</a></div>
+    <div><b>Opera la obra</b>Aurum Arquitectos</div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+(function(){
+  'use strict';
+  const REDUCIDO = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const D = REDUCIDO ? 0.001 : 1;
+  const GOLD = 0xc9a227, GOLD_HI = 0xe8c35a, INK = 0x0b0b0d;
+
+  /* ================== Destinos reales ================== */
+  const LIGAS = {
+    terreno: 'https://tableros.yodesarrollo.mx/plan-potencial/',
+    aliados: 'https://docs.google.com/forms/d/145KCKi0LjL96oAb-BPJCAqSHHcuUKzIfuUUHO66Y1I0/viewform',
+    wa: t => 'https://wa.me/yodesarrollo?text=' + encodeURIComponent(t)
+  };
+
+  /* ================== Los nueve participantes ================== */
+  const ROLES = [
+    { id:'terreno', corto:'Dueño de terreno', quien:'Tienes un terreno',
+      titulo:'Tu terreno sigue a tu nombre. Y por fin trabaja para ti.',
+      promesa:'Lo desarrollamos contigo en asociación en participación: sin venderlo y sin endeudarte. Tú pones la tierra; el capital y los expertos ponen lo demás.',
+      puntos:['Te contactamos en menos de 8 horas','Videollamada de 30 minutos sin costo con tu Masterdeveloper','Si califica para co-desarrollo, te lo decimos ahí mismo'],
+      cta:['Despertar mi terreno', LIGAS.terreno], nota:'Toma 2 minutos. No necesitas dar tu dirección exacta.' },
+    { id:'arquitecto', corto:'Arquitecto', quien:'Eres arquitecto',
+      titulo:'Deja de regatear honorarios. Diseña como socio.',
+      promesa:'Tu diseño es lo que hace que una casa valga lo que cuesta. Aquí entras al proyecto y participas del valor que creas, no solo de un honorario.',
+      puntos:['Proyectos con tierra y capital ya sentados a la mesa','Participación en la utilidad del desarrollo','Libertad para diseñar calidad, no para recortar'],
+      cta:['Registrarme como aliado', LIGAS.aliados], nota:'Formulario de ingreso al Sistema de Aliados Yodesarrollo.' },
+    { id:'ingeniero', corto:'Ingeniero', quien:'Eres ingeniero',
+      titulo:'Lo que sostiene la obra también debe sostener tu bolsillo.',
+      promesa:'El cálculo estructural no se negocia a la baja. Súmate como socio técnico y cobra con rendimiento del proyecto, no con pagos a 90 días.',
+      puntos:['Estructura bien hecha, con presupuesto para hacerla bien','Tu trabajo aportado a cambio de rendimiento','Una red de proyectos, no un cliente a la vez'],
+      cta:['Registrarme como aliado', LIGAS.aliados], nota:'Formulario de ingreso al Sistema de Aliados Yodesarrollo.' },
+    { id:'constructor', corto:'Constructor', quien:'Eres constructor',
+      titulo:'No más materiales de criba ni financiar la obra de otro.',
+      promesa:'Construye con el presupuesto que la obra necesita y deja de fondear al desarrollador con tus propios pagos atrasados. Aquí el constructor es socio.',
+      puntos:['Materiales de calidad desde el presupuesto','Obra administrada por Aurum Arquitectos','Tu ganancia crece con el valor de lo que levantas'],
+      cta:['Registrarme como aliado', LIGAS.aliados], nota:'Formulario de ingreso al Sistema de Aliados Yodesarrollo.' },
+    { id:'urbanista', corto:'Urbanista', quien:'Eres urbanista',
+      titulo:'Tu voz antes de trazar, no después.',
+      promesa:'Los proyectos se deciden escuchando al experto urbano primero, para que conecten la ciudad en lugar de bloquearla.',
+      puntos:['Proyectos dentro de la mancha urbana','Criterio de ciudad antes que de metro cuadrado','Socio del plan, no consultor de trámite'],
+      cta:['Registrarme como aliado', LIGAS.aliados], nota:'Formulario de ingreso al Sistema de Aliados Yodesarrollo.' },
+    { id:'legal', corto:'Abogado · Tramitólogo', quien:'Eres abogado o tramitólogo',
+      titulo:'Haces posible el proyecto. Sé parte de él.',
+      promesa:'Contratos de asociación en participación, permisos y cumplimiento: el trabajo que destraba todo, aportado como socio del desarrollo.',
+      puntos:['Certeza jurídica para dueños e inversionistas','Permisos y trámites desde el día uno','Rendimiento ligado al avance real del proyecto'],
+      cta:['Registrarme como aliado', LIGAS.aliados], nota:'Formulario de ingreso al Sistema de Aliados Yodesarrollo.' },
+    { id:'capital', corto:'Inversionista', quien:'Tienes capital',
+      titulo:'Invierte en tu propia ciudad, respaldado por el terreno.',
+      promesa:'Tu capital entra en asociación en participación a proyectos concretos, respaldado por el activo físico y con reportes de avance.',
+      puntos:['Participación de socio único o en grupo, según el proyecto','Rendimientos definidos por proyecto en su carpeta de inversión','Inviertes donde vives: mejora tu entorno y tu inversión'],
+      cta:['Quiero conocer los proyectos', LIGAS.wa('Hola, me interesa invertir en un proyecto de Yo Desarrollo.')], nota:'Te compartimos la carpeta de inversión por WhatsApp.' },
+    { id:'broker', corto:'Broker', quien:'Eres broker o asesor',
+      titulo:'Vende producto que se defiende solo.',
+      promesa:'Diseño, calidad y ubicación que sí valen su precio. Súmate a la red de aliados comerciales y trae compradores e inversionistas.',
+      puntos:['Inventario de proyectos propios','Producto con argumentos reales de valor','Esquema para quien trae un terreno o un cliente'],
+      cta:['Registrarme como aliado', LIGAS.aliados], nota:'Formulario de ingreso al Sistema de Aliados Yodesarrollo.' },
+    { id:'cliente', corto:'Busco casa', quien:'Buscas casa',
+      titulo:'Una casa hecha por quienes ganan cuando la haces bien.',
+      promesa:'El mismo precio del mercado, pero con mejores materiales y mejor diseño, porque quienes la construyen son socios del resultado.',
+      puntos:['Arquitectura con identidad, no de catálogo','Obra supervisada por Aurum Arquitectos','Te enseñamos avance y acabados en persona'],
+      cta:['Ver casas disponibles', LIGAS.wa('Hola, busco casa y quiero ver lo que tienen disponible.')], nota:'Te atendemos por WhatsApp.' }
+  ];
+
+  /* ================== Motor 3D ================== */
+  const canvas = document.getElementById('escena');
+  let renderer;
+  try{ renderer = new THREE.WebGLRenderer({canvas, antialias:true}); }
+  catch(e){ canvas.style.background = 'radial-gradient(ellipse at 60% 60%,#1c1a14,#0b0b0d)'; }
+  const hay3D = !!renderer;
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(INK);
+  scene.fog = new THREE.Fog(INK, 30, 70);
+  const camera = new THREE.PerspectiveCamera(34, 1, 0.1, 200);
+  if(hay3D){
+    renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2));
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  }
+  const esMovil = () => innerWidth <= 900;
+  function tam(){
+    if(!hay3D) return;
+    const r = canvas.getBoundingClientRect();
+    renderer.setSize(r.width, r.height, false);
+    camera.aspect = r.width / Math.max(1, r.height);
+    camera.updateProjectionMatrix();
+  }
+
+  scene.add(new THREE.HemisphereLight(0xfff1d6, 0x0b0b0d, 0.5));
+  const sol = new THREE.DirectionalLight(0xffc98a, 1.25);
+  sol.position.set(-10, 16, 9); sol.castShadow = true; sol.shadow.mapSize.set(2048, 2048);
+  Object.assign(sol.shadow.camera, {left:-14, right:14, top:14, bottom:-14}); scene.add(sol);
+
+  const piso = new THREE.Mesh(new THREE.PlaneGeometry(140, 140), new THREE.MeshStandardMaterial({color:0x111113, roughness:1}));
+  piso.rotation.x = -Math.PI/2; piso.receiveShadow = true; scene.add(piso);
+
+  // Lote punteado
+  const lotePts = [[-7,-5],[7,-5],[7,5],[-7,5],[-7,-5]].map(([x,z]) => new THREE.Vector3(x, 0.02, z));
+  const lote = new THREE.Line(new THREE.BufferGeometry().setFromPoints(lotePts), new THREE.LineDashedMaterial({color:GOLD, dashSize:.4, gapSize:.25, transparent:true, opacity:.8}));
+  lote.computeLineDistances(); scene.add(lote);
+
+  /* ----- La casa (terminada) ----- */
+  const casa = new THREE.Group(); scene.add(casa);
+  const mConcreto = new THREE.MeshStandardMaterial({color:0xd8d0c0, roughness:.85, transparent:true});
+  const mMadera = new THREE.MeshStandardMaterial({color:0x8a5a33, roughness:.7, transparent:true});
+  const mOscuro = new THREE.MeshStandardMaterial({color:0x2a2724, roughness:.9, transparent:true});
+  const mVidrio = new THREE.MeshStandardMaterial({color:0x1a1408, emissive:0xf0a640, emissiveIntensity:.12, roughness:.2, transparent:true});
+  const MATS_CASA = [mConcreto, mMadera, mOscuro, mVidrio];
+  function caja(w,h,d,mat,x,y,z,padre){
+    const m = new THREE.Mesh(new THREE.BoxGeometry(w,h,d), mat);
+    m.position.set(x,y,z); m.castShadow = m.receiveShadow = true; (padre || casa).add(m); return m;
+  }
+  caja(9,0.3,6,mOscuro,0,0.15,0);
+  caja(7,2.6,0.25,mConcreto,-0.5,1.6,-2.6);
+  caja(0.25,2.6,5.2,mConcreto,-3.9,1.6,0);
+  caja(2.2,2.6,0.25,mConcreto,-2.8,1.6,2.6);
+  caja(3.8,2.4,0.08,mVidrio,1.6,1.5,2.6);
+  const puertaPivote = new THREE.Group(); puertaPivote.position.set(-1.6,0.3,2.62); casa.add(puertaPivote);
+  const puerta = caja(1.0,2.2,0.08,mMadera,0.5,1.1,0,puertaPivote);
+  caja(6.4,1.8,4.6,mConcreto,1.4,3.95,-0.3);
+  for(let i=0;i<9;i++) caja(0.12,1.6,0.12,mMadera,-1.5+i*0.72,3.95,2.05);
+  caja(3.2,1.1,0.08,mVidrio,2.4,3.95,2.0);
+  const luzInterior = new THREE.PointLight(0xffb45a, 0, 12); luzInterior.position.set(1,1.8,0.5); casa.add(luzInterior);
+
+  /* ----- Personajes ----- */
+  const RADIO = 9.6;
+  const personas = [];
+  const mCuerpo = () => new THREE.MeshStandardMaterial({color:0x3a352e, roughness:.6, emissive:GOLD, emissiveIntensity:0});
+  ROLES.forEach((r, i) => {
+    const ang = -Math.PI*0.95 + i * (Math.PI*1.9 / (ROLES.length-1)); // arco frente a la cámara
+    const g = new THREE.Group();
+    const mat = mCuerpo();
+    const cuerpo = new THREE.Mesh(new THREE.CylinderGeometry(0.26,0.34,1.15,18), mat); cuerpo.position.y = 0.58;
+    const cabeza = new THREE.Mesh(new THREE.SphereGeometry(0.24,20,20), mat); cabeza.position.y = 1.42;
+    [cuerpo, cabeza].forEach(m => { m.castShadow = true; m.userData.rol = i; });
+    g.add(cuerpo, cabeza);
+    const aro = new THREE.Mesh(new THREE.RingGeometry(0.45,0.55,40), new THREE.MeshBasicMaterial({color:GOLD_HI, transparent:true, opacity:0, side:THREE.DoubleSide}));
+    aro.rotation.x = -Math.PI/2; aro.position.y = 0.03; g.add(aro);
+    g.position.set(Math.cos(ang)*RADIO, 0, Math.sin(ang)*RADIO*0.78);
+    g.lookAt(0, 0, 0);
+    scene.add(g);
+    personas.push({g, mat, aro, ang, cabeza});
+  });
+
+  /* ================== Efectos por rol ================== */
+  const efectos = {};
+  const tweensActivos = [];
+  const tw = t => (tweensActivos.push(t), t);
+
+  // Terreno: pin que cae y ondas en el lote
+  (() => {
+    const g = new THREE.Group(); g.visible = false; scene.add(g);
+    const pin = new THREE.Group();
+    const cono = new THREE.Mesh(new THREE.ConeGeometry(0.35,1.1,24), new THREE.MeshStandardMaterial({color:GOLD, emissive:0x6a4d0c, metalness:.4, roughness:.3}));
+    cono.rotation.x = Math.PI; cono.position.y = 0.55;
+    const bola = new THREE.Mesh(new THREE.SphereGeometry(0.5,24,24), cono.material); bola.position.y = 1.35;
+    pin.add(cono, bola); pin.position.set(0, 7, 0); g.add(pin);
+    const ondas = [0,1,2].map(k => { const m = new THREE.Mesh(new THREE.RingGeometry(1,1.08,64), new THREE.MeshBasicMaterial({color:GOLD_HI, transparent:true, opacity:0, side:THREE.DoubleSide})); m.rotation.x = -Math.PI/2; m.position.y = .05; g.add(m); return m; });
+    efectos.terreno = {
+      entra(){ g.visible = true; casa.visible = false;
+        tw(gsap.fromTo(pin.position, {y:9}, {y:0, duration:1.1*D, ease:'bounce.out'}));
+        ondas.forEach((o,k) => { o.scale.set(1,1,1); tw(gsap.fromTo(o.scale, {x:1,y:1}, {x:8,y:8, duration:2.4*D, delay:k*0.8, repeat:-1, ease:'power1.out'})); tw(gsap.fromTo(o.material, {opacity:.9}, {opacity:0, duration:2.4*D, delay:k*0.8, repeat:-1})); });
+        tw(gsap.to(lote.material, {opacity:1, duration:.4}));
+      },
+      sale(){ g.visible = false; casa.visible = true; }
+    };
+  })();
+
+  // Arquitecto: planos azules que se dibujan en el piso
+  (() => {
+    const seg = [];
+    const rect = (x,z,w,d) => { seg.push(x,0,z, x+w,0,z,  x+w,0,z, x+w,0,z+d,  x+w,0,z+d, x,0,z+d,  x,0,z+d, x,0,z); };
+    rect(-6.5,-4.5,13,9); rect(-6.5,-4.5,5,4); rect(-1.5,-4.5,4,4); rect(2.5,-4.5,4,4); rect(-6.5,-0.5,6,5); rect(-0.5,-0.5,7,5);
+    for(let x=-6.5; x<=6.5; x+=1) seg.push(x,0,4.9, x,0,5.2); // cotas
+    seg.push(-6.5,0,5.05, 6.5,0,5.05);
+    const geo = new THREE.BufferGeometry(); geo.setAttribute('position', new THREE.Float32BufferAttribute(seg,3));
+    const lineas = new THREE.LineSegments(geo, new THREE.LineBasicMaterial({color:0x7fb2ff, transparent:true, opacity:.95}));
+    lineas.position.y = 0.06; lineas.visible = false; scene.add(lineas);
+    const papel = new THREE.Mesh(new THREE.PlaneGeometry(14.4,10.4), new THREE.MeshBasicMaterial({color:0x10213d, transparent:true, opacity:0}));
+    papel.rotation.x = -Math.PI/2; papel.position.y = 0.04; scene.add(papel);
+    const total = seg.length/3; const o = {n:0};
+    efectos.arquitecto = {
+      entra(){ lineas.visible = true; casa.visible = false; o.n = 0; geo.setDrawRange(0,0);
+        tw(gsap.to(papel.material, {opacity:.75, duration:.5*D}));
+        tw(gsap.to(o, {n:total, duration:2.6*D, ease:'none', onUpdate:()=>geo.setDrawRange(0, Math.floor(o.n/2)*2)}));
+      },
+      sale(){ lineas.visible = false; papel.material.opacity = 0; casa.visible = true; }
+    };
+  })();
+
+  // Ingeniero: la casa se vuelve transparente y aparece la estructura
+  (() => {
+    const g = new THREE.Group(); g.visible = false; scene.add(g);
+    const mE = new THREE.MeshStandardMaterial({color:GOLD, emissive:0x7a5a10, emissiveIntensity:.8, metalness:.5, roughness:.3});
+    const cols = [];
+    [[-3.8,-2.5],[-3.8,2.5],[0,-2.5],[0,2.5],[3.8,-2.5],[3.8,2.5],[-1.9,-2.5],[1.9,2.5]].forEach(([x,z]) => {
+      const c = new THREE.Mesh(new THREE.BoxGeometry(0.22,4.9,0.22).translate(0,2.45,0), mE); c.position.set(x,0.3,z); g.add(c); cols.push(c); });
+    const vigas = [];
+    [[0,3.0,-2.5,8,0.2],[0,3.0,2.5,8,0.2],[0,5.1,-2.5,8,0.2],[0,5.1,2.5,8,0.2]].forEach(([x,y,z,w,h]) => {
+      const v = new THREE.Mesh(new THREE.BoxGeometry(w,h,0.22), mE); v.position.set(x,y,z); g.add(v); vigas.push(v); });
+    [-3.8,0,3.8].forEach(x => { const v = new THREE.Mesh(new THREE.BoxGeometry(0.22,0.2,5.2), mE); v.position.set(x,5.1,0); g.add(v); vigas.push(v); });
+    efectos.ingeniero = {
+      entra(){ g.visible = true;
+        MATS_CASA.forEach(m => tw(gsap.to(m, {opacity:.12, duration:.6*D})));
+        cols.forEach((c,i) => tw(gsap.fromTo(c.scale, {y:0.001}, {y:1, duration:.8*D, delay:i*0.08*D, ease:'power3.out'})));
+        vigas.forEach((v,i) => tw(gsap.fromTo(v.scale, {x:0.001}, {x:1, duration:.6*D, delay:(0.7+i*0.08)*D, ease:'power2.out'})));
+      },
+      sale(){ g.visible = false; MATS_CASA.forEach(m => m.opacity = 1); }
+    };
+  })();
+
+  // Constructor: grúa que gira y sube un bloque
+  (() => {
+    const g = new THREE.Group(); g.position.set(-8.5,0,-3.2); g.visible = false; scene.add(g);
+    const mG = new THREE.MeshStandardMaterial({color:0xe0a82e, roughness:.5, metalness:.3});
+    const mastil = new THREE.Mesh(new THREE.BoxGeometry(0.4,9,0.4).translate(0,4.5,0), mG); mastil.castShadow = true; g.add(mastil);
+    const giro = new THREE.Group(); giro.position.y = 9; g.add(giro);
+    const pluma = new THREE.Mesh(new THREE.BoxGeometry(9,0.35,0.35).translate(3.2,0,0), mG); pluma.castShadow = true; giro.add(pluma);
+    const contra = new THREE.Mesh(new THREE.BoxGeometry(1.2,1,1), new THREE.MeshStandardMaterial({color:0x2a2724})); contra.position.x = -1.6; giro.add(contra);
+    const cable = new THREE.Mesh(new THREE.BoxGeometry(0.04,1,0.04).translate(0,-0.5,0), new THREE.MeshBasicMaterial({color:0x888888})); cable.position.x = 6; giro.add(cable);
+    const bloque = new THREE.Mesh(new THREE.BoxGeometry(1.2,0.6,0.8), mConcreto); bloque.castShadow = true; bloque.position.set(6,-6,0); giro.add(bloque);
+    const estado = {largo:6};
+    efectos.constructor = {
+      entra(){ g.visible = true;
+        tw(gsap.fromTo(g.scale, {y:0.001}, {y:1, duration:.8*D, ease:'power3.out'}));
+        tw(gsap.to(giro.rotation, {y:Math.PI*0.55, duration:3.2*D, ease:'sine.inOut', yoyo:true, repeat:-1}));
+        tw(gsap.fromTo(estado, {largo:6.6}, {largo:3.2, duration:1.6*D, ease:'sine.inOut', yoyo:true, repeat:-1, onUpdate:()=>{ cable.scale.y = estado.largo; bloque.position.y = -estado.largo - 0.3; }}));
+      },
+      sale(){ g.visible = false; giro.rotation.y = 0; }
+    };
+  })();
+
+  // Urbanista: manzanas alrededor, calles y coches
+  (() => {
+    const g = new THREE.Group(); g.visible = false; scene.add(g);
+    const mM = new THREE.MeshStandardMaterial({color:0x1c1b19, roughness:.9});
+    const bordes = new THREE.LineBasicMaterial({color:GOLD, transparent:true, opacity:.55});
+    const manzanas = [];
+    for(let i=-3;i<=3;i++) for(let j=-3;j<=3;j++){
+      if(Math.abs(i)<=1 && Math.abs(j)<=1) continue;
+      const h = 0.3 + Math.random()*2.4;
+      const geo = new THREE.BoxGeometry(5,1,4).translate(0,0.5,0);
+      const m = new THREE.Mesh(geo, mM); m.position.set(i*7, 0, j*6); m.userData.h = h; m.scale.y = 0.001; m.receiveShadow = true; g.add(m);
+      const b = new THREE.LineSegments(new THREE.EdgesGeometry(geo), bordes); m.add(b); manzanas.push(m);
+    }
+    const coches = [];
+    const mC = new THREE.MeshBasicMaterial({color:GOLD_HI});
+    for(let k=0;k<14;k++){ const c = new THREE.Mesh(new THREE.SphereGeometry(0.14,10,10), mC); c.userData = {calle:k%4, t:Math.random(), v:0.03+Math.random()*0.04}; g.add(c); coches.push(c); }
+    efectos.urbanista = {
+      entra(){ g.visible = true; manzanas.forEach((m,i) => tw(gsap.to(m.scale, {y:m.userData.h, duration:.9*D, delay:Math.random()*0.8*D, ease:'power3.out'}))); },
+      sale(){ g.visible = false; manzanas.forEach(m => m.scale.y = 0.001); },
+      cuadro(dt){ coches.forEach(c => { const u = c.userData; u.t = (u.t + u.v*dt) % 1; const s = u.t*2-1;
+        if(u.calle===0) c.position.set(s*24, .15, 9); else if(u.calle===1) c.position.set(-s*24, .15, -9);
+        else if(u.calle===2) c.position.set(10.5, .15, s*21); else c.position.set(-10.5, .15, -s*21); }); }
+    };
+  })();
+
+  // Legal: contrato flotante con sello
+  function texturaCanvas(w,h,dibujar){ const c = document.createElement('canvas'); c.width = w; c.height = h; dibujar(c.getContext('2d'), w, h); const t = new THREE.CanvasTexture(c); t.anisotropy = 4; return t; }
+  (() => {
+    const tex = texturaCanvas(512,680,(x,w,h) => {
+      x.fillStyle = '#f4efe3'; x.fillRect(0,0,w,h);
+      x.fillStyle = '#1b1712'; x.font = '600 30px Georgia, serif'; x.textAlign = 'center';
+      x.fillText('Contrato de', w/2, 80); x.fillText('Asociación en Participación', w/2, 118);
+      x.fillStyle = '#8b8577';
+      for(let i=0;i<14;i++){ const y = 170 + i*26; x.fillRect(56, y, (i%4===3 ? 240 : 400), 8); }
+      x.strokeStyle = '#1b1712'; x.lineWidth = 2; x.beginPath(); x.moveTo(60,610); x.lineTo(230,610); x.moveTo(282,610); x.lineTo(452,610); x.stroke();
+      x.font = '16px Georgia'; x.fillStyle = '#1b1712'; x.fillText('Dueño', 145, 636); x.fillText('Socios', 367, 636);
+    });
+    const selloTex = texturaCanvas(256,256,(x,w,h) => {
+      x.clearRect(0,0,w,h); x.strokeStyle = '#c9a227'; x.lineWidth = 12; x.beginPath(); x.arc(128,128,108,0,7); x.stroke();
+      x.lineWidth = 4; x.beginPath(); x.arc(128,128,86,0,7); x.stroke();
+      x.fillStyle = '#c9a227'; x.font = '700 30px Arial'; x.textAlign = 'center'; x.fillText('APROBADO', 128, 140);
+    });
+    const g = new THREE.Group(); g.position.set(0, 7.8, 0); g.visible = false; scene.add(g);
+    const hoja = new THREE.Mesh(new THREE.PlaneGeometry(3,4), new THREE.MeshBasicMaterial({map:tex, side:THREE.DoubleSide, transparent:true}));
+    const sello = new THREE.Mesh(new THREE.PlaneGeometry(1.5,1.5), new THREE.MeshBasicMaterial({map:selloTex, transparent:true, side:THREE.DoubleSide, depthWrite:false}));
+    sello.position.set(0.7,-1.1,0.02); hoja.add(sello); g.add(hoja);
+    const halo = new THREE.PointLight(0xffe2a0, 1.2, 10); g.add(halo);
+    efectos.legal = {
+      entra(){ g.visible = true; sello.material.opacity = 0;
+        tw(gsap.fromTo(g.scale, {x:.01,y:.01,z:.01}, {x:1,y:1,z:1, duration:.8*D, ease:'back.out(1.6)'}));
+        tw(gsap.fromTo(sello.scale, {x:3,y:3}, {x:1,y:1, duration:.35*D, delay:1.0*D, ease:'power4.in'}));
+        tw(gsap.to(sello.material, {opacity:1, duration:.2*D, delay:1.05*D}));
+      },
+      sale(){ g.visible = false; },
+      cuadro(dt, t){ g.rotation.y = Math.sin(t*0.8)*0.5; g.position.y = 7.8 + Math.sin(t*1.4)*0.2; }
+    };
+  })();
+
+  // Capital: pilas de monedas que crecen
+  (() => {
+    const g = new THREE.Group(); g.position.set(-9.2,0,2.2); g.visible = false; scene.add(g);
+    const mOro = new THREE.MeshStandardMaterial({color:GOLD, metalness:.85, roughness:.25, emissive:0x3a2a05});
+    const geo = new THREE.CylinderGeometry(0.42,0.42,0.14,28);
+    const monedas = [];
+    [[0,0,5],[1.0,0.3,8],[-0.2,1.1,11],[1.2,-0.9,6],[2.1,0.8,14]].forEach(([x,z,n]) => {
+      for(let k=0;k<n;k++){ const m = new THREE.Mesh(geo, mOro); m.position.set(x, 0.07 + k*0.15, z); m.rotation.y = Math.random(); m.castShadow = true; m.userData.y = m.position.y; g.add(m); monedas.push(m); }
+    });
+    efectos.capital = {
+      entra(){ g.visible = true;
+        monedas.forEach((m,i) => { m.position.y = m.userData.y + 6; tw(gsap.to(m.position, {y:m.userData.y, duration:.5*D, delay:i*0.035*D, ease:'bounce.out'})); });
+      },
+      sale(){ g.visible = false; }
+    };
+  })();
+
+  // Broker: letrero que gira de EN VENTA a VENDIDA
+  (() => {
+    const hacer = (txt, fondo, color) => texturaCanvas(512,256,(x,w,h) => { x.fillStyle = fondo; x.fillRect(0,0,w,h); x.fillStyle = color; x.font = '700 76px Arial'; x.textAlign = 'center'; x.fillText(txt, w/2, 150); x.font = '600 22px Arial'; x.fillText('yodesarrollo.mx', w/2, 210); });
+    const tVenta = hacer('EN VENTA', '#f4efe3', '#1b1712'), tVendida = hacer('VENDIDA', '#c9a227', '#0b0b0d');
+    const g = new THREE.Group(); g.position.set(5.8,0,5.6); g.rotation.y = -0.5; g.visible = false; scene.add(g);
+    const poste = new THREE.Mesh(new THREE.BoxGeometry(0.14,3.2,0.14).translate(0,1.6,0), mOscuro); g.add(poste);
+    const giro = new THREE.Group(); giro.position.y = 2.5; g.add(giro);
+    const matL = new THREE.MeshBasicMaterial({map:tVenta, side:THREE.DoubleSide});
+    const tabla = new THREE.Mesh(new THREE.PlaneGeometry(2.4,1.2), matL); giro.add(tabla);
+    efectos.broker = {
+      entra(){ g.visible = true; matL.map = tVenta; matL.needsUpdate = true; giro.rotation.y = 0;
+        tw(gsap.fromTo(g.scale, {y:.01}, {y:1, duration:.6*D, ease:'back.out(2)'}));
+        tw(gsap.to(giro.rotation, {y:Math.PI*2, duration:1.2*D, delay:1.2*D, ease:'power2.inOut', onUpdate(){ if(giro.rotation.y > Math.PI*0.5 && matL.map !== tVendida){ matL.map = tVendida; matL.needsUpdate = true; } }}));
+      },
+      sale(){ g.visible = false; }
+    };
+  })();
+
+  // Cliente: se encienden las luces y se abre la puerta
+  efectos.cliente = {
+    entra(){
+      tw(gsap.to(mVidrio, {emissiveIntensity:1.6, duration:1.2*D}));
+      tw(gsap.to(luzInterior, {intensity:2.2, duration:1.2*D}));
+      tw(gsap.to(puertaPivote.rotation, {y:-1.2, duration:1.2*D, delay:.5*D, ease:'power2.inOut'}));
+      tw(gsap.to(sol, {intensity:.55, duration:1.2*D}));
+    },
+    sale(){ mVidrio.emissiveIntensity = .12; luzInterior.intensity = 0; puertaPivote.rotation.y = 0; sol.intensity = 1.25; }
+  };
+
+  /* ================== Interfaz ================== */
+  const rotulos = document.getElementById('rotulos');
+  const chips = document.getElementById('chips');
+  const cierre = document.getElementById('botones-cierre');
+  const botonesRot = ROLES.map((r,i) => {
+    const b = document.createElement('button'); b.type = 'button'; b.textContent = r.corto;
+    b.addEventListener('mouseenter', () => elegir(i, true)); b.addEventListener('focus', () => elegir(i, true)); b.addEventListener('click', () => elegir(i, true));
+    rotulos.appendChild(b); return b;
+  });
+  const botonesChip = ROLES.map((r,i) => {
+    const b = document.createElement('button'); b.type = 'button'; b.setAttribute('role','tab'); b.textContent = r.corto;
+    b.addEventListener('click', () => elegir(i, true)); chips.appendChild(b); return b;
+  });
+  ROLES.forEach(r => { const a = document.createElement('a'); a.href = r.cta[1]; a.textContent = r.quien; cierre.appendChild(a); });
+
+  const $ = id => document.getElementById(id);
+  const tarjeta = $('tarjeta');
+  let activo = -1, manual = false, pausado = REDUCIDO, ultimoToque = 0;
+
+  function pintarTarjeta(r){
+    $('t-quien').textContent = r.quien;
+    $('t-titulo').textContent = r.titulo;
+    $('t-promesa').textContent = r.promesa;
+    $('t-puntos').innerHTML = '';
+    r.puntos.forEach(p => { const li = document.createElement('li'); li.textContent = p; $('t-puntos').appendChild(li); });
+    const cta = $('t-cta'); cta.textContent = r.cta[0] + ' →'; cta.href = r.cta[1];
+    cta.target = r.cta[1].startsWith('http') ? '_blank' : ''; cta.rel = 'noopener';
+    $('t-nota').textContent = r.nota;
+    tarjeta.classList.remove('anim-in'); void tarjeta.offsetWidth; tarjeta.classList.add('anim-in');
+  }
+
+  function elegir(i, porUsuario){
+    if(porUsuario){ manual = true; ultimoToque = performance.now(); }
+    if(i === activo) return;
+    if(activo >= 0){
+      tweensActivos.splice(0).forEach(t => t.kill());
+      efectos[ROLES[activo].id].sale();
+      const p = personas[activo]; gsap.to(p.mat, {emissiveIntensity:0, duration:.3}); gsap.to(p.aro.material, {opacity:0, duration:.3}); gsap.to(p.g.position, {y:0, duration:.3});
+    }
+    activo = i;
+    const p = personas[i];
+    gsap.to(p.mat, {emissiveIntensity:.55, duration:.4}); gsap.to(p.aro.material, {opacity:1, duration:.4});
+    gsap.fromTo(p.g.position, {y:0}, {y:.35, duration:.35*D, yoyo:true, repeat:1, ease:'power2.out'});
+    efectos[ROLES[i].id].entra();
+    botonesRot.forEach((b,k) => b.classList.toggle('on', k===i));
+    botonesChip.forEach((b,k) => { b.classList.toggle('on', k===i); b.setAttribute('aria-selected', String(k===i)); });
+    if(esMovil()){ const c = botonesChip[i]; chips.scrollTo({left:c.offsetLeft - (chips.clientWidth - c.offsetWidth)/2, behavior:REDUCIDO?'auto':'smooth'}); }
+    pintarTarjeta(ROLES[i]);
+  }
+
+  // Recorrido automático hasta que la persona interactúe
+  const btnPausa = $('pausa');
+  btnPausa.addEventListener('click', () => { pausado = !pausado; btnPausa.textContent = pausado ? 'Reanudar recorrido' : 'Pausar recorrido'; });
+  if(REDUCIDO) btnPausa.textContent = 'Reanudar recorrido';
+  setInterval(() => {
+    if(pausado || document.hidden) return;
+    if(manual && performance.now() - ultimoToque < 9000) return;
+    elegir((activo + 1) % ROLES.length, false);
+  }, 4800);
+
+  // Pasar el cursor o tocar a los personajes en 3D
+  const ray = new THREE.Raycaster(), ptr = new THREE.Vector2();
+  const cuerpos = []; personas.forEach(p => p.g.children.forEach(c => { if(c.userData.rol !== undefined) cuerpos.push(c); }));
+  function tocado(e){
+    const r = canvas.getBoundingClientRect();
+    ptr.set(((e.clientX - r.left)/r.width)*2-1, -((e.clientY - r.top)/r.height)*2+1);
+    ray.setFromCamera(ptr, camera);
+    const hit = ray.intersectObjects(cuerpos)[0];
+    return hit ? hit.object.userData.rol : -1;
+  }
+  let mx = 0;
+  canvas.addEventListener('pointermove', e => {
+    const r = canvas.getBoundingClientRect(); mx = (e.clientX - r.left)/r.width - .5;
+    if(e.pointerType === 'mouse'){ const k = tocado(e); canvas.style.cursor = k >= 0 ? 'pointer' : ''; if(k >= 0) elegir(k, true); }
+  });
+  canvas.addEventListener('click', e => { const k = tocado(e); if(k >= 0) elegir(k, true); });
+
+  /* ================== Cámara y bucle ================== */
+  let angCam = 0.5, tPrev = performance.now();
+  const v = new THREE.Vector3();
+  function cuadro(now){
+    const dt = Math.min(0.05, (now - tPrev)/1000); tPrev = now; const t = now/1000;
+    // la cámara se acerca un poco hacia el personaje activo
+    const objetivo = activo >= 0 ? Math.PI/2 + personas[activo].ang*0.18 : Math.PI/2;
+    angCam += ((objetivo + mx*0.35 + (REDUCIDO ? 0 : Math.sin(t*0.1)*0.08)) - angCam) * Math.min(1, dt*1.6);
+    const movil = esMovil(), dist = movil ? 30 : 36, alto = movil ? 19 : 16;
+    camera.position.set(Math.cos(angCam)*dist, alto, Math.sin(angCam)*dist);
+    camera.lookAt(movil ? 0 : -7.8, 1.2, movil ? 0 : 0);
+    ROLES.forEach((r,i) => { const e = efectos[r.id]; if(i === activo && e.cuadro) e.cuadro(dt, t); });
+    personas.forEach((p,i) => { p.cabeza.position.y = 1.42 + (i===activo ? Math.sin(t*6)*0.04 : 0); });
+    if(hay3D) renderer.render(scene, camera);
+    // Rótulos HTML sobre cada personaje
+    if(!movil){
+      const r = canvas.getBoundingClientRect();
+      personas.forEach((p,i) => {
+        v.set(p.g.position.x, 2.05 + p.g.position.y, p.g.position.z).project(camera);
+        const b = botonesRot[i];
+        b.style.left = ((v.x+1)/2*r.width) + 'px'; b.style.top = ((1-v.y)/2*r.height) + 'px';
+        b.style.opacity = (v.x > -0.15 || i === activo) ? 1 : 0; // los que quedan tras el titular se atenúan
+      });
+    }
+    requestAnimationFrame(cuadro);
+  }
+  addEventListener('resize', tam);
+  tam();
+  elegir(0, false);
+  requestAnimationFrame(cuadro);
+})();
+</script>
+</body>
+</html>
