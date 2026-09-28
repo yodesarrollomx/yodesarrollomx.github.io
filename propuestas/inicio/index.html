@@ -735,5 +735,13 @@
   requestAnimationFrame(cuadro);
 })();
 </script>
+<!-- La Chinche de YOD OS: para clavar correcciones sobre esta misma página -->
+<script>
+(function(){ var s=document.createElement('script'); s.src='https://tableros.yodesarrollo.mx/yod-portal/chinche.js?v=ch9';
+  s.onload=function(){ try{ window.YODChinche && YODChinche.init({pantalla:'inicio',
+    vista:function(){ return 'Propuesta de inicio'; },
+    seccion:function(){ var q=document.getElementById('t-quien'); return q && q.textContent ? 'Héroe · '+q.textContent : 'Héroe'; } }); }catch(e){ console.warn('chinche',e); } };
+  document.head.appendChild(s); })();
+</script>
 </body>
 </html>
