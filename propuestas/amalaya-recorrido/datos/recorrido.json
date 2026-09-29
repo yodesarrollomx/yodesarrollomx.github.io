@@ -1,0 +1,1446 @@
+{
+ "zonas": {
+  "Z01": {
+   "nombre": "Foro musical Amalaya",
+   "color": "#bd668b",
+   "anillo": [
+    [
+     -110.95404,
+     29.076975
+    ],
+    [
+     -110.95347,
+     29.077027
+    ],
+    [
+     -110.953426,
+     29.076473
+    ],
+    [
+     -110.954034,
+     29.076364
+    ],
+    [
+     -110.95404,
+     29.076975
+    ]
+   ]
+  },
+  "Z02": {
+   "nombre": "Plaza Hidalgo",
+   "color": "#61a86a",
+   "anillo": [
+    [
+     -110.954561,
+     29.07615
+    ],
+    [
+     -110.954071,
+     29.076187
+    ],
+    [
+     -110.954055,
+     29.076023
+    ],
+    [
+     -110.955481,
+     29.075915
+    ],
+    [
+     -110.955498,
+     29.07608
+    ],
+    [
+     -110.954561,
+     29.07615
+    ]
+   ]
+  },
+  "Z03": {
+   "nombre": "Locales y oficinas",
+   "color": "#ef9939",
+   "anillo": [
+    [
+     -110.955537,
+     29.075887
+    ],
+    [
+     -110.954949,
+     29.075924
+    ],
+    [
+     -110.954933,
+     29.075601
+    ],
+    [
+     -110.955609,
+     29.075406
+    ],
+    [
+     -110.955537,
+     29.075887
+    ]
+   ]
+  },
+  "Z04": {
+   "nombre": "Vivienda y estudios de ensayo",
+   "color": "#e8c853",
+   "anillo": [
+    [
+     -110.95609,
+     29.075205
+    ],
+    [
+     -110.95535,
+     29.07542
+    ],
+    [
+     -110.955259,
+     29.075169
+    ],
+    [
+     -110.955383,
+     29.074951
+    ],
+    [
+     -110.955755,
+     29.074896
+    ],
+    [
+     -110.955937,
+     29.075034
+    ],
+    [
+     -110.956124,
+     29.07508
+    ],
+    [
+     -110.95609,
+     29.075205
+    ]
+   ]
+  },
+  "Z05": {
+   "nombre": "Volumen azul / referencia al museo",
+   "color": "#52aebe",
+   "anillo": [
+    [
+     -110.955164,
+     29.075463
+    ],
+    [
+     -110.954739,
+     29.075569
+    ],
+    [
+     -110.954751,
+     29.075298
+    ],
+    [
+     -110.955209,
+     29.075177
+    ],
+    [
+     -110.955164,
+     29.075463
+    ]
+   ]
+  },
+  "Z06": {
+   "nombre": "Tiendas y talleres creativos",
+   "color": "#ee8052",
+   "anillo": [
+    [
+     -110.955197,
+     29.075196
+    ],
+    [
+     -110.954784,
+     29.075303
+    ],
+    [
+     -110.954761,
+     29.074963
+    ],
+    [
+     -110.955244,
+     29.074817
+    ],
+    [
+     -110.955197,
+     29.075196
+    ]
+   ]
+  },
+  "Z07": {
+   "nombre": "Estacionamiento frontal HEALY",
+   "color": "#7687ba",
+   "anillo": [
+    [
+     -110.954574,
+     29.075423
+    ],
+    [
+     -110.954062,
+     29.075534
+    ],
+    [
+     -110.954177,
+     29.075035
+    ],
+    [
+     -110.954707,
+     29.074842
+    ],
+    [
+     -110.954574,
+     29.075423
+    ]
+   ]
+  },
+  "Z08": {
+   "nombre": "Estacionamiento posterior aparente",
+   "color": "#8e93b4",
+   "anillo": [
+    [
+     -110.953508,
+     29.076556
+    ],
+    [
+     -110.953055,
+     29.07664
+    ],
+    [
+     -110.95315,
+     29.076084
+    ],
+    [
+     -110.953622,
+     29.076014
+    ],
+    [
+     -110.953508,
+     29.076556
+    ]
+   ]
+  },
+  "Z09": {
+   "nombre": "Conjunto amarillo recortado",
+   "color": "#cfb951",
+   "anillo": [
+    [
+     -110.952948,
+     29.076946
+    ],
+    [
+     -110.952498,
+     29.076936
+    ],
+    [
+     -110.952752,
+     29.076421
+    ],
+    [
+     -110.953057,
+     29.076379
+    ],
+    [
+     -110.952948,
+     29.076946
+    ]
+   ]
+  },
+  "Z10": {
+   "nombre": "Volúmenes posteriores / transición",
+   "color": "#c88c76",
+   "anillo": [
+    [
+     -110.953353,
+     29.077021
+    ],
+    [
+     -110.95316,
+     29.077098
+    ],
+    [
+     -110.953137,
+     29.076835
+    ],
+    [
+     -110.953373,
+     29.076699
+    ],
+    [
+     -110.953353,
+     29.077021
+    ]
+   ]
+  }
+ },
+ "orden": [
+  "Z01",
+  "Z10",
+  "Z09",
+  "Z08",
+  "Z02",
+  "Z03",
+  "Z05",
+  "Z06",
+  "Z07",
+  "Z04"
+ ],
+ "puntos": [
+  {
+   "id": "P001",
+   "zona": "Z01",
+   "nombre": "Foro musical Amalaya",
+   "tipo": "centro",
+   "lng": -110.9537425,
+   "lat": 29.0767098,
+   "rumbo": 0
+  },
+  {
+   "id": "P002",
+   "zona": "Z01",
+   "nombre": "Foro musical Amalaya",
+   "tipo": "centro",
+   "lng": -110.9537425,
+   "lat": 29.0767098,
+   "rumbo": 90
+  },
+  {
+   "id": "P003",
+   "zona": "Z01",
+   "nombre": "Foro musical Amalaya",
+   "tipo": "centro",
+   "lng": -110.9537425,
+   "lat": 29.0767098,
+   "rumbo": 180
+  },
+  {
+   "id": "P004",
+   "zona": "Z01",
+   "nombre": "Foro musical Amalaya",
+   "tipo": "centro",
+   "lng": -110.9537425,
+   "lat": 29.0767098,
+   "rumbo": 270
+  },
+  {
+   "id": "P005",
+   "zona": "Z01",
+   "nombre": "Foro musical Amalaya",
+   "tipo": "esquina",
+   "lng": -110.95404,
+   "lat": 29.076975,
+   "rumbo": 136
+  },
+  {
+   "id": "P006",
+   "zona": "Z01",
+   "nombre": "Foro musical Amalaya",
+   "tipo": "esquina",
+   "lng": -110.95347,
+   "lat": 29.077027,
+   "rumbo": 217
+  },
+  {
+   "id": "P007",
+   "zona": "Z01",
+   "nombre": "Foro musical Amalaya",
+   "tipo": "esquina",
+   "lng": -110.953426,
+   "lat": 29.076473,
+   "rumbo": 311
+  },
+  {
+   "id": "P008",
+   "zona": "Z01",
+   "nombre": "Foro musical Amalaya",
+   "tipo": "esquina",
+   "lng": -110.954034,
+   "lat": 29.076364,
+   "rumbo": 36
+  },
+  {
+   "id": "P009",
+   "zona": "Z01",
+   "nombre": "Foro musical Amalaya",
+   "tipo": "lado",
+   "lng": -110.953755,
+   "lat": 29.077001,
+   "rumbo": 178
+  },
+  {
+   "id": "P010",
+   "zona": "Z01",
+   "nombre": "Foro musical Amalaya",
+   "tipo": "lado",
+   "lng": -110.953448,
+   "lat": 29.07675,
+   "rumbo": 261
+  },
+  {
+   "id": "P011",
+   "zona": "Z01",
+   "nombre": "Foro musical Amalaya",
+   "tipo": "lado",
+   "lng": -110.95373,
+   "lat": 29.0764185,
+   "rumbo": 358
+  },
+  {
+   "id": "P012",
+   "zona": "Z01",
+   "nombre": "Foro musical Amalaya",
+   "tipo": "lado",
+   "lng": -110.954037,
+   "lat": 29.0766695,
+   "rumbo": 81
+  },
+  {
+   "id": "P013",
+   "zona": "Z10",
+   "nombre": "Volúmenes posteriores / transición",
+   "tipo": "centro",
+   "lng": -110.9532557,
+   "lat": 29.0769133,
+   "rumbo": 0
+  },
+  {
+   "id": "P014",
+   "zona": "Z10",
+   "nombre": "Volúmenes posteriores / transición",
+   "tipo": "centro",
+   "lng": -110.9532557,
+   "lat": 29.0769133,
+   "rumbo": 90
+  },
+  {
+   "id": "P015",
+   "zona": "Z10",
+   "nombre": "Volúmenes posteriores / transición",
+   "tipo": "centro",
+   "lng": -110.9532557,
+   "lat": 29.0769133,
+   "rumbo": 180
+  },
+  {
+   "id": "P016",
+   "zona": "Z10",
+   "nombre": "Volúmenes posteriores / transición",
+   "tipo": "centro",
+   "lng": -110.9532557,
+   "lat": 29.0769133,
+   "rumbo": 270
+  },
+  {
+   "id": "P017",
+   "zona": "Z10",
+   "nombre": "Volúmenes posteriores / transición",
+   "tipo": "esquina",
+   "lng": -110.953353,
+   "lat": 29.077021,
+   "rumbo": 142
+  },
+  {
+   "id": "P018",
+   "zona": "Z10",
+   "nombre": "Volúmenes posteriores / transición",
+   "tipo": "esquina",
+   "lng": -110.95316,
+   "lat": 29.077098,
+   "rumbo": 204
+  },
+  {
+   "id": "P019",
+   "zona": "Z10",
+   "nombre": "Volúmenes posteriores / transición",
+   "tipo": "esquina",
+   "lng": -110.953137,
+   "lat": 29.076835,
+   "rumbo": 307
+  },
+  {
+   "id": "P020",
+   "zona": "Z10",
+   "nombre": "Volúmenes posteriores / transición",
+   "tipo": "esquina",
+   "lng": -110.953373,
+   "lat": 29.076699,
+   "rumbo": 26
+  },
+  {
+   "id": "P021",
+   "zona": "Z10",
+   "nombre": "Volúmenes posteriores / transición",
+   "tipo": "lado",
+   "lng": -110.9532565,
+   "lat": 29.0770595,
+   "rumbo": 180
+  },
+  {
+   "id": "P022",
+   "zona": "Z10",
+   "nombre": "Volúmenes posteriores / transición",
+   "tipo": "lado",
+   "lng": -110.9531485,
+   "lat": 29.0769665,
+   "rumbo": 240
+  },
+  {
+   "id": "P023",
+   "zona": "Z10",
+   "nombre": "Volúmenes posteriores / transición",
+   "tipo": "lado",
+   "lng": -110.953255,
+   "lat": 29.076767,
+   "rumbo": 360
+  },
+  {
+   "id": "P024",
+   "zona": "Z10",
+   "nombre": "Volúmenes posteriores / transición",
+   "tipo": "lado",
+   "lng": -110.953363,
+   "lat": 29.07686,
+   "rumbo": 60
+  },
+  {
+   "id": "P025",
+   "zona": "Z09",
+   "nombre": "Conjunto amarillo recortado",
+   "tipo": "centro",
+   "lng": -110.9528138,
+   "lat": 29.0766705,
+   "rumbo": 0
+  },
+  {
+   "id": "P026",
+   "zona": "Z09",
+   "nombre": "Conjunto amarillo recortado",
+   "tipo": "centro",
+   "lng": -110.9528138,
+   "lat": 29.0766705,
+   "rumbo": 90
+  },
+  {
+   "id": "P027",
+   "zona": "Z09",
+   "nombre": "Conjunto amarillo recortado",
+   "tipo": "centro",
+   "lng": -110.9528138,
+   "lat": 29.0766705,
+   "rumbo": 180
+  },
+  {
+   "id": "P028",
+   "zona": "Z09",
+   "nombre": "Conjunto amarillo recortado",
+   "tipo": "centro",
+   "lng": -110.9528138,
+   "lat": 29.0766705,
+   "rumbo": 270
+  },
+  {
+   "id": "P029",
+   "zona": "Z09",
+   "nombre": "Conjunto amarillo recortado",
+   "tipo": "esquina",
+   "lng": -110.952948,
+   "lat": 29.076946,
+   "rumbo": 157
+  },
+  {
+   "id": "P030",
+   "zona": "Z09",
+   "nombre": "Conjunto amarillo recortado",
+   "tipo": "esquina",
+   "lng": -110.952498,
+   "lat": 29.076936,
+   "rumbo": 226
+  },
+  {
+   "id": "P031",
+   "zona": "Z09",
+   "nombre": "Conjunto amarillo recortado",
+   "tipo": "esquina",
+   "lng": -110.952752,
+   "lat": 29.076421,
+   "rumbo": 348
+  },
+  {
+   "id": "P032",
+   "zona": "Z09",
+   "nombre": "Conjunto amarillo recortado",
+   "tipo": "esquina",
+   "lng": -110.953057,
+   "lat": 29.076379,
+   "rumbo": 36
+  },
+  {
+   "id": "P033",
+   "zona": "Z09",
+   "nombre": "Conjunto amarillo recortado",
+   "tipo": "lado",
+   "lng": -110.952723,
+   "lat": 29.076941,
+   "rumbo": 196
+  },
+  {
+   "id": "P034",
+   "zona": "Z09",
+   "nombre": "Conjunto amarillo recortado",
+   "tipo": "lado",
+   "lng": -110.952625,
+   "lat": 29.0766785,
+   "rumbo": 267
+  },
+  {
+   "id": "P035",
+   "zona": "Z09",
+   "nombre": "Conjunto amarillo recortado",
+   "tipo": "lado",
+   "lng": -110.9529045,
+   "lat": 29.0764,
+   "rumbo": 16
+  },
+  {
+   "id": "P036",
+   "zona": "Z09",
+   "nombre": "Conjunto amarillo recortado",
+   "tipo": "lado",
+   "lng": -110.9530025,
+   "lat": 29.0766625,
+   "rumbo": 87
+  },
+  {
+   "id": "P037",
+   "zona": "Z08",
+   "nombre": "Estacionamiento posterior aparente",
+   "tipo": "centro",
+   "lng": -110.9533337,
+   "lat": 29.0763235,
+   "rumbo": 0
+  },
+  {
+   "id": "P038",
+   "zona": "Z08",
+   "nombre": "Estacionamiento posterior aparente",
+   "tipo": "centro",
+   "lng": -110.9533337,
+   "lat": 29.0763235,
+   "rumbo": 90
+  },
+  {
+   "id": "P039",
+   "zona": "Z08",
+   "nombre": "Estacionamiento posterior aparente",
+   "tipo": "centro",
+   "lng": -110.9533337,
+   "lat": 29.0763235,
+   "rumbo": 180
+  },
+  {
+   "id": "P040",
+   "zona": "Z08",
+   "nombre": "Estacionamiento posterior aparente",
+   "tipo": "centro",
+   "lng": -110.9533337,
+   "lat": 29.0763235,
+   "rumbo": 270
+  },
+  {
+   "id": "P041",
+   "zona": "Z08",
+   "nombre": "Estacionamiento posterior aparente",
+   "tipo": "esquina",
+   "lng": -110.953508,
+   "lat": 29.076556,
+   "rumbo": 147
+  },
+  {
+   "id": "P042",
+   "zona": "Z08",
+   "nombre": "Estacionamiento posterior aparente",
+   "tipo": "esquina",
+   "lng": -110.953055,
+   "lat": 29.07664,
+   "rumbo": 218
+  },
+  {
+   "id": "P043",
+   "zona": "Z08",
+   "nombre": "Estacionamiento posterior aparente",
+   "tipo": "esquina",
+   "lng": -110.95315,
+   "lat": 29.076084,
+   "rumbo": 326
+  },
+  {
+   "id": "P044",
+   "zona": "Z08",
+   "nombre": "Estacionamiento posterior aparente",
+   "tipo": "esquina",
+   "lng": -110.953622,
+   "lat": 29.076014,
+   "rumbo": 39
+  },
+  {
+   "id": "P045",
+   "zona": "Z08",
+   "nombre": "Estacionamiento posterior aparente",
+   "tipo": "lado",
+   "lng": -110.9532815,
+   "lat": 29.076598,
+   "rumbo": 189
+  },
+  {
+   "id": "P046",
+   "zona": "Z08",
+   "nombre": "Estacionamiento posterior aparente",
+   "tipo": "lado",
+   "lng": -110.9531025,
+   "lat": 29.076362,
+   "rumbo": 259
+  },
+  {
+   "id": "P047",
+   "zona": "Z08",
+   "nombre": "Estacionamiento posterior aparente",
+   "tipo": "lado",
+   "lng": -110.953386,
+   "lat": 29.076049,
+   "rumbo": 9
+  },
+  {
+   "id": "P048",
+   "zona": "Z08",
+   "nombre": "Estacionamiento posterior aparente",
+   "tipo": "lado",
+   "lng": -110.953565,
+   "lat": 29.076285,
+   "rumbo": 79
+  },
+  {
+   "id": "P049",
+   "zona": "Z02",
+   "nombre": "Plaza Hidalgo",
+   "tipo": "centro",
+   "lng": -110.9547332,
+   "lat": 29.076071,
+   "rumbo": 0
+  },
+  {
+   "id": "P050",
+   "zona": "Z02",
+   "nombre": "Plaza Hidalgo",
+   "tipo": "centro",
+   "lng": -110.9547332,
+   "lat": 29.076071,
+   "rumbo": 90
+  },
+  {
+   "id": "P051",
+   "zona": "Z02",
+   "nombre": "Plaza Hidalgo",
+   "tipo": "centro",
+   "lng": -110.9547332,
+   "lat": 29.076071,
+   "rumbo": 180
+  },
+  {
+   "id": "P052",
+   "zona": "Z02",
+   "nombre": "Plaza Hidalgo",
+   "tipo": "centro",
+   "lng": -110.9547332,
+   "lat": 29.076071,
+   "rumbo": 270
+  },
+  {
+   "id": "P053",
+   "zona": "Z02",
+   "nombre": "Plaza Hidalgo",
+   "tipo": "esquina",
+   "lng": -110.954561,
+   "lat": 29.07615,
+   "rumbo": 242
+  },
+  {
+   "id": "P054",
+   "zona": "Z02",
+   "nombre": "Plaza Hidalgo",
+   "tipo": "esquina",
+   "lng": -110.954071,
+   "lat": 29.076187,
+   "rumbo": 259
+  },
+  {
+   "id": "P055",
+   "zona": "Z02",
+   "nombre": "Plaza Hidalgo",
+   "tipo": "esquina",
+   "lng": -110.954055,
+   "lat": 29.076023,
+   "rumbo": 275
+  },
+  {
+   "id": "P056",
+   "zona": "Z02",
+   "nombre": "Plaza Hidalgo",
+   "tipo": "esquina",
+   "lng": -110.955481,
+   "lat": 29.075915,
+   "rumbo": 77
+  },
+  {
+   "id": "P057",
+   "zona": "Z02",
+   "nombre": "Plaza Hidalgo",
+   "tipo": "esquina",
+   "lng": -110.955498,
+   "lat": 29.07608,
+   "rumbo": 91
+  },
+  {
+   "id": "P058",
+   "zona": "Z02",
+   "nombre": "Plaza Hidalgo",
+   "tipo": "lado",
+   "lng": -110.954316,
+   "lat": 29.0761685,
+   "rumbo": 255
+  },
+  {
+   "id": "P059",
+   "zona": "Z02",
+   "nombre": "Plaza Hidalgo",
+   "tipo": "lado",
+   "lng": -110.954063,
+   "lat": 29.076105,
+   "rumbo": 267
+  },
+  {
+   "id": "P060",
+   "zona": "Z02",
+   "nombre": "Plaza Hidalgo",
+   "tipo": "lado",
+   "lng": -110.954768,
+   "lat": 29.075969,
+   "rumbo": 17
+  },
+  {
+   "id": "P061",
+   "zona": "Z02",
+   "nombre": "Plaza Hidalgo",
+   "tipo": "lado",
+   "lng": -110.9554895,
+   "lat": 29.0759975,
+   "rumbo": 84
+  },
+  {
+   "id": "P062",
+   "zona": "Z02",
+   "nombre": "Plaza Hidalgo",
+   "tipo": "lado",
+   "lng": -110.9550295,
+   "lat": 29.076115,
+   "rumbo": 100
+  },
+  {
+   "id": "P063",
+   "zona": "Z03",
+   "nombre": "Locales y oficinas",
+   "tipo": "centro",
+   "lng": -110.955257,
+   "lat": 29.0757045,
+   "rumbo": 0
+  },
+  {
+   "id": "P064",
+   "zona": "Z03",
+   "nombre": "Locales y oficinas",
+   "tipo": "centro",
+   "lng": -110.955257,
+   "lat": 29.0757045,
+   "rumbo": 90
+  },
+  {
+   "id": "P065",
+   "zona": "Z03",
+   "nombre": "Locales y oficinas",
+   "tipo": "centro",
+   "lng": -110.955257,
+   "lat": 29.0757045,
+   "rumbo": 180
+  },
+  {
+   "id": "P066",
+   "zona": "Z03",
+   "nombre": "Locales y oficinas",
+   "tipo": "centro",
+   "lng": -110.955257,
+   "lat": 29.0757045,
+   "rumbo": 270
+  },
+  {
+   "id": "P067",
+   "zona": "Z03",
+   "nombre": "Locales y oficinas",
+   "tipo": "esquina",
+   "lng": -110.955537,
+   "lat": 29.075887,
+   "rumbo": 127
+  },
+  {
+   "id": "P068",
+   "zona": "Z03",
+   "nombre": "Locales y oficinas",
+   "tipo": "esquina",
+   "lng": -110.954949,
+   "lat": 29.075924,
+   "rumbo": 231
+  },
+  {
+   "id": "P069",
+   "zona": "Z03",
+   "nombre": "Locales y oficinas",
+   "tipo": "esquina",
+   "lng": -110.954933,
+   "lat": 29.075601,
+   "rumbo": 290
+  },
+  {
+   "id": "P070",
+   "zona": "Z03",
+   "nombre": "Locales y oficinas",
+   "tipo": "esquina",
+   "lng": -110.955609,
+   "lat": 29.075406,
+   "rumbo": 46
+  },
+  {
+   "id": "P071",
+   "zona": "Z03",
+   "nombre": "Locales y oficinas",
+   "tipo": "lado",
+   "lng": -110.955243,
+   "lat": 29.0759055,
+   "rumbo": 183
+  },
+  {
+   "id": "P072",
+   "zona": "Z03",
+   "nombre": "Locales y oficinas",
+   "tipo": "lado",
+   "lng": -110.954941,
+   "lat": 29.0757625,
+   "rumbo": 258
+  },
+  {
+   "id": "P073",
+   "zona": "Z03",
+   "nombre": "Locales y oficinas",
+   "tipo": "lado",
+   "lng": -110.955271,
+   "lat": 29.0755035,
+   "rumbo": 3
+  },
+  {
+   "id": "P074",
+   "zona": "Z03",
+   "nombre": "Locales y oficinas",
+   "tipo": "lado",
+   "lng": -110.955573,
+   "lat": 29.0756465,
+   "rumbo": 78
+  },
+  {
+   "id": "P075",
+   "zona": "Z05",
+   "nombre": "Volumen azul / referencia al museo",
+   "tipo": "centro",
+   "lng": -110.9549657,
+   "lat": 29.0753768,
+   "rumbo": 0
+  },
+  {
+   "id": "P076",
+   "zona": "Z05",
+   "nombre": "Volumen azul / referencia al museo",
+   "tipo": "centro",
+   "lng": -110.9549657,
+   "lat": 29.0753768,
+   "rumbo": 90
+  },
+  {
+   "id": "P077",
+   "zona": "Z05",
+   "nombre": "Volumen azul / referencia al museo",
+   "tipo": "centro",
+   "lng": -110.9549657,
+   "lat": 29.0753768,
+   "rumbo": 180
+  },
+  {
+   "id": "P078",
+   "zona": "Z05",
+   "nombre": "Volumen azul / referencia al museo",
+   "tipo": "centro",
+   "lng": -110.9549657,
+   "lat": 29.0753768,
+   "rumbo": 270
+  },
+  {
+   "id": "P079",
+   "zona": "Z05",
+   "nombre": "Volumen azul / referencia al museo",
+   "tipo": "esquina",
+   "lng": -110.955164,
+   "lat": 29.075463,
+   "rumbo": 116
+  },
+  {
+   "id": "P080",
+   "zona": "Z05",
+   "nombre": "Volumen azul / referencia al museo",
+   "tipo": "esquina",
+   "lng": -110.954739,
+   "lat": 29.075569,
+   "rumbo": 226
+  },
+  {
+   "id": "P081",
+   "zona": "Z05",
+   "nombre": "Volumen azul / referencia al museo",
+   "tipo": "esquina",
+   "lng": -110.954751,
+   "lat": 29.075298,
+   "rumbo": 293
+  },
+  {
+   "id": "P082",
+   "zona": "Z05",
+   "nombre": "Volumen azul / referencia al museo",
+   "tipo": "esquina",
+   "lng": -110.955209,
+   "lat": 29.075177,
+   "rumbo": 47
+  },
+  {
+   "id": "P083",
+   "zona": "Z05",
+   "nombre": "Volumen azul / referencia al museo",
+   "tipo": "lado",
+   "lng": -110.9549515,
+   "lat": 29.075516,
+   "rumbo": 185
+  },
+  {
+   "id": "P084",
+   "zona": "Z05",
+   "nombre": "Volumen azul / referencia al museo",
+   "tipo": "lado",
+   "lng": -110.954745,
+   "lat": 29.0754335,
+   "rumbo": 254
+  },
+  {
+   "id": "P085",
+   "zona": "Z05",
+   "nombre": "Volumen azul / referencia al museo",
+   "tipo": "lado",
+   "lng": -110.95498,
+   "lat": 29.0752375,
+   "rumbo": 5
+  },
+  {
+   "id": "P086",
+   "zona": "Z05",
+   "nombre": "Volumen azul / referencia al museo",
+   "tipo": "lado",
+   "lng": -110.9551865,
+   "lat": 29.07532,
+   "rumbo": 74
+  },
+  {
+   "id": "P087",
+   "zona": "Z06",
+   "nombre": "Tiendas y talleres creativos",
+   "tipo": "centro",
+   "lng": -110.9549965,
+   "lat": 29.0750697,
+   "rumbo": 0
+  },
+  {
+   "id": "P088",
+   "zona": "Z06",
+   "nombre": "Tiendas y talleres creativos",
+   "tipo": "centro",
+   "lng": -110.9549965,
+   "lat": 29.0750697,
+   "rumbo": 90
+  },
+  {
+   "id": "P089",
+   "zona": "Z06",
+   "nombre": "Tiendas y talleres creativos",
+   "tipo": "centro",
+   "lng": -110.9549965,
+   "lat": 29.0750697,
+   "rumbo": 180
+  },
+  {
+   "id": "P090",
+   "zona": "Z06",
+   "nombre": "Tiendas y talleres creativos",
+   "tipo": "centro",
+   "lng": -110.9549965,
+   "lat": 29.0750697,
+   "rumbo": 270
+  },
+  {
+   "id": "P091",
+   "zona": "Z06",
+   "nombre": "Tiendas y talleres creativos",
+   "tipo": "esquina",
+   "lng": -110.955197,
+   "lat": 29.075196,
+   "rumbo": 126
+  },
+  {
+   "id": "P092",
+   "zona": "Z06",
+   "nombre": "Tiendas y talleres creativos",
+   "tipo": "esquina",
+   "lng": -110.954784,
+   "lat": 29.075303,
+   "rumbo": 219
+  },
+  {
+   "id": "P093",
+   "zona": "Z06",
+   "nombre": "Tiendas y talleres creativos",
+   "tipo": "esquina",
+   "lng": -110.954761,
+   "lat": 29.074963,
+   "rumbo": 297
+  },
+  {
+   "id": "P094",
+   "zona": "Z06",
+   "nombre": "Tiendas y talleres creativos",
+   "tipo": "esquina",
+   "lng": -110.955244,
+   "lat": 29.074817,
+   "rumbo": 41
+  },
+  {
+   "id": "P095",
+   "zona": "Z06",
+   "nombre": "Tiendas y talleres creativos",
+   "tipo": "lado",
+   "lng": -110.9549905,
+   "lat": 29.0752495,
+   "rumbo": 182
+  },
+  {
+   "id": "P096",
+   "zona": "Z06",
+   "nombre": "Tiendas y talleres creativos",
+   "tipo": "lado",
+   "lng": -110.9547725,
+   "lat": 29.075133,
+   "rumbo": 252
+  },
+  {
+   "id": "P097",
+   "zona": "Z06",
+   "nombre": "Tiendas y talleres creativos",
+   "tipo": "lado",
+   "lng": -110.9550025,
+   "lat": 29.07489,
+   "rumbo": 2
+  },
+  {
+   "id": "P098",
+   "zona": "Z06",
+   "nombre": "Tiendas y talleres creativos",
+   "tipo": "lado",
+   "lng": -110.9552205,
+   "lat": 29.0750065,
+   "rumbo": 72
+  },
+  {
+   "id": "P099",
+   "zona": "Z07",
+   "nombre": "Estacionamiento frontal HEALY",
+   "tipo": "centro",
+   "lng": -110.95438,
+   "lat": 29.0752085,
+   "rumbo": 0
+  },
+  {
+   "id": "P100",
+   "zona": "Z07",
+   "nombre": "Estacionamiento frontal HEALY",
+   "tipo": "centro",
+   "lng": -110.95438,
+   "lat": 29.0752085,
+   "rumbo": 90
+  },
+  {
+   "id": "P101",
+   "zona": "Z07",
+   "nombre": "Estacionamiento frontal HEALY",
+   "tipo": "centro",
+   "lng": -110.95438,
+   "lat": 29.0752085,
+   "rumbo": 180
+  },
+  {
+   "id": "P102",
+   "zona": "Z07",
+   "nombre": "Estacionamiento frontal HEALY",
+   "tipo": "centro",
+   "lng": -110.95438,
+   "lat": 29.0752085,
+   "rumbo": 270
+  },
+  {
+   "id": "P103",
+   "zona": "Z07",
+   "nombre": "Estacionamiento frontal HEALY",
+   "tipo": "esquina",
+   "lng": -110.954574,
+   "lat": 29.075423,
+   "rumbo": 142
+  },
+  {
+   "id": "P104",
+   "zona": "Z07",
+   "nombre": "Estacionamiento frontal HEALY",
+   "tipo": "esquina",
+   "lng": -110.954062,
+   "lat": 29.075534,
+   "rumbo": 220
+  },
+  {
+   "id": "P105",
+   "zona": "Z07",
+   "nombre": "Estacionamiento frontal HEALY",
+   "tipo": "esquina",
+   "lng": -110.954177,
+   "lat": 29.075035,
+   "rumbo": 314
+  },
+  {
+   "id": "P106",
+   "zona": "Z07",
+   "nombre": "Estacionamiento frontal HEALY",
+   "tipo": "esquina",
+   "lng": -110.954707,
+   "lat": 29.074842,
+   "rumbo": 38
+  },
+  {
+   "id": "P107",
+   "zona": "Z07",
+   "nombre": "Estacionamiento frontal HEALY",
+   "tipo": "lado",
+   "lng": -110.954318,
+   "lat": 29.0754785,
+   "rumbo": 191
+  },
+  {
+   "id": "P108",
+   "zona": "Z07",
+   "nombre": "Estacionamiento frontal HEALY",
+   "tipo": "lado",
+   "lng": -110.9541195,
+   "lat": 29.0752845,
+   "rumbo": 252
+  },
+  {
+   "id": "P109",
+   "zona": "Z07",
+   "nombre": "Estacionamiento frontal HEALY",
+   "tipo": "lado",
+   "lng": -110.954442,
+   "lat": 29.0749385,
+   "rumbo": 11
+  },
+  {
+   "id": "P110",
+   "zona": "Z07",
+   "nombre": "Estacionamiento frontal HEALY",
+   "tipo": "lado",
+   "lng": -110.9546405,
+   "lat": 29.0751325,
+   "rumbo": 72
+  },
+  {
+   "id": "P111",
+   "zona": "Z04",
+   "nombre": "Vivienda y estudios de ensayo",
+   "tipo": "centro",
+   "lng": -110.9556997,
+   "lat": 29.0751079,
+   "rumbo": 0
+  },
+  {
+   "id": "P112",
+   "zona": "Z04",
+   "nombre": "Vivienda y estudios de ensayo",
+   "tipo": "centro",
+   "lng": -110.9556997,
+   "lat": 29.0751079,
+   "rumbo": 90
+  },
+  {
+   "id": "P113",
+   "zona": "Z04",
+   "nombre": "Vivienda y estudios de ensayo",
+   "tipo": "centro",
+   "lng": -110.9556997,
+   "lat": 29.0751079,
+   "rumbo": 180
+  },
+  {
+   "id": "P114",
+   "zona": "Z04",
+   "nombre": "Vivienda y estudios de ensayo",
+   "tipo": "centro",
+   "lng": -110.9556997,
+   "lat": 29.0751079,
+   "rumbo": 270
+  },
+  {
+   "id": "P115",
+   "zona": "Z04",
+   "nombre": "Vivienda y estudios de ensayo",
+   "tipo": "esquina",
+   "lng": -110.95609,
+   "lat": 29.075205,
+   "rumbo": 106
+  },
+  {
+   "id": "P116",
+   "zona": "Z04",
+   "nombre": "Vivienda y estudios de ensayo",
+   "tipo": "esquina",
+   "lng": -110.95535,
+   "lat": 29.07542,
+   "rumbo": 224
+  },
+  {
+   "id": "P117",
+   "zona": "Z04",
+   "nombre": "Vivienda y estudios de ensayo",
+   "tipo": "esquina",
+   "lng": -110.955259,
+   "lat": 29.075169,
+   "rumbo": 261
+  },
+  {
+   "id": "P118",
+   "zona": "Z04",
+   "nombre": "Vivienda y estudios de ensayo",
+   "tipo": "esquina",
+   "lng": -110.955383,
+   "lat": 29.074951,
+   "rumbo": 300
+  },
+  {
+   "id": "P119",
+   "zona": "Z04",
+   "nombre": "Vivienda y estudios de ensayo",
+   "tipo": "esquina",
+   "lng": -110.955755,
+   "lat": 29.074896,
+   "rumbo": 13
+  },
+  {
+   "id": "P120",
+   "zona": "Z04",
+   "nombre": "Vivienda y estudios de ensayo",
+   "tipo": "esquina",
+   "lng": -110.955937,
+   "lat": 29.075034,
+   "rumbo": 70
+  },
+  {
+   "id": "P121",
+   "zona": "Z04",
+   "nombre": "Vivienda y estudios de ensayo",
+   "tipo": "esquina",
+   "lng": -110.956124,
+   "lat": 29.07508,
+   "rumbo": 86
+  },
+  {
+   "id": "P122",
+   "zona": "Z04",
+   "nombre": "Vivienda y estudios de ensayo",
+   "tipo": "lado",
+   "lng": -110.95572,
+   "lat": 29.0753125,
+   "rumbo": 175
+  },
+  {
+   "id": "P123",
+   "zona": "Z04",
+   "nombre": "Vivienda y estudios de ensayo",
+   "tipo": "lado",
+   "lng": -110.9553045,
+   "lat": 29.0752945,
+   "rumbo": 242
+  },
+  {
+   "id": "P124",
+   "zona": "Z04",
+   "nombre": "Vivienda y estudios de ensayo",
+   "tipo": "lado",
+   "lng": -110.955321,
+   "lat": 29.07506,
+   "rumbo": 278
+  },
+  {
+   "id": "P125",
+   "zona": "Z04",
+   "nombre": "Vivienda y estudios de ensayo",
+   "tipo": "lado",
+   "lng": -110.955569,
+   "lat": 29.0749235,
+   "rumbo": 328
+  },
+  {
+   "id": "P126",
+   "zona": "Z04",
+   "nombre": "Vivienda y estudios de ensayo",
+   "tipo": "lado",
+   "lng": -110.955846,
+   "lat": 29.074965,
+   "rumbo": 42
+  },
+  {
+   "id": "P127",
+   "zona": "Z04",
+   "nombre": "Vivienda y estudios de ensayo",
+   "tipo": "lado",
+   "lng": -110.9560305,
+   "lat": 29.075057,
+   "rumbo": 80
+  },
+  {
+   "id": "P128",
+   "zona": "Z04",
+   "nombre": "Vivienda y estudios de ensayo",
+   "tipo": "lado",
+   "lng": -110.956107,
+   "lat": 29.0751425,
+   "rumbo": 96
+  }
+ ]
+}

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Recorrido Amalaya</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+html,body{margin:0;height:100%;background:#000;overflow:hidden}
+#sv{position:fixed;inset:0;overflow:hidden}
+/* El iframe de Google se agranda y se recorta por arriba/izquierda/abajo para que no se vea su tarjeta ni su logo: solo foto. */
+#sv iframe{position:absolute;border:0;width:135%;height:135%;right:0;bottom:-6%}
+#mapa{position:fixed;z-index:5;background:#111}
+body.modo-recorrido #mapa{right:12px;bottom:12px;width:26vw;min-width:200px;height:26vw;min-height:200px;max-width:340px;max-height:340px;border-radius:10px;overflow:hidden;box-shadow:0 2px 14px #000a}
+body.modo-mapa #mapa{inset:0;width:auto;height:auto}
+body.modo-mapa #sv{display:none}
+.leaflet-control-container,.leaflet-control-attribution{display:none}
+#mira{position:fixed;inset:0;z-index:4;display:flex}
+#mira div{flex:1}
+</style></head><body class="modo-recorrido">
+<div id="sv"><iframe id="f" allowfullscreen loading="eager" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+<div id="mapa"></div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+/* Teclas: → siguiente · ← anterior · Espacio play/pausa · M mapa completo ↔ recorrido
+   Parámetros: ?modo=mapa · ?p=P010 (arranca en ese punto) · ?seg=8 (segundos por punto) · ?auto=0 */
+const q=new URLSearchParams(location.search);
+let seg=+q.get('seg')||8, auto=q.get('auto')!=='0', i=0, D, marcas={}, timer;
+const embed=p=>`https://maps.google.com/maps?layer=c&cbll=${p.lat},${p.lng}&cbp=12,${p.rumbo},0,0,0&output=svembed&hl=es`;
+const mapa=L.map('mapa',{zoomControl:false,attributionControl:false,dragging:true});
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19}).addTo(mapa);
+function ir(n){
+  i=(n+D.puntos.length)%D.puntos.length;const p=D.puntos[i];
+  document.getElementById('f').src=embed(p);
+  Object.values(marcas).forEach(m=>m.setStyle({radius:4,fillOpacity:.6}));
+  marcas[p.id].setStyle({radius:9,fillOpacity:1});
+  if(document.body.classList.contains('modo-recorrido'))mapa.setView([p.lat,p.lng],18,{animate:false});
+}
+function play(){clearInterval(timer);if(auto)timer=setInterval(()=>ir(i+1),seg*1000)}
+function modo(m){document.body.className='modo-'+m;setTimeout(()=>{mapa.invalidateSize();m==='mapa'?mapa.fitBounds(L.geoJSON(D.geo).getBounds()):ir(i)},50)}
+fetch('datos/recorrido.json').then(r=>r.json()).then(d=>{
+  D=d;
+  D.geo={type:'FeatureCollection',features:Object.entries(d.zonas).map(([k,z])=>({type:'Feature',properties:{k},geometry:{type:'Polygon',coordinates:[z.anillo]}}))};
+  Object.entries(d.zonas).forEach(([k,z])=>L.polygon(z.anillo.map(c=>[c[1],c[0]]),{color:z.color,weight:2,fillOpacity:.25}).addTo(mapa));
+  d.puntos.forEach((p,n)=>{marcas[p.id]=L.circleMarker([p.lat,p.lng],{radius:4,color:'#fff',weight:1,fillColor:'#e33',fillOpacity:.6}).addTo(mapa).on('click',()=>{ir(n);if(document.body.classList.contains('modo-mapa'))modo('recorrido')})});
+  const s=q.get('p');if(s){const n=d.puntos.findIndex(p=>p.id===s);if(n>=0)i=n}
+  modo(q.get('modo')==='mapa'?'mapa':'recorrido');ir(i);play();
+});
+addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'){ir(i+1);play()}else if(e.key==='ArrowLeft'){ir(i-1);play()}
+  else if(e.key===' '){auto=!auto;play();e.preventDefault()}
+  else if(e.key==='m'||e.key==='M')modo(document.body.classList.contains('modo-mapa')?'recorrido':'mapa');
+});
+</script></body></html>
