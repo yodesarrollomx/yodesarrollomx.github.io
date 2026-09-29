@@ -1,0 +1,765 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>El Despacho como origen de todo</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark;--ink:#0b0b0d;--ink2:#131316;--card:#17171b;--line:rgba(255,255,255,.10);--line2:rgba(255,255,255,.18);
+--text:#ece7db;--muted:#a39e93;--gold:#c9a227;--gold-hi:#e8c35a;--blue:#5aa2d0;--purple:#9a80dd;--green:#6fbf8b;--red:#d8695a;
+--serif:'Instrument Serif',Georgia,serif;--sans:'Instrument Sans',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--ink);color:var(--text);font-family:var(--sans);-webkit-font-smoothing:antialiased;line-height:1.55}
+a{color:var(--gold-hi)}.mono{font-family:var(--mono)}
+.w{width:min(1120px,100%);margin:0 auto;padding:0 20px}
+nav.top{position:sticky;top:0;z-index:20;background:rgba(11,11,13,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav.top .w{display:flex;gap:6px;align-items:center;overflow-x:auto;padding-block:10px;scrollbar-width:none}
+nav.top a{flex:none;color:var(--text);text-decoration:none;font-size:13px;padding:7px 12px;border-radius:999px;border:1px solid var(--line);opacity:.85}
+nav.top a:hover{border-color:var(--gold);opacity:1}
+header.hero{padding:72px 0 40px}
+.eyebrow{font:600 12px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+h1{font:400 clamp(40px,6.4vw,84px)/.98 var(--serif);letter-spacing:-.02em;margin:14px 0 18px;max-width:16ch;text-wrap:balance}
+h1 em{color:var(--gold-hi)}
+.lead{font-size:clamp(17px,1.6vw,20px);color:#cfc9bd;max-width:62ch;margin:0}
+section.blk{padding:64px 0;border-top:1px solid var(--line)}
+h2{font:400 clamp(32px,4.4vw,56px)/1.02 var(--serif);letter-spacing:-.01em;margin:10px 0 14px;max-width:20ch;text-wrap:balance}
+h2 em{color:var(--gold-hi)}
+.sec-lead{color:#cfc9bd;max-width:66ch;margin:0 0 28px;font-size:17px}
+.dg{overflow-x:auto;border:1px solid var(--line);border-radius:18px;background:#0e0e11;padding:14px;margin:18px 0}
+.dg svg{display:block;width:100%;height:auto;min-width:640px;font-family:var(--sans)}
+.dg svg .mono{font-family:var(--mono)}
+.flow{stroke-dasharray:5 6;animation:fl 1.4s linear infinite}
+@keyframes fl{to{stroke-dashoffset:-11}}
+.chip{display:inline-block;font:600 11.5px var(--mono);padding:5px 10px;border-radius:999px;border:1px solid var(--line2);margin:0 6px 6px 0;color:var(--text)}
+.chips{margin-bottom:8px}
+/* lógica */
+.reglas{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin-top:8px}
+.regla{border:1px solid var(--line);border-radius:14px;background:var(--card);padding:16px}
+.regla b{display:block;font:600 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.regla p{margin:0;font-size:15px;color:#cfc9bd}
+.semaforo{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:18px 0}
+.sem{border-radius:14px;padding:16px;border:1px solid}
+.sem b{display:block;font:600 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
+.sem p{margin:0;font-size:14.5px}
+.sem.v{background:#10231a;border-color:#4a8a63;color:#d8f3e2}.sem.a{background:#2a2010;border-color:#a37d22;color:#f4e6c4}.sem.r{background:#2e1914;border-color:#c2603f;color:#f8dccf}
+/* formas */
+.formas{display:grid;gap:22px;grid-template-columns:minmax(0,1fr)}
+.forma{border:1px solid var(--line);border-radius:20px;background:var(--card);padding:22px}
+.fh{display:flex;align-items:center;gap:12px}
+.letra{font:600 13px var(--mono);width:32px;height:32px;border-radius:50%;background:var(--gold);color:#0b0b0d;display:grid;place-items:center}
+.forma h3,.sh h3{font:400 30px/1.05 var(--serif);margin:0}
+.idea{font-size:17px;margin:4px 0 14px;max-width:70ch}
+.dl{display:grid;grid-template-columns:110px 1fr;gap:10px 16px;margin:0;font-size:15px}
+.dl dt{font:600 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--gold);padding-top:3px}
+.dl dd{margin:0;color:#cfc9bd}
+/* sistemas */
+.sis{border:1px solid var(--line2);border-radius:22px;background:linear-gradient(180deg,#141418,#101013);padding:24px;margin-bottom:26px}
+.sh{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:center}
+.num{font:400 44px/1 var(--serif);color:var(--gold-hi);border-right:1px solid var(--line2);padding-right:14px}
+.subt{margin:2px 0 0;color:var(--muted);font-size:15px}
+.meta{display:flex;flex-direction:column;gap:2px;font:12px var(--mono);color:var(--muted);text-align:right}
+.meta b{color:var(--text);font-weight:600}
+.que{font-size:17px;max-width:72ch;margin:6px 0 16px}
+.cols{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:26px}.cols>div{min-width:0}
+.cols h4{font:600 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin:16px 0 8px}
+.cols h4:first-child{margin-top:0}
+.cols p{margin:0;font-size:15px;color:#cfc9bd}
+.pasos{margin:0;padding:0;list-style:none;counter-reset:p;display:grid;gap:10px}
+.pasos li{counter-increment:p;position:relative;padding-left:34px;font-size:15px;color:#cfc9bd}
+.pasos li::before{content:counter(p);position:absolute;left:0;top:0;width:24px;height:24px;border-radius:50%;border:1px solid var(--gold);color:var(--gold-hi);font:600 12px var(--mono);display:grid;place-items:center}
+.pasos b{color:var(--text)}
+.ej{border-left:2px solid var(--gold);padding-left:12px}
+.mano{border:1px dashed var(--line2);border-radius:10px;padding:10px 12px}
+/* tablas */
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:14px}
+table{border-collapse:collapse;width:100%;min-width:720px;font-size:14.5px}
+th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:600 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--gold);background:var(--ink2)}
+tr:last-child td{border-bottom:0}
+.tag{font:600 11px var(--mono);padding:3px 9px;border-radius:999px;border:1px solid;white-space:nowrap}
+.tag.verde{color:#8fd3a8;border-color:#4a8a63}.tag.ámbar{color:#e8c35a;border-color:#a37d22}.tag.rojo{color:#e8917f;border-color:#c2603f}
+.ruta{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.paso{border:1px solid var(--line);border-radius:16px;background:var(--card);padding:18px;border-top:3px solid var(--gold)}
+.paso b.s{font:600 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+.paso h4{margin:6px 0;font-size:17px}.paso p{margin:0;font-size:14.5px;color:#cfc9bd}
+.pide{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.pide li{border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:var(--card)}
+.pide b{color:var(--gold-hi)}
+footer{border-top:1px solid var(--line);padding:36px 0 60px;color:var(--muted);font-size:14px}
+@media(max-width:820px){
+ .cols{grid-template-columns:minmax(0,1fr)}.sh{grid-template-columns:auto 1fr}.meta{grid-column:1/-1;flex-direction:row;gap:16px;text-align:left}
+ .dl{grid-template-columns:1fr;gap:2px 0}.dl dt{margin-top:8px}.semaforo{grid-template-columns:1fr}
+ .sis,.forma{padding:16px}.num{font-size:36px}
+ .dg::after{content:'Desliza para ver todo el diagrama →';display:block;font:11px var(--mono);color:var(--muted);padding-top:8px;position:sticky;left:0}
+}
+@media(prefers-reduced-motion:reduce){.flow{animation:none}html{scroll-behavior:auto}}
+</style></head><body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><marker id="ah-g" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#c9a227"/></marker><marker id="as-g" viewBox="0 0 10 10" refX="1.5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M10,1 L1,5 L10,9 z" fill="#c9a227"/></marker><marker id="ah-b" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#5aa2d0"/></marker><marker id="as-b" viewBox="0 0 10 10" refX="1.5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M10,1 L1,5 L10,9 z" fill="#5aa2d0"/></marker><marker id="ah-p" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#9a80dd"/></marker><marker id="as-p" viewBox="0 0 10 10" refX="1.5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M10,1 L1,5 L10,9 z" fill="#9a80dd"/></marker><marker id="ah-r" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#d8695a"/></marker><marker id="as-r" viewBox="0 0 10 10" refX="1.5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M10,1 L1,5 L10,9 z" fill="#d8695a"/></marker><marker id="ah-n" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#8b8577"/></marker><marker id="as-n" viewBox="0 0 10 10" refX="1.5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M10,1 L1,5 L10,9 z" fill="#8b8577"/></marker><marker id="ah-v" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#6fbf8b"/></marker><marker id="as-v" viewBox="0 0 10 10" refX="1.5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M10,1 L1,5 L10,9 z" fill="#6fbf8b"/></marker></defs></svg>
+<nav class="top"><div class="w">
+ <a href="#logica">La lógica</a><a href="#formas">Cinco formas del Despacho</a><a href="#mapa">El mapa</a><a href="#sistemas">Cinco sistemas</a><a href="#compara">Comparativo</a><a href="#ruta">Ruta</a></div></nav>
+
+<header class="hero"><div class="w">
+ <div class="eyebrow">YOD OS · Propuesta de sistema</div>
+ <h1>El Despacho como <em>origen de todo</em>.</h1>
+ <p class="lead">Hoy el Despacho muestra lo que pasa en los tableros. La propuesta es que también sea de donde sale todo: las órdenes, los avisos y las decisiones. Para eso hace falta una lógica común y cinco sistemas que hagan que los tableros se hablen solos.</p>
+</div></header>
+
+<section class="blk" id="logica"><div class="w">
+ <div class="eyebrow">La lógica interna</div>
+ <h2>Todo es una <em>señal con folio</em> que recorre seis pasos.</h2>
+ <p class="sec-lead">Cualquier cosa que pase en cualquier tablero, o que tú pidas, sigue el mismo camino. Así todo queda registrado, nada se duplica y nada se da por hecho sin comprobarlo.</p>
+ <div class="dg"><svg viewBox="0 0 900 210" role="img" aria-label="Seis pasos: señal, triaje, decisión, orden, ejecución y constancia." xmlns="http://www.w3.org/2000/svg">
+<path d="M143.0,102.0 L157.0,102.0" fill="none" stroke="#c9a227" stroke-width="1.7" class="flow" marker-end="url(#ah-g)" opacity=".92"/>
+<path d="M293.0,102.0 L307.0,102.0" fill="none" stroke="#c9a227" stroke-width="1.7" class="flow" marker-end="url(#ah-g)" opacity=".92"/>
+<path d="M443.0,102.0 L457.0,102.0" fill="none" stroke="#c9a227" stroke-width="1.7" class="flow" marker-end="url(#ah-g)" opacity=".92"/>
+<path d="M593.0,102.0 L607.0,102.0" fill="none" stroke="#c9a227" stroke-width="1.7" class="flow" marker-end="url(#ah-g)" opacity=".92"/>
+<path d="M743.0,102.0 L757.0,102.0" fill="none" stroke="#c9a227" stroke-width="1.7" class="flow" marker-end="url(#ah-g)" opacity=".92"/>
+<path d="M757.0,127.4 Q450.0,242.0 143.0,127.4" fill="none" stroke="#8b8577" stroke-width="1.7" class="flow" stroke-dasharray="3 5" marker-end="url(#ah-n)" opacity=".92"/>
+<rect x="10" y="60" width="130" height="84" rx="12" fill="#17140f" stroke="#4a4132" stroke-width="1.4"/>
+<text x="75.0" y="91.75" text-anchor="middle" font-size="13.5" font-weight="600" fill="#ece7db">1 · SEÑAL</text>
+<text x="75.0" y="107.75" text-anchor="middle" font-size="11" fill="#a39e93">cualquier tablero</text>
+<text x="75.0" y="121.75" text-anchor="middle" font-size="11" fill="#a39e93">o persona avisa</text>
+<rect x="160" y="60" width="130" height="84" rx="12" fill="#1d1630" stroke="#7a5fbd" stroke-width="1.4"/>
+<text x="225.0" y="91.75" text-anchor="middle" font-size="13.5" font-weight="600" fill="#eee6ff">2 · TRIAJE</text>
+<text x="225.0" y="107.75" text-anchor="middle" font-size="11" fill="#b6a5dd">¿de quién es?</text>
+<text x="225.0" y="121.75" text-anchor="middle" font-size="11" fill="#b6a5dd">¿urge? ¿se deshace?</text>
+<rect x="310" y="60" width="130" height="84" rx="12" fill="#10231a" stroke="#4a8a63" stroke-width="1.4"/>
+<text x="375.0" y="91.75" text-anchor="middle" font-size="13.5" font-weight="600" fill="#d8f3e2">3 · DECISIÓN</text>
+<text x="375.0" y="107.75" text-anchor="middle" font-size="11" fill="#94c4a6">tú, una regla</text>
+<text x="375.0" y="121.75" text-anchor="middle" font-size="11" fill="#94c4a6">o el valor por defecto</text>
+<rect x="460" y="60" width="130" height="84" rx="12" fill="#0f1f2b" stroke="#3a7096" stroke-width="1.4"/>
+<line x1="470" y1="67" x2="580" y2="67" stroke="#3a7096" stroke-width="1" opacity=".6"/>
+<text x="525.0" y="94.75" text-anchor="middle" font-size="13.5" font-weight="600" fill="#d6ebf8">4 · ORDEN</text>
+<text x="525.0" y="110.75" text-anchor="middle" font-size="11" fill="#8fb4cc">encargo con folio</text>
+<text x="525.0" y="124.75" text-anchor="middle" font-size="11" fill="#8fb4cc">y llave única</text>
+<rect x="610" y="60" width="130" height="84" rx="12" fill="#17140f" stroke="#4a4132" stroke-width="1.4"/>
+<text x="675.0" y="91.75" text-anchor="middle" font-size="13.5" font-weight="600" fill="#ece7db">5 · EJECUCIÓN</text>
+<text x="675.0" y="107.75" text-anchor="middle" font-size="11" fill="#a39e93">el tablero destino</text>
+<text x="675.0" y="121.75" text-anchor="middle" font-size="11" fill="#a39e93">o Claude</text>
+<rect x="760" y="60" width="130" height="84" rx="12" fill="#c9a227" stroke="#e8c35a" stroke-width="1.4"/>
+<text x="825.0" y="91.75" text-anchor="middle" font-size="13.5" font-weight="600" fill="#0b0b0d">6 · CONSTANCIA</text>
+<text x="825.0" y="107.75" text-anchor="middle" font-size="11" fill="#3a2d08">se lee de vuelta:</text>
+<text x="825.0" y="121.75" text-anchor="middle" font-size="11" fill="#3a2d08">solo entonces cierra</text>
+<rect x="269.9" y="171.2" width="360.1" height="19" rx="7" fill="#0b0b0d" stroke="#8b8577" stroke-opacity=".55" stroke-width="1"/>
+<text x="450.0" y="183.2" text-anchor="middle" font-size="10.5" fill="#8b8577">lo cerrado se ve en el Pulso; lo que no, sigue en tu cuello</text>
+</svg></div>
+ <div class="reglas">
+  <div class="regla"><b>Un folio por cosa</b><p>Cada proyecto y cada tarea tienen un folio (PRJ-… y A-…). Todo lo demás se cuelga de él.</p></div>
+  <div class="regla"><b>Llave única</b><p>Toda orden lleva una llave: folio, acción y día. Repetirla no duplica. Ya te pasó una vez con la tarjeta A-149.</p></div>
+  <div class="regla"><b>Constancia antes de cerrar</b><p>Cerrar es comprobar, no avisar. Se lee de vuelta lo escrito y se guarda la captura.</p></div>
+  <div class="regla"><b>Frontera del dinero</b><p>El dinero vive solo en Flujo. Lo demás se comunica con «hecho / no hecho» y un folio, nunca con cifras.</p></div>
+  <div class="regla"><b>Nada a terceros sin firma</b><p>Solo se escribe a Alejandro. Todo lo que toque a otra persona nace como borrador.</p></div>
+  <div class="regla"><b>Modo degradado</b><p>Si Google falla, el Despacho muestra la última foto y dice de qué hora es. Nunca finge estar al día.</p></div>
+ </div>
+ <h3 style="font:400 26px var(--serif);margin:34px 0 4px">El semáforo de autonomía</h3>
+ <p class="sec-lead" style="margin-bottom:0">Es la regla que decide cuánto hace solo el sistema y cuánto te toca a ti.</p>
+ <div class="semaforo">
+  <div class="sem v"><b>Verde · se hace y se avisa</b><p>Se puede deshacer, no toca dinero y no le escribe a nadie más. Lo ejecuta Claude o una regla.</p></div>
+  <div class="sem a"><b>Ámbar · un toque tuyo</b><p>Es reversible pero importa, o toca a un tercero. Se te pregunta con un toque y se hace.</p></div>
+  <div class="sem r"><b>Rojo · lo firmas tú</b><p>Contratos, dinero, cosas de un solo sentido. Claude prepara todo y espera tu firma.</p></div>
+ </div>
+</div></section>
+
+<section class="blk" id="formas"><div class="w">
+ <div class="eyebrow">Parte 1</div>
+ <h2>Cinco formas de que funcione <em>el Despacho</em>.</h2>
+ <p class="sec-lead">No son excluyentes: cada una resuelve una parte. A es la puerta de entrada, B la vista, C el criterio, D el tiempo y E las manos. Te dejo cuál construir primero al final.</p>
+ <div class="formas">
+<article class="forma" id="forma-A">
+  <div class="fh"><span class="letra">A</span><h3>La Bandeja</h3></div>
+  <div class="dg"><svg viewBox="0 0 400 210" role="img" aria-label="Los tableros alimentan una sola cola con tres salidas: hacer hoy, delegar o dejar con fecha." xmlns="http://www.w3.org/2000/svg">
+<path d="M99.2,51.0 L143.0,72.3" fill="none" stroke="#8b8577" stroke-width="1.7" class="" marker-end="url(#ah-n)" opacity=".92"/>
+<path d="M107.0,83.4 L143.0,90.1" fill="none" stroke="#8b8577" stroke-width="1.7" class="" marker-end="url(#ah-n)" opacity=".92"/>
+<path d="M107.0,112.1 L143.0,107.9" fill="none" stroke="#8b8577" stroke-width="1.7" class="" marker-end="url(#ah-n)" opacity=".92"/>
+<path d="M106.3,141.0 L143.0,125.7" fill="none" stroke="#8b8577" stroke-width="1.7" class="" marker-end="url(#ah-n)" opacity=".92"/>
+<path d="M261.0,75.2 L297.0,59.4" fill="none" stroke="#c9a227" stroke-width="1.7" class="flow" marker-end="url(#ah-g)" opacity=".92"/>
+<path d="M261.0,102.2 L297.0,103.0" fill="none" stroke="#c9a227" stroke-width="1.7" class="flow" marker-end="url(#ah-g)" opacity=".92"/>
+<path d="M261.0,129.3 L297.0,146.5" fill="none" stroke="#c9a227" stroke-width="1.7" class="flow" marker-end="url(#ah-g)" opacity=".92"/>
+<rect x="8" y="12" width="96" height="36" rx="12" fill="#17140f" stroke="#4a4132" stroke-width="1.4"/>
+<text x="56.0" y="34.5" text-anchor="middle" font-size="12" font-weight="600" fill="#ece7db">MOAC</text>
+<rect x="8" y="56" width="96" height="36" rx="12" fill="#17140f" stroke="#4a4132" stroke-width="1.4"/>
+<text x="56.0" y="78.5" text-anchor="middle" font-size="12" font-weight="600" fill="#ece7db">Obra</text>
+<rect x="8" y="100" width="96" height="36" rx="12" fill="#17140f" stroke="#4a4132" stroke-width="1.4"/>
+<text x="56.0" y="122.5" text-anchor="middle" font-size="12" font-weight="600" fill="#ece7db">Flujo</text>
+<rect x="8" y="144" width="96" height="36" rx="12" fill="#17140f" stroke="#4a4132" stroke-width="1.4"/>
+<text x="56.0" y="166.5" text-anchor="middle" font-size="12" font-weight="600" fill="#ece7db">Plan</text>
+<rect x="146" y="56" width="112" height="90" rx="12" fill="#c9a227" stroke="#e8c35a" stroke-width="1.4"/>
+<text x="202.0" y="92.0" text-anchor="middle" font-size="14" font-weight="600" fill="#0b0b0d">BANDEJA</text>
+<text x="202.0" y="107.0" text-anchor="middle" font-size="10" fill="#3a2d08">una sola cola</text>
+<text x="202.0" y="120.0" text-anchor="middle" font-size="10" fill="#3a2d08">de lo que te toca</text>
+<rect x="300" y="12" width="92" height="52" rx="12" fill="#10231a" stroke="#4a8a63" stroke-width="1.4"/>
+<text x="346.0" y="35.0" text-anchor="middle" font-size="12" font-weight="600" fill="#d8f3e2">Hacer</text>
+<text x="346.0" y="50.0" text-anchor="middle" font-size="12" font-weight="600" fill="#d8f3e2">hoy</text>
+<rect x="300" y="78" width="92" height="52" rx="12" fill="#1d1630" stroke="#7a5fbd" stroke-width="1.4"/>
+<text x="346.0" y="108.5" text-anchor="middle" font-size="12" font-weight="600" fill="#eee6ff">Delegar</text>
+<rect x="300" y="144" width="92" height="52" rx="12" fill="#2a2010" stroke="#a37d22" stroke-width="1.4"/>
+<text x="346.0" y="167.0" text-anchor="middle" font-size="12" font-weight="600" fill="#f4e6c4">Dejar</text>
+<text x="346.0" y="182.0" text-anchor="middle" font-size="12" font-weight="600" fill="#f4e6c4">con fecha</text>
+</svg></div>
+  <p class="idea">Todo lo que necesita a Alejandro cae en una sola cola. Cada renglón se resuelve de tres maneras: lo haces hoy, lo delegas a alguien (o a Claude), o lo dejas con una fecha. La meta es que la cola llegue a cero.</p>
+  <dl class="dl">
+    <dt>Por qué</dt><dd>Método GTD y responsable único (DRI). Hoy lo tuyo está repartido en 8 tableros; quien tiene que mirar 8 lugares termina sin mirar ninguno.</dd>
+    <dt>En pantalla</dt><dd>Un renglón por cosa: qué es, de qué tablero viene, cuántos días lleva y tres botones. Nada más.</dd>
+    <dt>Usa</dt><dd><span class="chip">Sheet de MOAC</span><span class="chip">pendientes.json</span><span class="chip">Folio (proyectos.js)</span></dd>
+    <dt>Esfuerzo</dt><dd>Chico</dd>
+    <dt>Estado</dt><dd>Ya empezó: «Decisiones» y «Tu cuello de botella».</dd>
+  </dl>
+</article>
+<article class="forma" id="forma-B">
+  <div class="fh"><span class="letra">B</span><h3>La Torre de control</h3></div>
+  <div class="dg"><svg viewBox="0 0 400 210" role="img" aria-label="Cuatro etapas de proyecto; una alerta señala dónde están frenando tus decisiones; máximo tres cosas en foco." xmlns="http://www.w3.org/2000/svg">
+<path d="M95.0,124.0 L101.0,124.0" fill="none" stroke="#8b8577" stroke-width="1.7" class="flow" marker-end="url(#ah-n)" opacity=".92"/>
+<path d="M191.0,124.0 L197.0,124.0" fill="none" stroke="#8b8577" stroke-width="1.7" class="flow" marker-end="url(#ah-n)" opacity=".92"/>
+<path d="M287.0,124.0 L293.0,124.0" fill="none" stroke="#8b8577" stroke-width="1.7" class="flow" marker-end="url(#ah-n)" opacity=".92"/>
+<path d="M148.9,61.0 L147.4,93.0" fill="none" stroke="#d8695a" stroke-width="1.7" class="flow" marker-end="url(#ah-r)" opacity=".92"/>
+<rect x="8" y="96" width="84" height="56" rx="12" fill="#17140f" stroke="#4a4132" stroke-width="1.4"/>
+<text x="50.0" y="128.5" text-anchor="middle" font-size="12" font-weight="600" fill="#ece7db">Potencial</text>
+<rect x="104" y="96" width="84" height="56" rx="12" fill="#17140f" stroke="#4a4132" stroke-width="1.4"/>
+<text x="146.0" y="128.5" text-anchor="middle" font-size="12" font-weight="600" fill="#ece7db">Trámite</text>
+<rect x="200" y="96" width="84" height="56" rx="12" fill="#17140f" stroke="#4a4132" stroke-width="1.4"/>
+<text x="242.0" y="128.5" text-anchor="middle" font-size="12" font-weight="600" fill="#ece7db">Obra</text>
+<rect x="296" y="96" width="84" height="56" rx="12" fill="#17140f" stroke="#4a4132" stroke-width="1.4"/>
+<text x="338.0" y="128.5" text-anchor="middle" font-size="12" font-weight="600" fill="#ece7db">Venta</text>
+<rect x="60" y="14" width="180" height="44" rx="12" fill="#2e1914" stroke="#c2603f" stroke-width="1.4"/>
+<text x="150.0" y="40.5" text-anchor="middle" font-size="12" font-weight="600" fill="#f8dccf">Tú: 3 decisiones frenan</text>
+<rect x="8" y="166" width="372" height="34" rx="12" fill="none" stroke="#3a3427" stroke-width="1.4" stroke-dasharray="5 4"/>
+<text x="194.0" y="187.5" text-anchor="middle" font-size="12" font-weight="600" fill="#a39e93">Máximo 3 cosas en foco a la vez</text>
+</svg></div>
+  <p class="idea">Los proyectos se ven por etapa (Potencial, Trámite, Obra, Venta) y el sistema te muestra dónde se atora el flujo. Tú eres el cuello de botella: la pantalla te dice cuántas cosas frenas y de qué proyecto.</p>
+  <dl class="dl">
+    <dt>Por qué</dt><dd>Kanban y teoría de las restricciones: un sistema rinde lo que rinde su punto más lento, y limitar el trabajo en curso hace que se termine más.</dd>
+    <dt>En pantalla</dt><dd>Columnas por etapa con una tarjeta por folio, días en la etapa y qué sigue. Arriba, el pulso de la semana.</dd>
+    <dt>Usa</dt><dd><span class="chip">Registro de folios</span><span class="chip">Historial de estados</span><span class="chip">Sheet de MOAC</span></dd>
+    <dt>Esfuerzo</dt><dd>Ya hecho (v2.0)</dd>
+    <dt>Estado</dt><dd>Publicada hoy en el Despacho.</dd>
+  </dl>
+</article>
+<article class="forma" id="forma-C">
+  <div class="fh"><span class="letra">C</span><h3>La Mesa de decisiones</h3></div>
+  <div class="dg"><svg viewBox="0 0 400 210" role="img" aria-label="Una decisión con opciones y propuesta de Claude, valor por defecto con fecha, órdenes a los tableros y registro con revisión." xmlns="http://www.w3.org/2000/svg">
+<path d="M135.5,73.0 L133.0,71.7" fill="none" stroke="#5aa2d0" stroke-width="1.7" class="flow" marker-end="url(#ah-b)" opacity=".92"/>
+<path d="M264.5,73.0 L267.0,71.7" fill="none" stroke="#8b8577" stroke-width="1.7" class="flow" stroke-dasharray="3 5" marker-end="url(#ah-n)" opacity=".92"/>
+<path d="M267.0,138.2 L264.5,137.0" fill="none" stroke="#c9a227" stroke-width="1.7" class="flow" marker-end="url(#ah-g)" opacity=".92"/>
+<path d="M133.0,138.2 L135.5,137.0" fill="none" stroke="#5aa2d0" stroke-width="1.7" class="flow" marker-end="url(#ah-b)" opacity=".92"/>
+<rect x="4" y="10" width="134" height="60" rx="12" fill="#0f1f2b" stroke="#3a7096" stroke-width="1.4"/>
+<line x1="14" y1="17" x2="128" y2="17" stroke="#3a7096" stroke-width="1" opacity=".6"/>
+<text x="71.0" y="40.0" text-anchor="middle" font-size="11.5" font-weight="600" fill="#d6ebf8">Opciones +</text>
+<text x="71.0" y="54.5" text-anchor="middle" font-size="11.5" font-weight="600" fill="#d6ebf8">propuesta de Claude</text>
+<rect x="262" y="10" width="134" height="60" rx="12" fill="#2a2010" stroke="#a37d22" stroke-width="1.4"/>
+<text x="329.0" y="37.0" text-anchor="middle" font-size="11.5" font-weight="600" fill="#f4e6c4">Si no decides:</text>
+<text x="329.0" y="51.5" text-anchor="middle" font-size="11.5" font-weight="600" fill="#f4e6c4">valor por defecto</text>
+<rect x="136" y="70" width="128" height="72" rx="12" fill="#c9a227" stroke="#e8c35a" stroke-width="1.4"/>
+<text x="200.0" y="103.0" text-anchor="middle" font-size="14" font-weight="600" fill="#0b0b0d">DECISIÓN</text>
+<text x="200.0" y="119.0" text-anchor="middle" font-size="11" fill="#3a2d08">puerta ↺ o ⚑</text>
+<rect x="262" y="140" width="134" height="56" rx="12" fill="#1d1630" stroke="#7a5fbd" stroke-width="1.4"/>
+<text x="329.0" y="165.0" text-anchor="middle" font-size="11.5" font-weight="600" fill="#eee6ff">Órdenes a</text>
+<text x="329.0" y="179.5" text-anchor="middle" font-size="11.5" font-weight="600" fill="#eee6ff">los tableros</text>
+<rect x="4" y="140" width="134" height="56" rx="12" fill="#0f1f2b" stroke="#3a7096" stroke-width="1.4"/>
+<line x1="14" y1="147" x2="128" y2="147" stroke="#3a7096" stroke-width="1" opacity=".6"/>
+<text x="71.0" y="168.0" text-anchor="middle" font-size="11.5" font-weight="600" fill="#d6ebf8">Registro y</text>
+<text x="71.0" y="182.5" text-anchor="middle" font-size="11.5" font-weight="600" fill="#d6ebf8">revisión a 30 días</text>
+</svg></div>
+  <p class="idea">Cada decisión llega ya masticada: opciones, propuesta de Claude, si se puede deshacer o no, y qué pasa si no contestas. Al decidir, salen solas las órdenes a los tableros y queda registrada con fecha de revisión.</p>
+  <dl class="dl">
+    <dt>Por qué</dt><dd>Puertas de un sentido y de dos sentidos (Bezos), registro de decisiones y silencio como consentimiento en lo reversible. Decides rápido lo que se puede corregir y despacio lo que no.</dd>
+    <dt>En pantalla</dt><dd>Tarjeta con la propuesta, el tipo de puerta, la fecha límite y tres botones: adelante, cambiar, aplazar con motivo.</dd>
+    <dt>Usa</dt><dd><span class="chip">Libro de decisiones</span><span class="chip">Encargos</span><span class="chip">Operador Claude</span></dd>
+    <dt>Esfuerzo</dt><dd>Mediano</dd>
+    <dt>Estado</dt><dd>Falta el valor por defecto con fecha.</dd>
+  </dl>
+</article>
+<article class="forma" id="forma-D">
+  <div class="fh"><span class="letra">D</span><h3>El Ritmo</h3></div>
+  <div class="dg"><svg viewBox="0 0 400 210" role="img" aria-label="Cada día: mañana, mediodía y cierre. Cada semana: lunes eliges apuestas, miércoles revisas, viernes cierras y aprendes." xmlns="http://www.w3.org/2000/svg">
+<path d="M129.0,42.0 L138.0,42.0" fill="none" stroke="#8b8577" stroke-width="1.7" class="flow" marker-end="url(#ah-n)" opacity=".92"/>
+<path d="M262.0,42.0 L271.0,42.0" fill="none" stroke="#8b8577" stroke-width="1.7" class="flow" marker-end="url(#ah-n)" opacity=".92"/>
+<path d="M129.0,161.0 L138.0,161.0" fill="none" stroke="#c9a227" stroke-width="1.7" class="flow" marker-end="url(#ah-g)" opacity=".92"/>
+<path d="M262.0,161.0 L271.0,161.0" fill="none" stroke="#c9a227" stroke-width="1.7" class="flow" marker-end="url(#ah-g)" opacity=".92"/>
+<rect x="8" y="14" width="118" height="56" rx="12" fill="#2a2010" stroke="#a37d22" stroke-width="1.4"/>
+<text x="67.0" y="38.25" text-anchor="middle" font-size="12" font-weight="600" fill="#f4e6c4">Mañana 7:23</text>
+<text x="67.0" y="53.75" text-anchor="middle" font-size="10.5" fill="#c7b07a">plan del día</text>
+<rect x="141" y="14" width="118" height="56" rx="12" fill="#17140f" stroke="#4a4132" stroke-width="1.4"/>
+<text x="200.0" y="38.25" text-anchor="middle" font-size="12" font-weight="600" fill="#ece7db">Mediodía</text>
+<text x="200.0" y="53.75" text-anchor="middle" font-size="10.5" fill="#a39e93">punto de control</text>
+<rect x="274" y="14" width="118" height="56" rx="12" fill="#17140f" stroke="#4a4132" stroke-width="1.4"/>
+<text x="333.0" y="38.25" text-anchor="middle" font-size="12" font-weight="600" fill="#ece7db">Cierre</text>
+<text x="333.0" y="53.75" text-anchor="middle" font-size="10.5" fill="#a39e93">qué se movió</text>
+<rect x="8" y="130" width="118" height="62" rx="12" fill="#c9a227" stroke="#e8c35a" stroke-width="1.4"/>
+<text x="67.0" y="151.0" text-anchor="middle" font-size="13" font-weight="600" fill="#0b0b0d">Lunes</text>
+<text x="67.0" y="166.5" text-anchor="middle" font-size="10.5" fill="#3a2d08">eliges 3</text>
+<text x="67.0" y="180.0" text-anchor="middle" font-size="10.5" fill="#3a2d08">apuestas</text>
+<rect x="141" y="130" width="118" height="62" rx="12" fill="#1d1630" stroke="#7a5fbd" stroke-width="1.4"/>
+<text x="200.0" y="151.0" text-anchor="middle" font-size="13" font-weight="600" fill="#eee6ff">Miércoles</text>
+<text x="200.0" y="166.5" text-anchor="middle" font-size="10.5" fill="#b6a5dd">revisas</text>
+<text x="200.0" y="180.0" text-anchor="middle" font-size="10.5" fill="#b6a5dd">el avance</text>
+<rect x="274" y="130" width="118" height="62" rx="12" fill="#10231a" stroke="#4a8a63" stroke-width="1.4"/>
+<text x="333.0" y="151.0" text-anchor="middle" font-size="13" font-weight="600" fill="#d8f3e2">Viernes</text>
+<text x="333.0" y="166.5" text-anchor="middle" font-size="10.5" fill="#94c4a6">cierras y</text>
+<text x="333.0" y="180.0" text-anchor="middle" font-size="10.5" fill="#94c4a6">aprendes</text>
+<text x="8" y="96" font-size="10" fill="#8b8577" text-anchor="start" class="mono">▲ CADA DÍA</text>
+<text x="8" y="120" font-size="10" fill="#8b8577" text-anchor="start" class="mono">▼ CADA SEMANA</text>
+</svg></div>
+  <p class="idea">El Despacho cambia según la hora y el día. Por la mañana te da el plan, al mediodía un punto de control, al cierre lo que se movió. El lunes eliges tres apuestas, el miércoles revisas y el viernes cierras.</p>
+  <dl class="dl">
+    <dt>Por qué</dt><dd>Cadencia tipo EOS y sprint semanal: los equipos que se reúnen siempre igual deciden más rápido. Sin ritmo, todo se siente urgente.</dd>
+    <dt>En pantalla</dt><dd>Un encabezado que dice «es lunes: elige tus 3 apuestas» o «es viernes: esto se cerró y esto se arrastró».</dd>
+    <dt>Usa</dt><dd><span class="chip">Rutina de las 7:23</span><span class="chip">Calendario</span><span class="chip">Sheet de apuestas</span></dd>
+    <dt>Esfuerzo</dt><dd>Mediano</dd>
+    <dt>Estado</dt><dd>La rutina de la mañana ya existe.</dd>
+  </dl>
+</article>
+<article class="forma" id="forma-E">
+  <div class="fh"><span class="letra">E</span><h3>El Operador</h3></div>
+  <div class="dg"><svg viewBox="0 0 400 210" role="img" aria-label="Tú dictas; Claude arma el plan y lo clasifica en verde, ámbar o rojo." xmlns="http://www.w3.org/2000/svg">
+<path d="M85.0,105.0 L101.0,105.0" fill="none" stroke="#c9a227" stroke-width="1.7" class="flow" marker-end="url(#ah-g)" opacity=".92"/>
+<path d="M211.0,82.1 L261.7,61.0" fill="none" stroke="#6fbf8b" stroke-width="1.7" class="flow" marker-end="url(#ah-v)" opacity=".92"/>
+<path d="M211.0,105.0 L259.0,105.0" fill="none" stroke="#c9a227" stroke-width="1.7" class="flow" marker-end="url(#ah-g)" opacity=".92"/>
+<path d="M211.0,127.9 L261.7,149.0" fill="none" stroke="#d8695a" stroke-width="1.7" class="flow" marker-end="url(#ah-r)" opacity=".92"/>
+<rect x="4" y="78" width="78" height="54" rx="12" fill="#10231a" stroke="#4a8a63" stroke-width="1.4"/>
+<text x="43.0" y="102.0" text-anchor="middle" font-size="12" font-weight="600" fill="#d8f3e2">Tú</text>
+<text x="43.0" y="117.0" text-anchor="middle" font-size="12" font-weight="600" fill="#d8f3e2">dictas</text>
+<rect x="104" y="62" width="104" height="86" rx="12" fill="#1d1630" stroke="#7a5fbd" stroke-width="1.4"/>
+<text x="156.0" y="102.0" text-anchor="middle" font-size="12.5" font-weight="600" fill="#eee6ff">Claude</text>
+<text x="156.0" y="117.5" text-anchor="middle" font-size="12.5" font-weight="600" fill="#eee6ff">arma el plan</text>
+<rect x="262" y="8" width="134" height="50" rx="12" fill="#10231a" stroke="#4a8a63" stroke-width="1.4"/>
+<text x="329.0" y="29.5" text-anchor="middle" font-size="12" font-weight="600" fill="#d8f3e2">VERDE</text>
+<text x="329.0" y="44.5" text-anchor="middle" font-size="10" fill="#94c4a6">lo hace y avisa</text>
+<rect x="262" y="80" width="134" height="50" rx="12" fill="#2a2010" stroke="#a37d22" stroke-width="1.4"/>
+<text x="329.0" y="101.5" text-anchor="middle" font-size="12" font-weight="600" fill="#f4e6c4">ÁMBAR</text>
+<text x="329.0" y="116.5" text-anchor="middle" font-size="10" fill="#c7b07a">un toque tuyo</text>
+<rect x="262" y="152" width="134" height="50" rx="12" fill="#2e1914" stroke="#c2603f" stroke-width="1.4"/>
+<text x="329.0" y="173.5" text-anchor="middle" font-size="12" font-weight="600" fill="#f8dccf">ROJO</text>
+<text x="329.0" y="188.5" text-anchor="middle" font-size="10" fill="#d9a793">firmas tú</text>
+</svg></div>
+  <p class="idea">Hablas o escribes lo que quieres («que Alma mande la cotización a EBI») y Claude lo convierte en un plan con pasos y dueños. Lo verde lo ejecuta y avisa; lo ámbar te pide un toque; lo rojo queda como borrador hasta que firmes.</p>
+  <dl class="dl">
+    <dt>Por qué</dt><dd>Persona en el circuito con compuertas de aprobación: la máquina hace lo repetible y las decisiones irreversibles siguen siendo tuyas. Es la forma de que «todo salga desde el Despacho» sin perder el control.</dd>
+    <dt>En pantalla</dt><dd>Una caja de dictado, el plan propuesto con su semáforo y, al terminar, la constancia de lo que se hizo.</dd>
+    <dt>Usa</dt><dd><span class="chip">Claude</span><span class="chip">Encargos</span><span class="chip">Gmail (borradores)</span><span class="chip">Calendar</span></dd>
+    <dt>Esfuerzo</dt><dd>Mediano a grande</dd>
+    <dt>Estado</dt><dd>Falta el semáforo y el plan por pasos.</dd>
+  </dl>
+</article></div>
+</div></section>
+
+<section class="blk" id="mapa"><div class="w">
+ <div class="eyebrow">Parte 2</div>
+ <h2>Cinco sistemas que <em>conectan</em> todo.</h2>
+ <p class="sec-lead">Este es el mapa completo. Los tableros avisan al Buzón (1), el Despacho lee el Buzón y una foto de respaldo (3), las Reglas (5) convierten eventos en órdenes, los Encargos (2) las llevan a los tableros con ayuda de Claude y el Altavoz (4) te avisa a ti, que decides con un toque.</p>
+ <div class="dg"><svg viewBox="0 0 900 580" role="img" aria-label="Mapa de los cinco sistemas alrededor del Despacho." xmlns="http://www.w3.org/2000/svg">
+<path d="M163.0,72.7 L352.0,59.7" fill="none" stroke="#5aa2d0" stroke-width="1.7" class="flow" marker-end="url(#ah-b)" opacity=".92"/>
+<path d="M93.5,129.0 L109.0,222.0" fill="none" stroke="#8b8577" stroke-width="1.7" class="flow" stroke-dasharray="3 5" marker-end="url(#ah-n)" opacity=".92"/>
+<path d="M450.0,89.0 L450.0,222.0" fill="none" stroke="#5aa2d0" stroke-width="1.7" class="flow" marker-end="url(#ah-b)" opacity=".92"/>
+<path d="M548.0,61.5 L697.0,74.5" fill="none" stroke="#9a80dd" stroke-width="1.7" class="flow" marker-end="url(#ah-p)" opacity=".92"/>
+<path d="M213.0,263.0 L362.0,270.5" fill="none" stroke="#8b8577" stroke-width="1.7" class="flow" stroke-dasharray="3 5" marker-end="url(#ah-n)" opacity=".92"/>
+<path d="M795.0,119.0 L795.0,222.0" fill="none" stroke="#9a80dd" stroke-width="1.7" class="flow" marker-end="url(#ah-p)" opacity=".92"/>
+<path d="M538.0,270.7 L697.0,262.8" fill="none" stroke="#c9a227" stroke-width="1.7" class="flow" marker-end="url(#ah-g)" opacity=".92"/>
+<path d="M795.0,294.0 L795.0,372.0" fill="none" stroke="#9a80dd" stroke-width="1.7" class="flow" marker-end="url(#ah-p)" opacity=".92"/>
+<path d="M791.8,444.0 L788.0,487.0" fill="none" stroke="#9a80dd" stroke-width="1.7" class="flow" marker-end="url(#ah-p)" opacity=".92"/>
+<path d="M371.2,328.0 L268.5,397.0" fill="none" stroke="#6fbf8b" stroke-width="1.7" class="flow" marker-end="url(#ah-v)" opacity=".92"/>
+<path d="M313.0,456.6 L397.0,476.8" fill="none" stroke="#6fbf8b" stroke-width="1.7" class="flow" marker-end="url(#ah-v)" opacity=".92"/>
+<path d="M480.1,467.0 L458.3,328.0" fill="none" stroke="#c9a227" stroke-width="1.7" class="flow" marker-end="url(#ah-g)" opacity=".92"/>
+<rect x="10" y="30" width="150" height="96" rx="12" fill="#17140f" stroke="#4a4132" stroke-width="1.4"/>
+<text x="85.0" y="61.5" text-anchor="middle" font-size="13.5" font-weight="600" fill="#ece7db">LOS TABLEROS</text>
+<text x="85.0" y="77.0" text-anchor="middle" font-size="10.5" fill="#a39e93">MOAC · Flujo · Obra</text>
+<text x="85.0" y="90.5" text-anchor="middle" font-size="10.5" fill="#a39e93">Sala · Plan · Miramar</text>
+<text x="85.0" y="104.0" text-anchor="middle" font-size="10.5" fill="#a39e93">Interiores · Inversión</text>
+<rect x="355" y="20" width="190" height="66" rx="12" fill="#0f1f2b" stroke="#3a7096" stroke-width="1.4"/>
+<line x1="365" y1="27" x2="535" y2="27" stroke="#3a7096" stroke-width="1" opacity=".6"/>
+<text x="450.0" y="52.75" text-anchor="middle" font-size="13.5" font-weight="600" fill="#d6ebf8">EL BUZÓN</text>
+<text x="450.0" y="68.75" text-anchor="middle" font-size="11" fill="#8fb4cc">eventos con folio</text>
+<rect x="414.2" y="11" width="71.6" height="17" rx="8.5" fill="#0b0b0d" stroke="#3a7096" stroke-width="1"/>
+<text x="450.0" y="23" text-anchor="middle" font-size="9.5" font-weight="700" letter-spacing=".08em" fill="#d6ebf8" class="mono">SISTEMA 1</text>
+<rect x="365" y="225" width="170" height="100" rx="12" fill="#c9a227" stroke="#e8c35a" stroke-width="1.4"/>
+<text x="450.0" y="272.5" text-anchor="middle" font-size="15" font-weight="600" fill="#0b0b0d">EL DESPACHO</text>
+<text x="450.0" y="288.5" text-anchor="middle" font-size="11" fill="#3a2d08">una sola pantalla</text>
+<rect x="700" y="50" width="190" height="66" rx="12" fill="#1d1630" stroke="#7a5fbd" stroke-width="1.4"/>
+<text x="795.0" y="79.75" text-anchor="middle" font-size="13.5" font-weight="600" fill="#eee6ff">LAS REGLAS</text>
+<text x="795.0" y="95.75" text-anchor="middle" font-size="11" fill="#b6a5dd">si pasa X, entonces Y</text>
+<rect x="759.2" y="41" width="71.6" height="17" rx="8.5" fill="#0b0b0d" stroke="#7a5fbd" stroke-width="1"/>
+<text x="795.0" y="53" text-anchor="middle" font-size="9.5" font-weight="700" letter-spacing=".08em" fill="#eee6ff" class="mono">SISTEMA 5</text>
+<rect x="700" y="225" width="190" height="66" rx="12" fill="#0f1f2b" stroke="#3a7096" stroke-width="1.4"/>
+<line x1="710" y1="232" x2="880" y2="232" stroke="#3a7096" stroke-width="1" opacity=".6"/>
+<text x="795.0" y="257.75" text-anchor="middle" font-size="13.5" font-weight="600" fill="#d6ebf8">LOS ENCARGOS</text>
+<text x="795.0" y="273.75" text-anchor="middle" font-size="11" fill="#8fb4cc">órdenes con semáforo</text>
+<rect x="759.2" y="216" width="71.6" height="17" rx="8.5" fill="#0b0b0d" stroke="#3a7096" stroke-width="1"/>
+<text x="795.0" y="228" text-anchor="middle" font-size="9.5" font-weight="700" letter-spacing=".08em" fill="#d6ebf8" class="mono">SISTEMA 2</text>
+<rect x="700" y="375" width="190" height="66" rx="12" fill="#1d1630" stroke="#7a5fbd" stroke-width="1.4"/>
+<text x="795.0" y="404.75" text-anchor="middle" font-size="13.5" font-weight="600" fill="#eee6ff">OPERADOR CLAUDE</text>
+<text x="795.0" y="420.75" text-anchor="middle" font-size="11" fill="#b6a5dd">ejecuta y deja constancia</text>
+<rect x="680" y="490" width="210" height="62" rx="12" fill="#17140f" stroke="#4a4132" stroke-width="1.4"/>
+<text x="785.0" y="518.0" text-anchor="middle" font-size="13.5" font-weight="600" fill="#ece7db">TABLERO DESTINO</text>
+<text x="785.0" y="533.5" text-anchor="middle" font-size="10.5" fill="#a39e93">Sheet · Gmail · Calendar · GitHub</text>
+<rect x="20" y="225" width="190" height="66" rx="12" fill="#2a2010" stroke="#a37d22" stroke-width="1.4"/>
+<text x="115.0" y="254.75" text-anchor="middle" font-size="13.5" font-weight="600" fill="#f4e6c4">EL ESPEJO</text>
+<text x="115.0" y="270.75" text-anchor="middle" font-size="11" fill="#c7b07a">foto cada hora, con respaldo</text>
+<rect x="79.2" y="216" width="71.6" height="17" rx="8.5" fill="#0b0b0d" stroke="#a37d22" stroke-width="1"/>
+<text x="115.0" y="228" text-anchor="middle" font-size="9.5" font-weight="700" letter-spacing=".08em" fill="#f4e6c4" class="mono">SISTEMA 3</text>
+<rect x="120" y="400" width="190" height="66" rx="12" fill="#2a2010" stroke="#a37d22" stroke-width="1.4"/>
+<text x="215.0" y="429.75" text-anchor="middle" font-size="13.5" font-weight="600" fill="#f4e6c4">EL ALTAVOZ</text>
+<text x="215.0" y="445.75" text-anchor="middle" font-size="11" fill="#c7b07a">correo · WhatsApp · calendario</text>
+<rect x="179.2" y="391" width="71.6" height="17" rx="8.5" fill="#0b0b0d" stroke="#a37d22" stroke-width="1"/>
+<text x="215.0" y="403" text-anchor="middle" font-size="9.5" font-weight="700" letter-spacing=".08em" fill="#f4e6c4" class="mono">SISTEMA 4</text>
+<rect x="400" y="470" width="170" height="56" rx="12" fill="#10231a" stroke="#4a8a63" stroke-width="1.4"/>
+<text x="485.0" y="494.75" text-anchor="middle" font-size="13.5" font-weight="600" fill="#d8f3e2">ALEJANDRO</text>
+<text x="485.0" y="510.75" text-anchor="middle" font-size="11" fill="#94c4a6">decide con un toque</text>
+<rect x="233.8" y="56.7" width="47.4" height="19" rx="7" fill="#0b0b0d" stroke="#5aa2d0" stroke-opacity=".55" stroke-width="1"/>
+<text x="257.5" y="68.7" text-anchor="middle" font-size="10.5" fill="#5aa2d0">avisan</text>
+<rect x="74.6" y="166.0" width="53.3" height="19" rx="7" fill="#0b0b0d" stroke="#8b8577" stroke-opacity=".55" stroke-width="1"/>
+<text x="101.2" y="178.0" text-anchor="middle" font-size="10.5" fill="#8b8577">su foto</text>
+<rect x="420.4" y="146.0" width="59.2" height="19" rx="7" fill="#0b0b0d" stroke="#5aa2d0" stroke-opacity=".55" stroke-width="1"/>
+<text x="450.0" y="158.0" text-anchor="middle" font-size="10.5" fill="#5aa2d0">alimenta</text>
+<rect x="592.9" y="58.5" width="59.2" height="19" rx="7" fill="#0b0b0d" stroke="#9a80dd" stroke-opacity=".55" stroke-width="1"/>
+<text x="622.5" y="70.5" text-anchor="middle" font-size="10.5" fill="#9a80dd">disparan</text>
+<rect x="257.9" y="257.3" width="59.2" height="19" rx="7" fill="#0b0b0d" stroke="#8b8577" stroke-opacity=".55" stroke-width="1"/>
+<text x="287.5" y="269.3" text-anchor="middle" font-size="10.5" fill="#8b8577">respaldo</text>
+<rect x="768.4" y="161.0" width="53.3" height="19" rx="7" fill="#0b0b0d" stroke="#9a80dd" stroke-opacity=".55" stroke-width="1"/>
+<text x="795.0" y="173.0" text-anchor="middle" font-size="10.5" fill="#9a80dd">órdenes</text>
+<rect x="590.9" y="257.2" width="53.3" height="19" rx="7" fill="#0b0b0d" stroke="#c9a227" stroke-opacity=".55" stroke-width="1"/>
+<text x="617.5" y="269.2" text-anchor="middle" font-size="10.5" fill="#c9a227">encarga</text>
+<rect x="777.2" y="323.5" width="35.6" height="19" rx="7" fill="#0b0b0d" stroke="#9a80dd" stroke-opacity=".55" stroke-width="1"/>
+<text x="795.0" y="335.5" text-anchor="middle" font-size="10.5" fill="#9a80dd">toma</text>
+<rect x="763.3" y="456.0" width="53.3" height="19" rx="7" fill="#0b0b0d" stroke="#9a80dd" stroke-opacity=".55" stroke-width="1"/>
+<text x="789.9" y="468.0" text-anchor="middle" font-size="10.5" fill="#9a80dd">ejecuta</text>
+<rect x="299.1" y="353.0" width="41.5" height="19" rx="7" fill="#0b0b0d" stroke="#6fbf8b" stroke-opacity=".55" stroke-width="1"/>
+<text x="319.9" y="365.0" text-anchor="middle" font-size="10.5" fill="#6fbf8b">avisa</text>
+<rect x="445.5" y="388.0" width="47.4" height="19" rx="7" fill="#0b0b0d" stroke="#c9a227" stroke-opacity=".55" stroke-width="1"/>
+<text x="469.2" y="400.0" text-anchor="middle" font-size="10.5" fill="#c9a227">decide</text>
+<text x="790" y="570" font-size="10.5" fill="#8b8577" text-anchor="end" class="">y el tablero vuelve a avisar al Buzón (sistema 1)</text>
+</svg></div>
+</div></section>
+
+<section class="blk" id="sistemas"><div class="w">
+ <div class="eyebrow">El detalle</div>
+ <h2>Qué hace cada sistema, con <em>qué herramientas</em> y cómo.</h2>
+ <p class="sec-lead" style="margin-bottom:26px">Cada uno trae su diagrama, los pasos, las herramientas que usa, un ejemplo real, el riesgo con su control y lo que necesita de ti.</p>
+ 
+<article class="sis" id="sis-1">
+  <header class="sh"><span class="num">1</span><div><h3>El Buzón</h3><p class="subt">Que los tableros se avisen entre sí</p></div>
+    <div class="meta"><span>Esfuerzo <b>Chico</b></span><span>Valor <b>Es la base de los otros cuatro</b></span></div></header>
+  <div class="dg"><svg viewBox="0 0 800 340" role="img" aria-label="Los tableros escriben eventos en una pestaña; un Vigía de diferencias anota lo que cambió aunque el tablero no avise; el Despacho y las reglas leen." xmlns="http://www.w3.org/2000/svg">
+<path d="M143.0,65.0 L297.0,116.9" fill="none" stroke="#5aa2d0" stroke-width="1.7" class="flow" marker-end="url(#ah-b)" opacity=".92"/>
+<path d="M143.0,109.0 L297.0,134.1" fill="none" stroke="#5aa2d0" stroke-width="1.7" class="flow" marker-end="url(#ah-b)" opacity=".92"/>
+<path d="M143.0,153.2 L297.0,151.2" fill="none" stroke="#5aa2d0" stroke-width="1.7" class="flow" marker-end="url(#ah-b)" opacity=".92"/>
+<path d="M143.0,197.2 L297.0,168.4" fill="none" stroke="#5aa2d0" stroke-width="1.7" class="flow" marker-end="url(#ah-b)" opacity=".92"/>
+<path d="M203.0,269.1 Q265.9,253.8 329.1,203.0" fill="none" stroke="#9a80dd" stroke-width="1.7" class="flow" marker-end="url(#ah-p)" opacity=".92"/>
+<path d="M493.0,126.5 L607.0,99.3" fill="none" stroke="#5aa2d0" stroke-width="1.7" class="flow" marker-end="url(#ah-b)" opacity=".92"/>
+<path d="M493.0,160.0 L607.0,171.5" fill="none" stroke="#9a80dd" stroke-width="1.7" class="flow" marker-end="url(#ah-p)" opacity=".92"/>
+<rect x="10" y="20" width="130" height="44" rx="12" fill="#17140f" stroke="#4a4132" stroke-width="1.4"/>
+<text x="75.0" y="47.0" text-anchor="middle" font-size="13" font-weight="600" fill="#ece7db">Obra</text>
+<rect x="10" y="76" width="130" height="44" rx="12" fill="#17140f" stroke="#4a4132" stroke-width="1.4"/>
+<text x="75.0" y="103.0" text-anchor="middle" font-size="13" font-weight="600" fill="#ece7db">Flujo</text>
+<rect x="10" y="132" width="130" height="44" rx="12" fill="#17140f" stroke="#4a4132" stroke-width="1.4"/>
+<text x="75.0" y="159.0" text-anchor="middle" font-size="13" font-weight="600" fill="#ece7db">MOAC</text>
+<rect x="10" y="188" width="130" height="44" rx="12" fill="#17140f" stroke="#4a4132" stroke-width="1.4"/>
+<text x="75.0" y="214.75" text-anchor="middle" font-size="12.5" font-weight="600" fill="#ece7db">Plan de Potencial</text>
+<rect x="10" y="262" width="190" height="62" rx="12" fill="#1d1630" stroke="#7a5fbd" stroke-width="1.4"/>
+<text x="105.0" y="283.25" text-anchor="middle" font-size="13.5" font-weight="600" fill="#eee6ff">Vigía de diferencias</text>
+<text x="105.0" y="298.75" text-anchor="middle" font-size="10.5" fill="#b6a5dd">compara la foto de hoy</text>
+<text x="105.0" y="312.25" text-anchor="middle" font-size="10.5" fill="#b6a5dd">con la de ayer</text>
+<rect x="300" y="100" width="190" height="100" rx="12" fill="#0f1f2b" stroke="#3a7096" stroke-width="1.4"/>
+<line x1="310" y1="107" x2="480" y2="107" stroke="#3a7096" stroke-width="1" opacity=".6"/>
+<text x="395.0" y="143.5" text-anchor="middle" font-size="15" font-weight="600" fill="#d6ebf8">EVENTOS</text>
+<text x="395.0" y="159.5" text-anchor="middle" font-size="11" fill="#8fb4cc">pestaña en Control Maestro</text>
+<text x="395.0" y="173.5" text-anchor="middle" font-size="11" fill="#8fb4cc">solo se agrega, no se borra</text>
+<rect x="359.2" y="91" width="71.6" height="17" rx="8.5" fill="#0b0b0d" stroke="#3a7096" stroke-width="1"/>
+<text x="395.0" y="103" text-anchor="middle" font-size="9.5" font-weight="700" letter-spacing=".08em" fill="#d6ebf8" class="mono">SISTEMA 1</text>
+<rect x="610" y="40" width="180" height="74" rx="12" fill="#c9a227" stroke="#e8c35a" stroke-width="1.4"/>
+<text x="700.0" y="74.0" text-anchor="middle" font-size="14" font-weight="600" fill="#0b0b0d">EL DESPACHO</text>
+<text x="700.0" y="90.0" text-anchor="middle" font-size="11" fill="#3a2d08">Pulso · Cuello · Bitácora</text>
+<rect x="610" y="150" width="180" height="62" rx="12" fill="#1d1630" stroke="#7a5fbd" stroke-width="1.4"/>
+<text x="700.0" y="177.75" text-anchor="middle" font-size="13.5" font-weight="600" fill="#eee6ff">LAS REGLAS</text>
+<text x="700.0" y="193.75" text-anchor="middle" font-size="11" fill="#b6a5dd">leen los eventos nuevos</text>
+<rect x="664.2" y="141" width="71.6" height="17" rx="8.5" fill="#0b0b0d" stroke="#7a5fbd" stroke-width="1"/>
+<text x="700.0" y="153" text-anchor="middle" font-size="9.5" font-weight="700" letter-spacing=".08em" fill="#eee6ff" class="mono">SISTEMA 5</text>
+<rect x="300" y="250" width="490" height="74" rx="12" fill="none" stroke="#3a3427" stroke-width="1.4" stroke-dasharray="5 4"/>
+<text x="545.0" y="283.5" text-anchor="middle" font-size="13.5" font-weight="600" fill="#a39e93">Un evento se ve así</text>
+<text x="545.0" y="300.0" text-anchor="middle" font-size="11.5" fill="#7c776d">OBRA.AVANCE_VERIFICADO · PRJ-ALYSA · 29-sep · llave a1f3c2</text>
+<rect x="166.8" y="81.4" width="106.4" height="19" rx="7" fill="#0b0b0d" stroke="#5aa2d0" stroke-opacity=".55" stroke-width="1"/>
+<text x="220.0" y="93.4" text-anchor="middle" font-size="10.5" fill="#5aa2d0">el tablero avisa</text>
+<rect x="203.9" y="235.4" width="124.1" height="19" rx="7" fill="#0b0b0d" stroke="#9a80dd" stroke-opacity=".55" stroke-width="1"/>
+<text x="266.0" y="247.4" text-anchor="middle" font-size="10.5" fill="#9a80dd">anota lo que cambió</text>
+<rect x="535.1" y="103.4" width="29.7" height="19" rx="7" fill="#0b0b0d" stroke="#5aa2d0" stroke-opacity=".55" stroke-width="1"/>
+<text x="550.0" y="115.4" text-anchor="middle" font-size="10.5" fill="#5aa2d0">lee</text>
+<rect x="523.4" y="156.3" width="53.3" height="19" rx="7" fill="#0b0b0d" stroke="#9a80dd" stroke-opacity=".55" stroke-width="1"/>
+<text x="550.0" y="168.3" text-anchor="middle" font-size="10.5" fill="#9a80dd">dispara</text>
+</svg></div>
+  <p class="que">Una pestaña única, EVENTOS, donde cada cosa que pasa en cualquier tablero queda como una línea con folio. Es la memoria común: el Despacho ya no pregunta a 8 tableros «¿qué pasó?», lo lee en un solo lugar.</p>
+  <div class="cols">
+    <div><h4>Cómo funciona</h4><ol class="pasos"><li>Se crea la pestaña EVENTOS en el Sheet «YOD OS · Control Maestro» con columnas: llave, fecha, folio, origen, tipo, estado, detalle (sin cifras de dinero).</li><li><b>Entrada A, sin tocar los tableros:</b> el Vigía de diferencias lee cada Sheet una vez por hora, compara con la foto anterior y escribe un evento por cada cambio real (una tarjeta pasó a Terminado, un avance se verificó).</li><li><b>Entrada B, cuando quieras:</b> cada Apps Script agrega una función de 12 líneas que escribe su propio evento al momento. Se hace tablero por tablero, sin prisa.</li><li>La <b>llave única</b> (folio + tipo + día + dato clave) evita duplicar: repetir un aviso no crea otra línea. Esto importa porque repetir una escritura en el Apps Script ya duplicó una tarjeta antes (A-149).</li><li>El Despacho lee EVENTOS para el Pulso y la Bitácora; las Reglas los leen para disparar acciones.</li></ol></div>
+    <div>
+      <h4>Herramientas</h4><div class="chips"><span class="chip">Google Sheets</span><span class="chip">Apps Script</span><span class="chip">Rutina de Claude</span><span class="chip">Folio PRJ-…</span></div>
+      <h4>Ejemplo real</h4><p class="ej">Obra verifica un avance de Casa Alysa. En una hora aparece <b>OBRA.AVANCE_VERIFICADO · PRJ-ALYSA</b>. El Despacho baja la tarjeta «esperando avance» y sube el contador de cerradas.</p>
+      <h4>Riesgo y cómo se controla</h4><p>Doble escritura si dos entradas anotan lo mismo → la llave única lo bloquea. Un Apps Script que se cae no debe tirar al Despacho → el Despacho solo lee.</p>
+      <h4>Lo que necesita de ti</h4><p class="mano">Nada para la Entrada A. Para la Entrada B: pegar 12 líneas en cada Apps Script (yo las escribo y te dejo el paso a paso, como en SETUP.md).</p>
+    </div>
+  </div>
+</article>
+<article class="sis" id="sis-2">
+  <header class="sh"><span class="num">2</span><div><h3>Los Encargos</h3><p class="subt">Que el Despacho pueda mandar</p></div>
+    <div class="meta"><span>Esfuerzo <b>Mediano</b></span><span>Valor <b>Convierte al Despacho en el origen de todo</b></span></div></header>
+  <div class="dg"><svg viewBox="0 0 800 470" role="img" aria-label="Tú das una orden en el Despacho; queda como encargo; Claude la toma; el semáforo decide si ejecuta, te pregunta o espera tu firma; al final hay constancia." xmlns="http://www.w3.org/2000/svg">
+<path d="M143.0,57.0 L187.0,57.0" fill="none" stroke="#c9a227" stroke-width="1.7" class="flow" marker-end="url(#ah-g)" opacity=".92"/>
+<path d="M343.0,57.0 L387.0,57.0" fill="none" stroke="#c9a227" stroke-width="1.7" class="flow" marker-end="url(#ah-g)" opacity=".92"/>
+<path d="M583.0,57.0 L637.0,57.0" fill="none" stroke="#9a80dd" stroke-width="1.7" class="flow" marker-end="url(#ah-p)" opacity=".92"/>
+<path d="M710.4,97.0 L705.8,137.0" fill="none" stroke="#9a80dd" stroke-width="1.7" class="flow" marker-end="url(#ah-p)" opacity=".92"/>
+<path d="M612.0,184.3 L253.0,257.1" fill="none" stroke="#d8695a" stroke-width="1.7" class="flow" marker-end="url(#ah-r)" opacity=".92"/>
+<path d="M626.2,195.0 L489.4,247.0" fill="none" stroke="#c9a227" stroke-width="1.7" class="flow" marker-end="url(#ah-g)" opacity=".92"/>
+<path d="M694.3,195.0 L679.6,247.0" fill="none" stroke="#6fbf8b" stroke-width="1.7" class="flow" marker-end="url(#ah-v)" opacity=".92"/>
+<path d="M670.0,315.0 L670.0,367.0" fill="none" stroke="#6fbf8b" stroke-width="1.7" class="flow" marker-end="url(#ah-v)" opacity=".92"/>
+<path d="M547.0,403.8 L483.0,405.3" fill="none" stroke="#8b8577" stroke-width="1.7" class="flow" marker-end="url(#ah-n)" opacity=".92"/>
+<rect x="10" y="28" width="130" height="58" rx="12" fill="#10231a" stroke="#4a8a63" stroke-width="1.4"/>
+<text x="75.0" y="54.25" text-anchor="middle" font-size="13.5" font-weight="600" fill="#d8f3e2">Tú</text>
+<text x="75.0" y="69.25" text-anchor="middle" font-size="10" fill="#94c4a6">botón · dictado · chinche</text>
+<rect x="190" y="20" width="150" height="74" rx="12" fill="#c9a227" stroke="#e8c35a" stroke-width="1.4"/>
+<text x="265.0" y="54.0" text-anchor="middle" font-size="14" font-weight="600" fill="#0b0b0d">EL DESPACHO</text>
+<text x="265.0" y="70.0" text-anchor="middle" font-size="11" fill="#3a2d08">da la orden</text>
+<rect x="390" y="14" width="190" height="86" rx="12" fill="#0f1f2b" stroke="#3a7096" stroke-width="1.4"/>
+<line x1="400" y1="21" x2="570" y2="21" stroke="#3a7096" stroke-width="1" opacity=".6"/>
+<text x="485.0" y="51.0" text-anchor="middle" font-size="15" font-weight="600" fill="#d6ebf8">ENCARGOS</text>
+<text x="485.0" y="66.5" text-anchor="middle" font-size="10.5" fill="#8fb4cc">folio · acción · llave única</text>
+<text x="485.0" y="80.0" text-anchor="middle" font-size="10.5" fill="#8fb4cc">semáforo · quién · estado</text>
+<rect x="449.2" y="5" width="71.6" height="17" rx="8.5" fill="#0b0b0d" stroke="#3a7096" stroke-width="1"/>
+<text x="485.0" y="17" text-anchor="middle" font-size="9.5" font-weight="700" letter-spacing=".08em" fill="#d6ebf8" class="mono">SISTEMA 2</text>
+<rect x="640" y="20" width="150" height="74" rx="12" fill="#1d1630" stroke="#7a5fbd" stroke-width="1.4"/>
+<text x="715.0" y="54.0" text-anchor="middle" font-size="13.5" font-weight="600" fill="#eee6ff">Operador Claude</text>
+<text x="715.0" y="69.5" text-anchor="middle" font-size="10.5" fill="#b6a5dd">la toma y la marca</text>
+<rect x="615" y="140" width="175" height="52" rx="12" fill="#2a2010" stroke="#a37d22" stroke-width="1.4"/>
+<text x="702.5" y="163.0" text-anchor="middle" font-size="13.5" font-weight="600" fill="#f4e6c4">SEMÁFORO</text>
+<text x="702.5" y="178.5" text-anchor="middle" font-size="10.5" fill="#c7b07a">¿qué tan riesgoso es?</text>
+<rect x="20" y="250" width="230" height="62" rx="12" fill="#2e1914" stroke="#c2603f" stroke-width="1.4"/>
+<text x="135.0" y="270.75" text-anchor="middle" font-size="13.5" font-weight="600" fill="#f8dccf">ROJO · lo firmas tú</text>
+<text x="135.0" y="286.75" text-anchor="middle" font-size="11" fill="#d9a793">borrador en el Despacho,</text>
+<text x="135.0" y="300.75" text-anchor="middle" font-size="11" fill="#d9a793">espera tu firma</text>
+<rect x="285" y="250" width="230" height="62" rx="12" fill="#2a2010" stroke="#a37d22" stroke-width="1.4"/>
+<text x="400.0" y="270.75" text-anchor="middle" font-size="13.5" font-weight="600" fill="#f4e6c4">ÁMBAR · un toque</text>
+<text x="400.0" y="286.75" text-anchor="middle" font-size="11" fill="#c7b07a">te pregunta en el Despacho</text>
+<text x="400.0" y="300.75" text-anchor="middle" font-size="11" fill="#c7b07a">y sigue cuando contestas</text>
+<rect x="550" y="250" width="240" height="62" rx="12" fill="#10231a" stroke="#4a8a63" stroke-width="1.4"/>
+<text x="670.0" y="270.75" text-anchor="middle" font-size="13.5" font-weight="600" fill="#d8f3e2">VERDE · lo hace y avisa</text>
+<text x="670.0" y="286.75" text-anchor="middle" font-size="11" fill="#94c4a6">reversible, sin dinero,</text>
+<text x="670.0" y="300.75" text-anchor="middle" font-size="11" fill="#94c4a6">sin terceros</text>
+<rect x="550" y="370" width="240" height="62" rx="12" fill="#17140f" stroke="#4a4132" stroke-width="1.4"/>
+<text x="670.0" y="398.0" text-anchor="middle" font-size="13.5" font-weight="600" fill="#ece7db">Herramienta destino</text>
+<text x="670.0" y="413.5" text-anchor="middle" font-size="10.5" fill="#a39e93">Sheets · Gmail · Calendar · GitHub</text>
+<rect x="250" y="370" width="230" height="76" rx="12" fill="#0f1f2b" stroke="#3a7096" stroke-width="1.4"/>
+<line x1="260" y1="377" x2="470" y2="377" stroke="#3a7096" stroke-width="1" opacity=".6"/>
+<text x="365.0" y="401.25" text-anchor="middle" font-size="13.5" font-weight="600" fill="#d6ebf8">CONSTANCIA</text>
+<text x="365.0" y="416.75" text-anchor="middle" font-size="10.5" fill="#8fb4cc">lectura de vuelta + captura;</text>
+<text x="365.0" y="430.25" text-anchor="middle" font-size="10.5" fill="#8fb4cc">recién ahí cierra en el Despacho</text>
+<rect x="643.4" y="331.5" width="53.3" height="19" rx="7" fill="#0b0b0d" stroke="#6fbf8b" stroke-opacity=".55" stroke-width="1"/>
+<text x="670.0" y="343.5" text-anchor="middle" font-size="10.5" fill="#6fbf8b">ejecuta</text>
+<rect x="482.4" y="395.1" width="65.1" height="19" rx="7" fill="#0b0b0d" stroke="#8b8577" stroke-opacity=".55" stroke-width="1"/>
+<text x="515.0" y="407.1" text-anchor="middle" font-size="10.5" fill="#8b8577">de vuelta</text>
+</svg></div>
+  <p class="que">El camino de ida: del Despacho a cualquier tablero o herramienta. Ya existe una versión chica (la chinche y los botones de Decisiones mandan un ENCARGO a la Sala). Este sistema la convierte en la vía oficial de todo lo que sale del Despacho.</p>
+  <div class="cols">
+    <div><h4>Cómo funciona</h4><ol class="pasos"><li>Cada orden se guarda con <b>folio, acción, llave única, semáforo, responsable y estado</b>.</li><li>Claude toma la orden y la <b>marca como tomada</b> para que dos sesiones no hagan lo mismo.</li><li><b>Verde:</b> reversible, sin dinero y sin escribir a terceros. Se ejecuta y se avisa.  <b>Ámbar:</b> se te pregunta con un toque.  <b>Rojo:</b> se prepara el borrador y espera tu firma.</li><li>Si falla, reintenta con la misma llave: no duplica y no pierde la orden.</li><li>Al terminar se <b>lee de vuelta</b> lo escrito y se guarda la captura. Solo con esa constancia la orden se cierra. «Cerrado significa resuelto, nunca avisado», como ya dice el README del Despacho.</li></ol></div>
+    <div>
+      <h4>Herramientas</h4><div class="chips"><span class="chip">Sheet ENCARGOS</span><span class="chip">Rutinas de Claude</span><span class="chip">Gmail (solo borradores)</span><span class="chip">Google Calendar</span><span class="chip">GitHub</span></div>
+      <h4>Ejemplo real</h4><p class="ej">Dices «que Fernando prepare la respuesta a Ofelia». Es ámbar (toca a un tercero). Claude deja el borrador en Gmail, el Despacho te lo muestra y, cuando lo firmas, se envía y queda la constancia.</p>
+      <h4>Riesgo y cómo se controla</h4><p>Que algo se ejecute mal o de más → semáforo estricto, llave única y lectura de vuelta. Que se escriba a un tercero sin permiso → siempre rojo o ámbar.</p>
+      <h4>Lo que necesita de ti</h4><p class="mano">Confirmar la regla del semáforo (qué es verde, ámbar y rojo). Es una conversación de 10 minutos.</p>
+    </div>
+  </div>
+</article>
+<article class="sis" id="sis-3">
+  <header class="sh"><span class="num">3</span><div><h3>El Espejo</h3><p class="subt">Que el Despacho no dependa de que Google conteste</p></div>
+    <div class="meta"><span>Esfuerzo <b>Mediano</b></span><span>Valor <b>Rapidez y resistencia</b></span></div></header>
+  <div class="dg"><svg viewBox="0 0 900 320" role="img" aria-label="Sheets alimentan un robot de GitHub que guarda una foto pública sin datos reales y otra cifrada; el Despacho las lee desde su propio origen." xmlns="http://www.w3.org/2000/svg">
+<path d="M173.0,151.0 L287.0,151.0" fill="none" stroke="#5aa2d0" stroke-width="1.7" class="flow" marker-end="url(#ah-b)" opacity=".92"/>
+<path d="M483.0,121.4 L607.0,84.0" fill="none" stroke="#8b8577" stroke-width="1.7" class="flow" marker-end="url(#ah-n)" opacity=".92"/>
+<path d="M483.0,180.6 L607.0,218.0" fill="none" stroke="#8b8577" stroke-width="1.7" class="flow" marker-end="url(#ah-n)" opacity=".92"/>
+<path d="M756.5,97.0 L807.0,125.9" fill="none" stroke="#8b8577" stroke-width="1.7" class="flow" marker-end="url(#ah-n)" opacity=".92"/>
+<path d="M756.5,205.0 L807.0,176.1" fill="none" stroke="#8b8577" stroke-width="1.7" class="flow" marker-end="url(#ah-n)" opacity=".92"/>
+<rect x="10" y="110" width="160" height="82" rx="12" fill="#0f1f2b" stroke="#3a7096" stroke-width="1.4"/>
+<line x1="20" y1="117" x2="160" y2="117" stroke="#3a7096" stroke-width="1" opacity=".6"/>
+<text x="90.0" y="150.25" text-anchor="middle" font-size="12.5" font-weight="600" fill="#d6ebf8">Sheets de los tableros</text>
+<text x="90.0" y="166.25" text-anchor="middle" font-size="11" fill="#8fb4cc">MOAC · Flujo · Obra…</text>
+<rect x="290" y="110" width="190" height="82" rx="12" fill="#2a2010" stroke="#a37d22" stroke-width="1.4"/>
+<text x="385.0" y="141.25" text-anchor="middle" font-size="13.5" font-weight="600" fill="#f4e6c4">Robot de GitHub</text>
+<text x="385.0" y="156.75" text-anchor="middle" font-size="10.5" fill="#c7b07a">cada hora (:37) y al instante</text>
+<text x="385.0" y="170.25" text-anchor="middle" font-size="10.5" fill="#c7b07a">reusa el Vigía que ya corre</text>
+<rect x="349.2" y="101" width="71.6" height="17" rx="8.5" fill="#0b0b0d" stroke="#a37d22" stroke-width="1"/>
+<text x="385.0" y="113" text-anchor="middle" font-size="9.5" font-weight="700" letter-spacing=".08em" fill="#f4e6c4" class="mono">SISTEMA 3</text>
+<rect x="610" y="24" width="160" height="70" rx="12" fill="#0f1f2b" stroke="#3a7096" stroke-width="1.4"/>
+<line x1="620" y1="31" x2="760" y2="31" stroke="#3a7096" stroke-width="1" opacity=".6"/>
+<text x="690.0" y="52.25" text-anchor="middle" font-size="13.5" font-weight="600" fill="#d6ebf8">foto pública</text>
+<text x="690.0" y="67.75" text-anchor="middle" font-size="10.5" fill="#8fb4cc">sin datos reales</text>
+<text x="690.0" y="81.25" text-anchor="middle" font-size="10.5" fill="#8fb4cc">mismo origen</text>
+<rect x="610" y="208" width="160" height="70" rx="12" fill="#0f1f2b" stroke="#3a7096" stroke-width="1.4"/>
+<line x1="620" y1="215" x2="760" y2="215" stroke="#3a7096" stroke-width="1" opacity=".6"/>
+<text x="690.0" y="236.25" text-anchor="middle" font-size="13.5" font-weight="600" fill="#d6ebf8">foto cifrada</text>
+<text x="690.0" y="251.75" text-anchor="middle" font-size="10.5" fill="#8fb4cc">lo sensible (AES)</text>
+<text x="690.0" y="265.25" text-anchor="middle" font-size="10.5" fill="#8fb4cc">se abre con tu sesión</text>
+<rect x="810" y="110" width="82" height="82" rx="12" fill="#c9a227" stroke="#e8c35a" stroke-width="1.4"/>
+<text x="851.0" y="148.0" text-anchor="middle" font-size="11.5" font-weight="600" fill="#0b0b0d">EL</text>
+<text x="851.0" y="162.5" text-anchor="middle" font-size="11.5" font-weight="600" fill="#0b0b0d">DESPACHO</text>
+<rect x="10" y="236" width="440" height="60" rx="12" fill="none" stroke="#3a3427" stroke-width="1.4" stroke-dasharray="5 4"/>
+<text x="230.0" y="263.0" text-anchor="middle" font-size="13.5" font-weight="600" fill="#a39e93">Las órdenes NO pasan por aquí</text>
+<text x="230.0" y="278.5" text-anchor="middle" font-size="10.5" fill="#7c776d">van directo al tablero (ver sistema 2, Los Encargos)</text>
+<rect x="191.6" y="141.5" width="76.9" height="19" rx="7" fill="#0b0b0d" stroke="#5aa2d0" stroke-opacity=".55" stroke-width="1"/>
+<text x="230.0" y="153.5" text-anchor="middle" font-size="10.5" fill="#5aa2d0">lee por API</text>
+<rect x="494.8" y="93.2" width="100.5" height="19" rx="7" fill="#0b0b0d" stroke="#8b8577" stroke-opacity=".55" stroke-width="1"/>
+<text x="545.0" y="105.2" text-anchor="middle" font-size="10.5" fill="#8b8577">filtra y guarda</text>
+<rect x="497.7" y="189.8" width="94.6" height="19" rx="7" fill="#0b0b0d" stroke="#8b8577" stroke-opacity=".55" stroke-width="1"/>
+<text x="545.0" y="201.8" text-anchor="middle" font-size="10.5" fill="#8b8577">cifra y guarda</text>
+</svg></div>
+  <p class="que">Una foto reciente de todos los tableros, guardada junto al Despacho. El Despacho la lee al instante, aunque el Apps Script tarde o Google falle. Hoy una lectura puede tardar hasta 75 segundos y a veces contesta una página en vez de datos.</p>
+  <div class="cols">
+    <div><h4>Cómo funciona</h4><ol class="pasos"><li>Un robot de GitHub corre cada hora (se cuelga del Vigía que ya existe, para no gastar más minutos) y también cuando un tablero lo llama.</li><li>Lee cada Sheet por la API y arma un JSON por tablero.</li><li><b>Lo público</b> (conteos, estados, folios) se guarda en claro. <b>Lo sensible</b> se guarda cifrado, igual que hace hoy yodesarrollo-board con datos.enc.</li><li>El Despacho lee estos archivos desde su mismo origen: sin CORS, sin esperar a Google, y siempre dice «foto de las HH:MM».</li><li>Si el Apps Script cae, el Despacho sigue funcionando con la última foto y lo dice claramente.</li></ol></div>
+    <div>
+      <h4>Herramientas</h4><div class="chips"><span class="chip">GitHub Actions</span><span class="chip">repository_dispatch</span><span class="chip">API de Google Sheets</span><span class="chip">Pages</span><span class="chip">Cifrado AES (como datos.enc)</span></div>
+      <h4>Ejemplo real</h4><p class="ej">Son las 9:41 y Google no responde. El Despacho abre igual, con «foto de las 9:37», y te deja decidir. Las órdenes se encolan y salen cuando Google vuelve.</p>
+      <h4>Riesgo y cómo se controla</h4><p>Los repositorios son públicos: nada real en claro. Un dato viejo puede engañar → siempre se muestra la hora de la foto y nunca se escribe sobre ella.</p>
+      <h4>Lo que necesita de ti</h4><p class="mano">Guardar un secreto del repositorio (una llave de lectura del Sheet). Son 3 minutos con mi guía.</p>
+    </div>
+  </div>
+</article>
+<article class="sis" id="sis-4">
+  <header class="sh"><span class="num">4</span><div><h3>El Altavoz</h3><p class="subt">Que el sistema te hable a ti, sin ahogarte</p></div>
+    <div class="meta"><span>Esfuerzo <b>Chico (correo y calendario) a mediano (WhatsApp)</b></span><span>Valor <b>Menos ruido, mejores decisiones</b></span></div></header>
+  <div class="dg"><svg viewBox="0 0 800 380" role="img" aria-label="Eventos y reglas pasan por un clasificador que decide el canal: insignia siempre, correo diario, WhatsApp solo para lo rojo y un bloque de calendario para decidir; tu respuesta se convierte en orden." xmlns="http://www.w3.org/2000/svg">
+<path d="M163.0,187.0 L202.0,187.0" fill="none" stroke="#9a80dd" stroke-width="1.7" class="flow" marker-end="url(#ah-p)" opacity=".92"/>
+<path d="M371.4,142.0 L488.9,75.0" fill="none" stroke="#c9a227" stroke-width="1.7" class="flow" marker-end="url(#ah-g)" opacity=".92"/>
+<path d="M383.0,163.3 L447.0,146.6" fill="none" stroke="#c9a227" stroke-width="1.7" class="flow" marker-end="url(#ah-g)" opacity=".92"/>
+<path d="M383.0,191.3 L447.0,194.3" fill="none" stroke="#d8695a" stroke-width="1.7" class="flow" marker-end="url(#ah-r)" opacity=".92"/>
+<path d="M383.0,219.3 L455.2,245.0" fill="none" stroke="#c9a227" stroke-width="1.7" class="flow" marker-end="url(#ah-g)" opacity=".92"/>
+<path d="M590.5,75.0 L687.0,142.8" fill="none" stroke="#6fbf8b" stroke-width="1.7" class="flow" marker-end="url(#ah-v)" opacity=".92"/>
+<path d="M643.0,150.7 L687.0,164.0" fill="none" stroke="#6fbf8b" stroke-width="1.7" class="flow" marker-end="url(#ah-v)" opacity=".92"/>
+<path d="M643.0,189.5 L687.0,185.2" fill="none" stroke="#6fbf8b" stroke-width="1.7" class="flow" marker-end="url(#ah-v)" opacity=".92"/>
+<path d="M609.3,245.0 L687.0,206.4" fill="none" stroke="#6fbf8b" stroke-width="1.7" class="flow" marker-end="url(#ah-v)" opacity=".92"/>
+<path d="M735.1,233.0 L727.9,312.0" fill="none" stroke="#c9a227" stroke-width="1.7" class="flow" marker-end="url(#ah-g)" opacity=".92"/>
+<rect x="10" y="150" width="150" height="74" rx="12" fill="#0f1f2b" stroke="#3a7096" stroke-width="1.4"/>
+<line x1="20" y1="157" x2="150" y2="157" stroke="#3a7096" stroke-width="1" opacity=".6"/>
+<text x="85.0" y="186.75" text-anchor="middle" font-size="13.5" font-weight="600" fill="#d6ebf8">Eventos y reglas</text>
+<text x="85.0" y="202.75" text-anchor="middle" font-size="11" fill="#8fb4cc">lo que pasó</text>
+<rect x="205" y="145" width="175" height="84" rx="12" fill="#1d1630" stroke="#7a5fbd" stroke-width="1.4"/>
+<text x="292.5" y="177.25" text-anchor="middle" font-size="13.5" font-weight="600" fill="#eee6ff">Clasificador</text>
+<text x="292.5" y="192.75" text-anchor="middle" font-size="10.5" fill="#b6a5dd">severidad · dueño · horario</text>
+<text x="292.5" y="206.25" text-anchor="middle" font-size="10.5" fill="#b6a5dd">quita repetidos</text>
+<rect x="256.7" y="136" width="71.6" height="17" rx="8.5" fill="#0b0b0d" stroke="#7a5fbd" stroke-width="1"/>
+<text x="292.5" y="148" text-anchor="middle" font-size="9.5" font-weight="700" letter-spacing=".08em" fill="#eee6ff" class="mono">SISTEMA 4</text>
+<rect x="450" y="14" width="190" height="58" rx="12" fill="#c9a227" stroke="#e8c35a" stroke-width="1.4"/>
+<text x="545.0" y="39.5" text-anchor="middle" font-size="12.5" font-weight="600" fill="#0b0b0d">Insignia en el Despacho</text>
+<text x="545.0" y="55.0" text-anchor="middle" font-size="10.5" fill="#3a2d08">siempre</text>
+<rect x="450" y="92" width="190" height="58" rx="12" fill="#2a2010" stroke="#a37d22" stroke-width="1.4"/>
+<text x="545.0" y="118.0" text-anchor="middle" font-size="13.5" font-weight="600" fill="#f4e6c4">Correo 7:23</text>
+<text x="545.0" y="133.5" text-anchor="middle" font-size="10.5" fill="#c7b07a">el resumen del día</text>
+<rect x="450" y="170" width="190" height="58" rx="12" fill="#2a2010" stroke="#a37d22" stroke-width="1.4"/>
+<text x="545.0" y="196.25" text-anchor="middle" font-size="13.5" font-weight="600" fill="#f4e6c4">WhatsApp</text>
+<text x="545.0" y="211.25" text-anchor="middle" font-size="10" fill="#c7b07a">solo rojo · hoy: número de prueba</text>
+<rect x="450" y="248" width="190" height="58" rx="12" fill="#2a2010" stroke="#a37d22" stroke-width="1.4"/>
+<text x="545.0" y="274.0" text-anchor="middle" font-size="13.5" font-weight="600" fill="#f4e6c4">Calendario</text>
+<text x="545.0" y="289.5" text-anchor="middle" font-size="10.5" fill="#c7b07a">bloque de 30 min para decidir</text>
+<rect x="690" y="130" width="100" height="100" rx="12" fill="#10231a" stroke="#4a8a63" stroke-width="1.4"/>
+<text x="740.0" y="170.75" text-anchor="middle" font-size="13.5" font-weight="600" fill="#d8f3e2">Tú</text>
+<text x="740.0" y="185.75" text-anchor="middle" font-size="10" fill="#94c4a6">respondes</text>
+<text x="740.0" y="198.75" text-anchor="middle" font-size="10" fill="#94c4a6">«1 = adelante»</text>
+<rect x="660" y="315" width="130" height="56" rx="12" fill="#0f1f2b" stroke="#3a7096" stroke-width="1.4"/>
+<line x1="670" y1="322" x2="780" y2="322" stroke="#3a7096" stroke-width="1" opacity=".6"/>
+<text x="725.0" y="351.25" text-anchor="middle" font-size="13.5" font-weight="600" fill="#d6ebf8">ENCARGOS</text>
+<rect x="689.2" y="306" width="71.6" height="17" rx="8.5" fill="#0b0b0d" stroke="#3a7096" stroke-width="1"/>
+<text x="725.0" y="318" text-anchor="middle" font-size="9.5" font-weight="700" letter-spacing=".08em" fill="#d6ebf8" class="mono">SISTEMA 2</text>
+<rect x="690.1" y="256.5" width="82.8" height="32" rx="7" fill="#0b0b0d" stroke="#c9a227" stroke-opacity=".55" stroke-width="1"/>
+<text x="731.5" y="268.5" text-anchor="middle" font-size="10.5" fill="#c9a227">tu respuesta</text>
+<text x="731.5" y="281.5" text-anchor="middle" font-size="10.5" fill="#c9a227">es una orden</text>
+</svg></div>
+  <p class="que">La capa que habla con personas. Decide qué te avisa, por dónde y cuándo, para que sepas lo que importa sin revisar 8 tableros. Protege lo más escaso que tiene YOD: tu atención.</p>
+  <div class="cols">
+    <div><h4>Cómo funciona</h4><ol class="pasos"><li>Un clasificador pone a cada aviso una <b>severidad</b> (rojo, ámbar, verde), un dueño y un horario, y <b>quita los repetidos</b>.</li><li><b>Siempre:</b> insignia en el Despacho.  <b>7:23:</b> correo con el resumen (ya existe).  <b>Solo lo rojo:</b> WhatsApp, y de noche solo si es urgente de verdad.</li><li><b>Calendario:</b> se reserva un bloque de 30 minutos cada día para decidir, y ahí se juntan las decisiones ámbar.</li><li><b>Responder es actuar:</b> contestas «1 = adelante» al correo o al WhatsApp y esa respuesta se convierte en un encargo.</li><li>Por ahora solo se escribe a Alejandro; a terceros, jamás sin firma. Es una regla que ya tienes y aquí se cumple por diseño.</li></ol></div>
+    <div>
+      <h4>Herramientas</h4><div class="chips"><span class="chip">Gmail</span><span class="chip">API de WhatsApp de Meta (Claudet)</span><span class="chip">Google Calendar</span><span class="chip">Notificaciones del celular</span></div>
+      <h4>Ejemplo real</h4><p class="ej">A las 6:40 Obra reporta una falla. Es rojo, así que llega por WhatsApp. Contestas «adelante» desde la cama y el encargo sale; a las 7:23 el correo ya lo trae como cerrado.</p>
+      <h4>Riesgo y cómo se controla</h4><p>Exceso de avisos → el clasificador quita repetidos y respeta horarios. WhatsApp aún opera con el número de prueba de Meta: hasta que cambie, ese canal queda apagado y todo lo demás funciona.</p>
+      <h4>Lo que necesita de ti</h4><p class="mano">Pasar Claudet de número de prueba a producción en Meta cuando quieras usar WhatsApp. El correo y el calendario funcionan hoy.</p>
+    </div>
+  </div>
+</article>
+<article class="sis" id="sis-5">
+  <header class="sh"><span class="num">5</span><div><h3>Las Reglas</h3><p class="subt">Que el sistema se mueva solo, con tu criterio</p></div>
+    <div class="meta"><span>Esfuerzo <b>Mediano</b></span><span>Valor <b>Automatiza lo repetido</b></span></div></header>
+  <div class="dg"><svg viewBox="0 0 880 320" role="img" aria-label="Los eventos entran a un motor de reglas que lee una tabla del Sheet y produce encargos, tareas en el tablero que toca o avisos." xmlns="http://www.w3.org/2000/svg">
+<path d="M153.0,149.0 L237.0,149.0" fill="none" stroke="#5aa2d0" stroke-width="1.7" class="flow" marker-end="url(#ah-b)" opacity=".92"/>
+<path d="M443.0,110.4 L521.6,81.0" fill="none" stroke="#9a80dd" stroke-width="1.7" class="flow" marker-end="url(#ah-p)" opacity=".92"/>
+<path d="M443.0,150.9 L517.0,152.2" fill="none" stroke="#9a80dd" stroke-width="1.7" class="flow" marker-end="url(#ah-p)" opacity=".92"/>
+<path d="M443.0,191.3 L529.8,227.0" fill="none" stroke="#c9a227" stroke-width="1.7" class="flow" marker-end="url(#ah-g)" opacity=".92"/>
+<path d="M683.3,81.0 L767.0,123.9" fill="none" stroke="#8b8577" stroke-width="1.7" class="flow" marker-end="url(#ah-n)" opacity=".92"/>
+<path d="M713.0,152.6 L767.0,151.8" fill="none" stroke="#8b8577" stroke-width="1.7" class="flow" marker-end="url(#ah-n)" opacity=".92"/>
+<path d="M679.6,227.0 L767.0,179.7" fill="none" stroke="#8b8577" stroke-width="1.7" class="flow" marker-end="url(#ah-n)" opacity=".92"/>
+<rect x="10" y="110" width="140" height="78" rx="12" fill="#0f1f2b" stroke="#3a7096" stroke-width="1.4"/>
+<line x1="20" y1="117" x2="140" y2="117" stroke="#3a7096" stroke-width="1" opacity=".6"/>
+<text x="80.0" y="148.75" text-anchor="middle" font-size="13.5" font-weight="600" fill="#d6ebf8">EVENTOS</text>
+<text x="80.0" y="164.75" text-anchor="middle" font-size="11" fill="#8fb4cc">lo que pasó</text>
+<rect x="44.2" y="101" width="71.6" height="17" rx="8.5" fill="#0b0b0d" stroke="#3a7096" stroke-width="1"/>
+<text x="80.0" y="113" text-anchor="middle" font-size="9.5" font-weight="700" letter-spacing=".08em" fill="#d6ebf8" class="mono">SISTEMA 1</text>
+<rect x="240" y="96" width="200" height="106" rx="12" fill="#1d1630" stroke="#7a5fbd" stroke-width="1.4"/>
+<text x="340.0" y="133.0" text-anchor="middle" font-size="14.5" font-weight="600" fill="#eee6ff">Motor de reglas</text>
+<text x="340.0" y="148.5" text-anchor="middle" font-size="10.5" fill="#b6a5dd">tabla REGLAS en el Sheet</text>
+<text x="340.0" y="162.0" text-anchor="middle" font-size="10.5" fill="#b6a5dd">cada hora · sin código</text>
+<text x="340.0" y="175.5" text-anchor="middle" font-size="10.5" fill="#b6a5dd">las edita Alejandro</text>
+<rect x="304.2" y="87" width="71.6" height="17" rx="8.5" fill="#0b0b0d" stroke="#7a5fbd" stroke-width="1"/>
+<text x="340.0" y="99" text-anchor="middle" font-size="9.5" font-weight="700" letter-spacing=".08em" fill="#eee6ff" class="mono">SISTEMA 5</text>
+<rect x="520" y="14" width="190" height="64" rx="12" fill="#0f1f2b" stroke="#3a7096" stroke-width="1.4"/>
+<line x1="530" y1="21" x2="700" y2="21" stroke="#3a7096" stroke-width="1" opacity=".6"/>
+<text x="615.0" y="46.0" text-anchor="middle" font-size="13.5" font-weight="600" fill="#d6ebf8">ENCARGO</text>
+<text x="615.0" y="61.5" text-anchor="middle" font-size="10.5" fill="#8fb4cc">con semáforo</text>
+<rect x="579.2" y="5" width="71.6" height="17" rx="8.5" fill="#0b0b0d" stroke="#3a7096" stroke-width="1"/>
+<text x="615.0" y="17" text-anchor="middle" font-size="9.5" font-weight="700" letter-spacing=".08em" fill="#d6ebf8" class="mono">SISTEMA 2</text>
+<rect x="520" y="122" width="190" height="64" rx="12" fill="#17140f" stroke="#4a4132" stroke-width="1.4"/>
+<text x="615.0" y="151.0" text-anchor="middle" font-size="13.5" font-weight="600" fill="#ece7db">Tarea o folio</text>
+<text x="615.0" y="166.5" text-anchor="middle" font-size="10.5" fill="#a39e93">en el tablero que toca</text>
+<rect x="520" y="230" width="190" height="64" rx="12" fill="#2a2010" stroke="#a37d22" stroke-width="1.4"/>
+<text x="615.0" y="259.0" text-anchor="middle" font-size="13.5" font-weight="600" fill="#f4e6c4">Aviso</text>
+<text x="615.0" y="274.5" text-anchor="middle" font-size="10.5" fill="#c7b07a">por el Altavoz</text>
+<rect x="579.2" y="221" width="71.6" height="17" rx="8.5" fill="#0b0b0d" stroke="#a37d22" stroke-width="1"/>
+<text x="615.0" y="233" text-anchor="middle" font-size="9.5" font-weight="700" letter-spacing=".08em" fill="#f4e6c4" class="mono">SISTEMA 4</text>
+<rect x="770" y="110" width="100" height="82" rx="12" fill="#c9a227" stroke="#e8c35a" stroke-width="1.4"/>
+<text x="820.0" y="148.0" text-anchor="middle" font-size="12" font-weight="600" fill="#0b0b0d">EL</text>
+<text x="820.0" y="163.0" text-anchor="middle" font-size="12" font-weight="600" fill="#0b0b0d">DESPACHO</text>
+<rect x="168.3" y="139.5" width="53.3" height="19" rx="7" fill="#0b0b0d" stroke="#5aa2d0" stroke-opacity=".55" stroke-width="1"/>
+<text x="195.0" y="151.5" text-anchor="middle" font-size="10.5" fill="#5aa2d0">cuando…</text>
+</svg></div>
+  <p class="que">Una tabla editable, sin código, donde escribes «cuando pase esto, si se cumple aquello, entonces haz lo otro». El motor la revisa cada hora. Es lo que hace que los tableros se hablen entre sí sin que tú lo mandes cada vez.</p>
+  <div class="cols">
+    <div><h4>Cómo funciona</h4><ol class="pasos"><li>Cada regla tiene cuatro campos: <b>cuando</b> (evento), <b>si</b> (condición), <b>entonces</b> (acción) y <b>semáforo</b>.</li><li>El motor lee los eventos nuevos, busca reglas que coincidan y crea el encargo, la tarea o el aviso correspondiente, siempre con folio y llave única.</li><li>Las reglas que tocan dinero <b>no pasan cifras</b>: solo dicen «hecho / no hecho» con folio. El dinero vive únicamente en Flujo.</li><li>Cada regla trae su <b>bitácora</b>: cuántas veces se disparó y qué produjo. Una regla que no sirve se apaga con un clic.</li><li>La verificación nocturna revisa que no queden filas sin folio ni reglas rotas.</li></ol></div>
+    <div>
+      <h4>Herramientas</h4><div class="chips"><span class="chip">Pestaña REGLAS</span><span class="chip">Apps Script o rutina de Claude</span><span class="chip">Folio</span><span class="chip">Verificación nocturna</span></div>
+      <h4>Ejemplo real</h4><p class="ej">Un lead califica en el Plan de Potencial → se crea el folio, se abre la tarea «videollamada» en MOAC y se te avisa. Tú no moviste nada.</p>
+      <h4>Riesgo y cómo se controla</h4><p>Una regla mal puesta puede repetirse → llave única y tope de disparos por hora. Una regla que toca a terceros nace siempre en rojo.</p>
+      <h4>Lo que necesita de ti</h4><p class="mano">Escoger las primeras tres reglas. Te propongo seis y eliges.</p>
+    </div>
+  </div>
+</article>
+ <h3 style="font:400 28px var(--serif);margin:34px 0 8px">Las reglas: seis ejemplos para elegir</h3>
+ <p class="sec-lead" style="margin-bottom:14px">Así se leería la tabla REGLAS. Tú escoges las primeras tres.</p>
+ <div class="tw"><table><thead><tr><th>Cuando</th><th>Si</th><th>Entonces</th><th>Semáforo</th></tr></thead><tbody>
+ <tr><td>Un lead califica en el Plan de Potencial</td><td>tiene terreno y zona válida</td><td>Crear folio, abrir tarea «videollamada» en MOAC y avisar</td><td><span class="tag verde">verde</span></td></tr><tr><td>Obra verifica un avance</td><td>el hito está completo</td><td>Abrir «autorizar pago» en Flujo, sin cifras en el Despacho</td><td><span class="tag ámbar">ámbar</span></td></tr><tr><td>Un proyecto lleva 14 días sin moverse de etapa</td><td>no está en pausa</td><td>Marcarlo «estancado» en la Torre de control</td><td><span class="tag verde">verde</span></td></tr><tr><td>Una tarea de otra persona lleva 7 días vencida</td><td>tiene dueño distinto de ti</td><td>Dejar un borrador de recordatorio (no se envía sin firma)</td><td><span class="tag rojo">rojo</span></td></tr><tr><td>Una decisión reversible cumple su fecha sin respuesta</td><td>propuesta de Claude con default</td><td>Proceder con el default y avisarte</td><td><span class="tag ámbar">ámbar</span></td></tr><tr><td>Cae un evento con folio inexistente</td><td>—</td><td>Alertar al Vigía para no perder el rastro</td><td><span class="tag verde">verde</span></td></tr>
+ </tbody></table></div>
+</div></section>
+
+<section class="blk" id="compara"><div class="w">
+ <div class="eyebrow">Para decidir</div>
+ <h2>Los cinco, <em>lado a lado</em>.</h2>
+ <div class="tw"><table><thead><tr><th>Sistema</th><th>Resuelve</th><th>Herramientas</th><th>Esfuerzo</th><th>Necesita de ti</th><th>Riesgo principal</th></tr></thead><tbody>
+ <tr><td><b>1 · El Buzón</b></td><td>Que los tableros se enteren unos de otros</td><td>Sheets + Apps Script</td><td>Chico</td><td>No para empezar</td><td>Doble anotación</td></tr><tr><td><b>2 · Los Encargos</b></td><td>Que el Despacho pueda mandar</td><td>Rutinas de Claude + Sheets</td><td>Mediano</td><td>Confirmar el semáforo</td><td>Ejecutar de más</td></tr><tr><td><b>3 · El Espejo</b></td><td>Que no dependa de Google</td><td>GitHub Actions + cifrado</td><td>Mediano</td><td>Un secreto del repo</td><td>Dato viejo</td></tr><tr><td><b>4 · El Altavoz</b></td><td>Que te avise sin ahogarte</td><td>Gmail, Calendar, Meta</td><td>Chico a mediano</td><td>Meta para WhatsApp</td><td>Exceso de avisos</td></tr><tr><td><b>5 · Las Reglas</b></td><td>Que se mueva solo</td><td>Sheet REGLAS + motor</td><td>Mediano</td><td>Elegir 3 reglas</td><td>Regla mal puesta</td></tr>
+ </tbody></table></div>
+ <p class="sec-lead" style="margin-top:18px">Los esfuerzos son estimaciones mías a partir de leer el código; no los he probado.</p>
+</div></section>
+
+<section class="blk" id="ruta"><div class="w">
+ <div class="eyebrow">Mi recomendación</div>
+ <h2>Qué construir <em>y en qué orden</em>.</h2>
+ <p class="sec-lead">Empezaría por la base (Buzón y Encargos), porque sin ellas los demás no tienen de dónde leer ni a dónde mandar. Del lado del Despacho, la Mesa de decisiones (C) y la Bandeja (A) primero; después el Operador (E) y el Ritmo (D).</p>
+ <div class="ruta"><div class="paso"><b class="s">Semana 1</b><h4>El Buzón (entrada por diferencias) y Los Encargos con semáforo</h4><p>Ya sale información de todos los tableros y el Despacho puede mandar con control.</p></div><div class="paso"><b class="s">Semana 2</b><h4>El Altavoz: correo mejorado y bloque de calendario</h4><p>El sistema te habla sin ahogarte y protege tu tiempo de decisión.</p></div><div class="paso"><b class="s">Semana 3</b><h4>Las Reglas: tres primeras</h4><p>Empieza a moverse solo lo repetido.</p></div><div class="paso"><b class="s">Semana 4</b><h4>El Espejo y el valor por defecto en decisiones reversibles</h4><p>Resistente a caídas de Google y menos decisiones triviales para ti.</p></div></div>
+ <h3 style="font:400 26px var(--serif);margin:34px 0 10px">Lo que necesito que decidas</h3>
+ <ul class="pide">
+  <li><b>1.</b> ¿Te sirve el semáforo verde, ámbar y rojo como regla de autonomía?</li>
+  <li><b>2.</b> ¿En qué etapa están La Cercada y Torre Ruiseñor? Hoy salen en «Por clasificar».</li>
+  <li><b>3.</b> ¿Puedo crear las pestañas EVENTOS, ENCARGOS y REGLAS en el Sheet «YOD OS · Control Maestro»?</li>
+  <li><b>4.</b> ¿Quieres WhatsApp desde ya? Hay que pasar Claudet del número de prueba de Meta a producción.</li>
+  <li><b>5.</b> De las cinco formas del Despacho (A a E), ¿cuál te gusta más como siguiente paso?</li>
+ </ul>
+</div></section>
+<footer><div class="w">Propuesta basada en la lectura de los repositorios de YOD OS y del Despacho. Nada de esto está construido todavía, salvo la Torre de control (v2.0) que ya está publicada.</div></footer>
+</body></html>
